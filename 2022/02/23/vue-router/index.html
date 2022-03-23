@@ -1,0 +1,701 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.jpg">
+  <link rel="icon" href="/img/fluid.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="刘旭">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="vue-router1安装vue-rouer   npm instal vue-router@4 2创建需要映射的组件 3创建router.js文件进行配置 （1）配置映射关系 （2）创建路由router （3）导出路由 1234567891011121314151617181920212223242526272829import &amp;#123; createRouter, createWebHas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="千面小站">
+<meta property="og:url" content="http://example.com/2022/02/23/vue-router/index.html">
+<meta property="og:site_name" content="千面小站">
+<meta property="og:description" content="vue-router1安装vue-rouer   npm instal vue-router@4 2创建需要映射的组件 3创建router.js文件进行配置 （1）配置映射关系 （2）创建路由router （3）导出路由 1234567891011121314151617181920212223242526272829import &amp;#123; createRouter, createWebHas">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-23T11:59:29.645Z">
+<meta property="article:modified_time" content="2022-02-28T14:27:09.453Z">
+<meta property="article:author" content="刘旭">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>千面小站</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>千面小站</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                作者
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-23 19:59" pubdate>
+          2022年2月23日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          54 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h1><p>1安装vue-rouer   npm instal vue-router@4</p>
+<p>2创建需要映射的组件</p>
+<p>3创建router.js文件进行配置</p>
+<p>（1）配置映射关系</p>
+<p>（2）创建路由router</p>
+<p>（3）导出路由</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; createRouter, createWebHashHistory, createWebHistory &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-router&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">Home</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../pages/Home.vue&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">About</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../pages/About.vue&#x27;</span><br><br><br><span class="hljs-comment">// 配置映射关系</span><br><span class="hljs-keyword">const</span> routes = [&#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/home&quot;</span>,<br>        <span class="hljs-attr">component</span>: <span class="hljs-title class_">Home</span><br>    &#125;,<br>    &#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/about&quot;</span>,<br>        <span class="hljs-attr">component</span>: <span class="hljs-title class_">About</span><br>    &#125;,<br>    <span class="hljs-comment">// 网站重定向</span><br>    &#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/&quot;</span>,<br>        <span class="hljs-attr">redirect</span>: <span class="hljs-string">&quot;/home&quot;</span><br>    &#125;<br>]<br><br><span class="hljs-comment">// 创建路由router</span><br><span class="hljs-keyword">const</span> router = <span class="hljs-title function_">createRouter</span>(&#123;<br>    routes,<br>    <span class="hljs-attr">history</span>: <span class="hljs-title function_">createWebHistory</span>()<br>&#125;)<br><br><span class="hljs-comment">// 导出路由</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router<br></code></pre></td></tr></table></figure>
+
+<p>4main.js使用路由app.use(router)</p>
+<p>5router-link和router-view（占位）</p>
+<h3 id="router-link属性"><a href="#router-link属性" class="headerlink" title="router-link属性"></a>router-link属性</h3><p>to属性</p>
+<p>replace属性：不能返回上一页，返回就退出</p>
+<p>active-class可以更改class名字默认是router-link-active</p>
+<p>exact-active-class精准匹配</p>
+<h3 id="路由的懒加载"><a href="#路由的懒加载" class="headerlink" title="路由的懒加载"></a>路由的懒加载</h3><p>懒加载就是在导入组件的时候使用箭头函数的方式导入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// import Home from &#x27;../pages/Home.vue&#x27;</span><br><span class="hljs-comment">// import About from &#x27;../pages/About.vue&#x27;</span><br><br><br><span class="hljs-comment">// 配置映射关系</span><br><span class="hljs-keyword">const</span> routes = [&#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/home&quot;</span>,<br>        <span class="hljs-attr">component</span>: <span class="hljs-function">() =&gt;</span><br>    <span class="hljs-comment">//这就实现了路由的懒加载</span><br>            <span class="hljs-keyword">import</span> ( <span class="hljs-comment">/*webpackChunkName:&quot;home-chunk&quot;*/</span> <span class="hljs-string">&quot;../pages/Home.vue&quot;</span>)<br>    &#125;,<br>    &#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/about&quot;</span>,<br>        <span class="hljs-attr">component</span>: <span class="hljs-function">() =&gt;</span><br>            <span class="hljs-keyword">import</span> ( <span class="hljs-comment">/*webpackChunkName:&quot;abou-chunk&quot;*/</span> <span class="hljs-string">&quot;../pages/About.vue&quot;</span>)<br>    &#125;,<br>    <span class="hljs-comment">// 网站重定向</span><br>    &#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/&quot;</span>,<br>        <span class="hljs-attr">redirect</span>: <span class="hljs-string">&quot;/home&quot;</span><br>    &#125;<br>]<br></code></pre></td></tr></table></figure>
+
+<p>打包的时候会命名</p>
+<p>魔法注释&#x2F;<em>webpackChunkName:”home-chunk”</em>&#x2F;</p>
+<h3 id="动态路由匹配"><a href="#动态路由匹配" class="headerlink" title="动态路由匹配"></a>动态路由匹配</h3><p>配置中不写死</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">&#123;<br>     <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/user/:username/id/:id&quot;</span>,<br>     <span class="hljs-attr">component</span>: <span class="hljs-function">() =&gt;</span><br>         <span class="hljs-keyword">import</span> ( <span class="hljs-comment">/*webpackChunkName:&quot;abou-chunk&quot;*/</span> <span class="hljs-string">&quot;../pages/User.vue&quot;</span>)<br> &#125;,<br></code></pre></td></tr></table></figure>
+
+<p>notfund页面,同样也是匹配一个组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"> &#123;<br>        <span class="hljs-comment">// 匹配错误网址</span><br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/:pathmatch(.*)&quot;</span>,<br>        <span class="hljs-attr">component</span>: <span class="hljs-function">() =&gt;</span><br>            <span class="hljs-keyword">import</span> ( <span class="hljs-comment">/*webpackChunkName:&quot;abou-chunk&quot;*/</span> <span class="hljs-string">&quot;../pages/NotFound.vue&quot;</span>)<br>    &#125;,<br>]<br></code></pre></td></tr></table></figure>
+
+<h3 id="组件的嵌套"><a href="#组件的嵌套" class="headerlink" title="组件的嵌套"></a>组件的嵌套</h3><p>就是在index.js中配置children属性，然后配置路径。进而实现组件页面间的跳转</p>
+<p>可以通过插槽的方式设置跳转</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;!-- router-link 的扩展用法 --&gt;<br>   &lt;!-- custom把a跳转去掉。设置成自定义 --&gt;<br>   &lt;!-- 通过插槽的模式 --&gt;<br>   &lt;!-- 点击自动跳转props.navigate --&gt;<br>   &lt;router-link to=&quot;/home&quot; v-slot=&quot;props&quot; custom&gt;<br>         &lt;button @click=&quot;props.navigate&quot;&gt;首页&lt;/button&gt;<br>   &lt;/router-link&gt;<br></code></pre></td></tr></table></figure>
+
+<p>如果想跟组件显示加个动画，或者希望组件缓存起来就需要使用插槽方式的显示方式router-view</p>
+<h3 id="动态添加路由"><a href="#动态添加路由" class="headerlink" title="动态添加路由"></a>动态添加路由</h3><p>拿到自己路由里面的数据方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123;useRoute&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-router&#x27;</span><br>  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>      <span class="hljs-comment">// vue2拿路径方法</span><br>      <span class="hljs-comment">// created()&#123;</span><br>      <span class="hljs-comment">//     console.log(this.$route.params.username);</span><br>      <span class="hljs-comment">// &#125;</span><br>      <span class="hljs-comment">// vue3拿路径方法</span><br>      <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>)&#123;<br>          <span class="hljs-keyword">const</span> route=<span class="hljs-title function_">useRoute</span>();<br>          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(route.<span class="hljs-property">params</span>.<span class="hljs-property">username</span>);<br>      &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="导航守卫"><a href="#导航守卫" class="headerlink" title="导航守卫"></a>导航守卫</h3><p>在跳转的时候阻止跳转进行登录的案例</p>
+<p>进行路由跳转就跳到登录页面</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js">    <span class="hljs-comment">// 导出路由</span><br>    <span class="hljs-comment">// 导航守卫</span><br>router.<span class="hljs-title function_">beforeEach</span>(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span></span>) =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;进行了路由的跳转&quot;</span>);<br>    <span class="hljs-keyword">if</span> (to.<span class="hljs-property">path</span> !== <span class="hljs-string">&quot;/login&quot;</span>) &#123;<br>        <span class="hljs-keyword">const</span> token = <span class="hljs-variable language_">window</span>.<span class="hljs-property">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&quot;token&quot;</span>);<br>        <span class="hljs-keyword">if</span> (!token) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;/login&quot;</span><br>        &#125;<br>    &#125;<br><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>在登陆页面点击后就保存一个token，然后自动跳转到首页</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>    &lt;div&gt;<br>        &lt;button @click=&quot;LoginClick&quot;&gt;登录&lt;/button&gt;<br>    &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>    import &#123;useRouter&#125; from &#x27;vue-router&#x27;<br>    export default &#123;<br>       setup()&#123;<br>           const router=useRouter();<br>           const LoginClick=()=&gt;&#123;<br>               window.localStorage.setItem(&quot;token&quot;,&quot;liuxu&quot;)<br>               router.push(&#123;<br>                   path:&quot;/home&quot;<br>               &#125;)<br>           &#125;<br>           return&#123;<br>               LoginClick<br>           &#125;<br>       &#125; <br>    &#125;<br>&lt;/script&gt;<br><br>&lt;style scoped&gt;<br><br>&lt;/style&gt;<br></code></pre></td></tr></table></figure>
+
+<h1 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h1><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>1安装npm install vuex@next</p>
+<p>2创建store，建立js文件从vuex中导入Createstore</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; createStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vuex&#x27;</span>;<br><br><span class="hljs-keyword">const</span> store = <span class="hljs-title function_">createStore</span>(&#123;<br>    <span class="hljs-title function_">state</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">return</span> &#123;<br>            <span class="hljs-attr">counter</span>: <span class="hljs-number">100</span><br>        &#125;<br>    &#125;,<br>    <span class="hljs-attr">mutations</span>: &#123;<br>        <span class="hljs-title function_">increment</span>(<span class="hljs-params">state</span>) &#123;<br>            state.<span class="hljs-property">counter</span>++<br>        &#125;,<br>        <span class="hljs-title function_">decrement</span>(<span class="hljs-params">state</span>) &#123;<br>            state.<span class="hljs-property">counter</span>--<br>        &#125;<br>    &#125;<br>&#125;);<br><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> store<br></code></pre></td></tr></table></figure>
+
+<p>注意这里的方法传的有一个state参数，通过参数来调用数据改变</p>
+<p>数据放到state函数中，方法放到mutations对象中</p>
+<p>3像路由一样需要在index.js中使用，像使用插件一样</p>
+<p>4需要先发送一个commit</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div&gt;<br>    &lt;h2&gt;&#123;&#123;$store.state.counter&#125;&#125;&lt;/h2&gt;<br>    &lt;button @click=&quot;increment&quot;&gt;+1&lt;/button&gt;<br>    &lt;button @click=&quot;decrement&quot;&gt;-1&lt;/button&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>  export default &#123;<br>    methods:&#123;<br>      increment()&#123;<br>        this.$store.commit(&quot;increment&quot;)<br>      &#125;,<br>      decrement()&#123;<br>        this.$store.commit(&quot;decrement&quot;)<br>      &#125;<br>    &#125;<br>  &#125;<br>&lt;/script&gt;<br><br>&lt;style scoped&gt;<br><br>&lt;/style&gt;<br></code></pre></td></tr></table></figure>
+
+<p>再别的组件中获取是$store.state.counter</p>
+<h3 id="5大核心"><a href="#5大核心" class="headerlink" title="5大核心"></a>5大核心</h3><p>state,getters,mutation,action,mudules</p>
+<h3 id="辅助函数"><a href="#辅助函数" class="headerlink" title="辅助函数"></a>辅助函数</h3><h4 id="mapState"><a href="#mapState" class="headerlink" title="mapState"></a>mapState</h4><p>vue2用法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-attr">computed</span>:&#123;<br>       <span class="hljs-comment">// 可以传个数组，也可以传个对象</span><br>       <span class="hljs-comment">// 传个对象可以改名字</span><br>       <span class="hljs-comment">// 加3个点进行解构</span><br>       ...<span class="hljs-title function_">mapState</span>([<span class="hljs-string">&quot;counter&quot;</span>,<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;height&quot;</span>])<br>       <span class="hljs-comment">// 下面传对象的</span><br>       <span class="hljs-comment">// ...mapState(&#123;</span><br>       <span class="hljs-comment">//     sCounter:state=&gt;state.counter,</span><br>       <span class="hljs-comment">//     sName:state=&gt;state.name</span><br>       <span class="hljs-comment">// &#125;)</span><br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<p>vue3用法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123;computed&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> &#123;mapState,useStore&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vuex&#x27;</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>    <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-keyword">const</span> store=<span class="hljs-title function_">useStore</span>();<br>        <span class="hljs-comment">// 这是单个获取</span><br>        <span class="hljs-keyword">const</span> <span class="hljs-title class_">Sname</span>=<span class="hljs-title function_">computed</span>(<span class="hljs-function">()=&gt;</span>store.<span class="hljs-property">state</span>.<span class="hljs-property">name</span>);<br><br>        <span class="hljs-keyword">const</span> storeStates=<span class="hljs-title function_">mapState</span>([<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-string">&quot;height&quot;</span>]);<br>        <span class="hljs-keyword">const</span> storeState=&#123;&#125;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(storeStates));<br>        <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(storeStates).<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">keyFn</span> =&gt;</span> &#123;<br>            <span class="hljs-keyword">const</span> fn=storeStates[keyFn].<span class="hljs-title function_">bind</span>(&#123;<span class="hljs-attr">$store</span>:store&#125;);<br>            storeState[keyFn]=<span class="hljs-title function_">computed</span>(fn);<br>        &#125;);<br><br>        <span class="hljs-keyword">return</span>&#123;<br>            <span class="hljs-title class_">Sname</span>,<br>            ...storeState<br>        &#125;<br>    &#125;<br> <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="mapGetters"><a href="#mapGetters" class="headerlink" title="mapGetters"></a>mapGetters</h4><p>vue2是实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">import</span> &#123;mapGetters&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vuex&quot;</span><br> <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>     <span class="hljs-comment">// vue2实现</span><br>  <span class="hljs-attr">computed</span>:&#123;<br>           ...<span class="hljs-title function_">mapGetters</span>([<span class="hljs-string">&quot;nameInfo&quot;</span>,<span class="hljs-string">&quot;ageInfo&quot;</span>,<span class="hljs-string">&quot;heightInfo&quot;</span>]),<br>           ...<span class="hljs-title function_">mapGetters</span>(&#123;<br>               <span class="hljs-title class_">SnameInfo</span>:<span class="hljs-string">&quot;nameInfo&quot;</span>,<br>               <span class="hljs-title class_">SageInfo</span>:<span class="hljs-string">&quot;ageInfo&quot;</span>,<br>           &#125;),<br>  &#125;,  <br> &#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>vue3实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123;useGetters&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../hooks/useGetters&#x27;</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>   <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-comment">//    const store=useStore();</span><br>    <span class="hljs-comment">//    const nameInfo=computed(()=&gt;store.getters.nameInfo);</span><br>    <br>    <span class="hljs-keyword">const</span> stateGetters=<span class="hljs-title function_">useGetters</span>([<span class="hljs-string">&quot;nameInfo&quot;</span>,<span class="hljs-string">&quot;ageInfo&quot;</span>,<span class="hljs-string">&quot;heightInfo&quot;</span>]);<br>       <span class="hljs-keyword">return</span>&#123;<br>           ...stateGetters<br>       &#125;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="mapMutation"><a href="#mapMutation" class="headerlink" title="mapMutation"></a>mapMutation</h4><p>store.commit()中可以传两个参数，一个是对应的index.js中的方法名，另一个是个对象，对象中可以传信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>    &lt;div&gt;<br>        &lt;hr&gt;<br>      &lt;h2&gt;当前计数：&#123;&#123;$store.state.counter&#125;&#125;&lt;/h2&gt;<br>      &lt;button @click=&quot;incrementN(10)&quot;&gt;+10&lt;/button&gt;<br>      &lt;button @click=&quot;decrementN(100)&quot;&gt;-100&lt;/button&gt;<br>    &lt;/div&gt;<br>&lt;/template&gt;<br>    <br>&lt;script&gt;<br>    import &#123;useStore,mapMutations&#125; from &quot;vuex&quot;<br>    export default &#123;<br>       setup()&#123;<br>        const mutationsState=mapMutations([&quot;incrementN&quot;,&quot;decrementN&quot;]);<br><br>           return&#123;<br>              ...mutationsState<br>           &#125;<br>       &#125;,<br><br>    &#125;<br>&lt;/script&gt;<br><br>&lt;style scoped&gt;<br><br>&lt;/style&gt;<br></code></pre></td></tr></table></figure>
+
+<p>​     </p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://example.com/2022/02/23/vue-router/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>刘旭</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月23日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/18/Nodejs/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
