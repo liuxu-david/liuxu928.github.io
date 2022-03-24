@@ -16,15 +16,15 @@
   <meta name="author" content="刘旭">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Ajax什么是跨域？跨域就是浏览器的同源策略导致的，只要协议，域名，端口号，三者有一个不同就属于跨域。 同源策略是一个重要的浏览器策略，用于限制一个origin的文档或者它加载的脚本如何能与另一个源的资源进行交互。它能帮助阻隔恶意文档，减少可能被攻击的媒介。 优缺点优点：可以无刷新页面直接跟服务器进行通信。允许你根据用户事件来更新部分页面内容。 缺点：存在跨域问题，（同源策略）；没有浏览历史，不能">
+    <meta name="description" content="ES6-ES11ECMAScript let1、不能重复赋值，重复赋值会报错； 2、具有块级作用域 3、不存在变量提升">
 <meta property="og:type" content="article">
 <meta property="og:title" content="千面小站">
-<meta property="og:url" content="http://example.com/2022/03/24/Ajax/index.html">
+<meta property="og:url" content="http://example.com/2022/03/24/ES6-ES11/index.html">
 <meta property="og:site_name" content="千面小站">
-<meta property="og:description" content="Ajax什么是跨域？跨域就是浏览器的同源策略导致的，只要协议，域名，端口号，三者有一个不同就属于跨域。 同源策略是一个重要的浏览器策略，用于限制一个origin的文档或者它加载的脚本如何能与另一个源的资源进行交互。它能帮助阻隔恶意文档，减少可能被攻击的媒介。 优缺点优点：可以无刷新页面直接跟服务器进行通信。允许你根据用户事件来更新部分页面内容。 缺点：存在跨域问题，（同源策略）；没有浏览历史，不能">
+<meta property="og:description" content="ES6-ES11ECMAScript let1、不能重复赋值，重复赋值会报错； 2、具有块级作用域 3、不存在变量提升">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-24T07:39:47.891Z">
-<meta property="article:modified_time" content="2022-03-24T13:50:51.404Z">
+<meta property="article:published_time" content="2022-03-24T13:54:48.374Z">
+<meta property="article:modified_time" content="2022-03-24T14:24:13.358Z">
 <meta property="article:author" content="刘旭">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -197,8 +197,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-03-24 15:39" pubdate>
-          2022年3月24日 下午
+        <time datetime="2022-03-24 21:54" pubdate>
+          2022年3月24日 晚上
         </time>
       </span>
     
@@ -209,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          56 字
         
       </span>
     
@@ -220,7 +220,7 @@
         
         
         
-          15 分钟
+          1 分钟
         
       </span>
     
@@ -262,42 +262,10 @@
             
             <div class="markdown-body">
               
-              <h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><h3 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h3><p>跨域就是浏览器的同源策略导致的，只要协议，域名，端口号，三者有一个不同就属于跨域。</p>
-<p>同源策略是一个重要的浏览器策略，用于限制一个<a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Glossary/%E6%BA%90">origin</a>的文档或者它加载的脚本如何能与另一个源的资源进行交互。它能帮助阻隔恶意文档，减少可能被攻击的媒介。</p>
-<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p>优点：可以无刷新页面直接跟服务器进行通信。允许你根据用户事件来更新部分页面内容。</p>
-<p>缺点：存在跨域问题，（同源策略）；没有浏览历史，不能回退，SEO（搜索引擎优化）不友好。</p>
-<h3 id="如何解决跨域？"><a href="#如何解决跨域？" class="headerlink" title="如何解决跨域？"></a>如何解决跨域？</h3><h4 id="1、cors解决"><a href="#1、cors解决" class="headerlink" title="1、cors解决"></a>1、cors解决</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 允许跨域</span><br>  res.<span class="hljs-title function_">setHeader</span>(<span class="hljs-string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="hljs-string">&quot;*&quot;</span>);<br>  res.<span class="hljs-title function_">setHeader</span>(<span class="hljs-string">&quot;Access-Control-Allow-Headers&quot;</span>, <span class="hljs-string">&quot;*&quot;</span>);<br>  res.<span class="hljs-title function_">setHeader</span>(<span class="hljs-string">&quot;Access-Control-Allow-Method&quot;</span>, <span class="hljs-string">&quot;*&quot;</span>);<br></code></pre></td></tr></table></figure>
-
-<p>在node中</p>
-<p>安装第三方中间件koa-cors</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> cors = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;koa-cors&quot;</span>);<br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">cors</span>());<br></code></pre></td></tr></table></figure>
-
-<h4 id="2、node正向代理"><a href="#2、node正向代理" class="headerlink" title="2、node正向代理"></a>2、node正向代理</h4><p>在<code>webpack</code>中可以配置<code>proxy</code>来快速获得接口代理的能力。</p>
-<p>vue-cli3</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123; <br>    <span class="hljs-attr">devServer</span>: &#123;   <br>         <span class="hljs-attr">port</span>: <span class="hljs-number">8000</span>,   <br>         <span class="hljs-attr">proxy</span>: &#123;    <br>              <span class="hljs-string">&quot;/api&quot;</span>: &#123;      <br>                  <span class="hljs-attr">target</span>: <span class="hljs-string">&quot;http://localhost:8080&quot;</span>     <br>              &#125;   <br>         &#125;  &#125;&#125;;<br><br></code></pre></td></tr></table></figure>
-
-<h4 id="3、Nginx-反向代理"><a href="#3、Nginx-反向代理" class="headerlink" title="3、Nginx 反向代理"></a>3、Nginx 反向代理</h4><h4 id="4、JSONP"><a href="#4、JSONP" class="headerlink" title="4、JSONP"></a>4、JSONP</h4><h4 id="5、Websocket"><a href="#5、Websocket" class="headerlink" title="5、Websocket"></a>5、Websocket</h4><h3 id="为什么需要跨域"><a href="#为什么需要跨域" class="headerlink" title="为什么需要跨域"></a>为什么需要跨域</h3><p>跨域只存在浏览器端，而浏览器为web提供入口，我们可以在浏览器打开很多页面，所以林子大了什么都有，我们需要一个统一的规范来来保障安全性。</p>
-<h3 id="封装步骤"><a href="#封装步骤" class="headerlink" title="封装步骤"></a>封装步骤</h3><p>1、创建对象</p>
-<p>2、初始化，设置请求的类型和URL</p>
-<p>3、发送请求</p>
-<p>4、进行事件绑定</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;script&gt;<br>       <span class="hljs-keyword">const</span> btn = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;button&quot;</span>);<br>       <span class="hljs-keyword">const</span> result = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.result&quot;</span>);<br>       btn.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>           <span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">XMLHttpRequest</span>();<br>           xhr.<span class="hljs-title function_">open</span>(<span class="hljs-string">&#x27;GET&#x27;</span>, <span class="hljs-string">&quot;http://127.0.0.1:8080/serve?a=1&amp;b=3&amp;c=8&quot;</span>);<br>           xhr.<span class="hljs-title function_">send</span>();<br>           xhr.<span class="hljs-property">onreadystatechange</span> = <span class="hljs-function">() =&gt;</span> &#123;<br>               <span class="hljs-keyword">if</span> (xhr.<span class="hljs-property">readyState</span> === <span class="hljs-number">4</span>) &#123;<br>                   <span class="hljs-keyword">if</span> (xhr.<span class="hljs-property">status</span> &gt;= <span class="hljs-number">200</span> &amp;&amp; xhr.<span class="hljs-property">status</span> &lt; <span class="hljs-number">300</span>) &#123;<br>                       <span class="hljs-comment">// 状态码</span><br>                       <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(xhr.<span class="hljs-property">status</span>);<br>                       <span class="hljs-comment">// 状态字符串 ok</span><br>                       <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(xhr.<span class="hljs-property">statusText</span>);<br>                       <span class="hljs-comment">// 所有响应头</span><br>                       <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(xhr.<span class="hljs-property">getAllResponseHeaders</span>);<br>                       <span class="hljs-comment">// 响应体</span><br>                       <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(xhr.<span class="hljs-property">response</span>);<br>                       result.<span class="hljs-property">innerHTML</span> = xhr.<span class="hljs-property">response</span>;<br>                   &#125;<br>               &#125;<br>           &#125;<br>       &#125;)<br>   &lt;/script&gt;<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="http"><a href="#http" class="headerlink" title="http"></a>http</h2><p>超文本传输协议</p>
-<h4 id="请求报文："><a href="#请求报文：" class="headerlink" title="请求报文："></a>请求报文：</h4><p>请求行 ：POST  HTTP&#x2F;1.1</p>
-<p>请求头：网址</p>
-<p>空行</p>
-<p>请求体：username&#x3D;liuxu&amp;&amp;password&#x3D;123456</p>
-<h4 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h4><p>行：HTTP  200 ok      </p>
-<p>404:找不到</p>
-<p>403：请求路径url错误</p>
-<p>401：未授权</p>
-<p>500：内部错误</p>
-<p>头</p>
-<p>空行</p>
-<p>体</p>
+              <h1 id="ES6-ES11"><a href="#ES6-ES11" class="headerlink" title="ES6-ES11"></a>ES6-ES11</h1><p>ECMAScript</p>
+<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>1、不能重复赋值，重复赋值会报错；</p>
+<p>2、具有块级作用域</p>
+<p>3、不存在变量提升</p>
 
               
             </div>
@@ -315,7 +283,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div></div>
-      <div>http://example.com/2022/03/24/Ajax/</div>
+      <div>http://example.com/2022/03/24/ES6-ES11/</div>
     </div>
     <div class="license-meta">
       
@@ -357,17 +325,11 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/24/ES6-ES11/" title="">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/24/vue-router/" title="">
+                      <a href="/2022/03/24/Ajax/" title="">
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
