@@ -8,7 +8,7 @@
     <link href="/2022/03/24/ES6-ES11/"/>
     <url>/2022/03/24/ES6-ES11/</url>
     
-    <content type="html"><![CDATA[<h1 id="ES6-ES11"><a href="#ES6-ES11" class="headerlink" title="ES6-ES11"></a>ES6-ES11</h1><p>ECMAScript</p><h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>1、不能重复赋值，重复赋值会报错；</p><p>2、具有块级作用域</p><p>3、不存在变量提升</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="ES6-ES11"><a href="#ES6-ES11" class="headerlink" title="ES6-ES11"></a>ES6-ES11</h1><p>ECMAScript</p><h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>1、不能重复赋值，重复赋值会报错；</p><p>2、具有块级作用域</p><p>3、不存在变量提升</p><p>4、不影响作用域链</p>]]></content>
     
     
     
