@@ -23,11 +23,13 @@
 <meta property="og:site_name" content="千面小站">
 <meta property="og:description" content="学习Nodejs总结">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/03/18/Nodejs/image-20220517155020883.png">
 <meta property="article:published_time" content="2022-03-18T02:33:25.000Z">
-<meta property="article:modified_time" content="2022-03-18T02:37:47.982Z">
+<meta property="article:modified_time" content="2022-05-17T08:07:22.754Z">
 <meta property="article:author" content="刘旭">
 <meta property="article:tag" content="node">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/03/18/Nodejs/image-20220517155020883.png">
   
   
   <title>千面小站</title>
@@ -210,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.4k 字
+          5.5k 字
         
       </span>
     
@@ -221,7 +223,7 @@
         
         
         
-          37 分钟
+          46 分钟
         
       </span>
     
@@ -285,7 +287,7 @@
 <p>npm login</p>
 <p>npm publish</p>
 <p>npm unpublish baoming –force</p>
-<h3 id="express"><a href="#express" class="headerlink" title="express"></a>express</h3><p>安装express命令 npm install <a href="mailto:&#x65;&#x78;&#112;&#114;&#x65;&#x73;&#115;&#x40;&#52;&#46;&#49;&#x37;&#46;&#x31;">&#x65;&#x78;&#112;&#114;&#x65;&#x73;&#115;&#x40;&#52;&#46;&#49;&#x37;&#46;&#x31;</a></p>
+<h3 id="express"><a href="#express" class="headerlink" title="express"></a>express</h3><p>安装express命令 npm install <a href="mailto:&#101;&#x78;&#112;&#114;&#101;&#115;&#115;&#x40;&#52;&#46;&#49;&#55;&#x2e;&#49;">&#101;&#x78;&#112;&#114;&#101;&#115;&#115;&#x40;&#52;&#46;&#49;&#55;&#x2e;&#49;</a></p>
 <h3 id="nodemon"><a href="#nodemon" class="headerlink" title="nodemon"></a>nodemon</h3><p>安装命令npm install nodemon -g</p>
 <h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><h4 id="全局中间件"><a href="#全局中间件" class="headerlink" title="全局中间件"></a>全局中间件</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;express&quot;</span>)<br><br><span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();<br><br><span class="hljs-comment">// 定义一个全局中间件</span><br><span class="hljs-comment">// 中间件作用： 可以共享同一份req和res</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;全局中间件执行了&quot;</span>);<br>    <span class="hljs-comment">// 把流转关系转交给下一个中间件或路由</span><br>    <span class="hljs-title function_">next</span>()<br>&#125;)<br><br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;get /&quot;</span>);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;调用了这个路由get /&quot;</span>);<br>&#125;)<br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/user&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;get user&quot;</span>);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;调用了这个路由get user&quot;</span>);<br>&#125;)<br><br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-string">&#x27;8080&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;server is ruynning&quot;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
 
@@ -309,6 +311,27 @@
 <h4 id="简单请求和遇见请求区别"><a href="#简单请求和遇见请求区别" class="headerlink" title="简单请求和遇见请求区别"></a>简单请求和遇见请求区别</h4><p>简单请求只会发生一次请求</p>
 <p>遇见请求客户端与服务器发生2次请求OPTION请求成功以后才会发起真正的请求</p>
 <h3 id="jwt认证机制"><a href="#jwt认证机制" class="headerlink" title="jwt认证机制"></a>jwt认证机制</h3><p>npm i jsonwebtoken express-jwt</p>
+<h2 id="数据库相关知识补充"><a href="#数据库相关知识补充" class="headerlink" title="数据库相关知识补充"></a>数据库相关知识补充</h2><h3 id="创建过程中的一些不好记的标识"><a href="#创建过程中的一些不好记的标识" class="headerlink" title="创建过程中的一些不好记的标识"></a>创建过程中的一些不好记的标识</h3><p>1、创建数据库</p>
+<p><img src="/2022/03/18/Nodejs/image-20220517155020883.png" srcset="/img/loading.gif" lazyload alt="image-20220517155020883"></p>
+<p>2、创建数据表</p>
+<p> 创建好数据库，然后点击tables右键然后点第一项创建数据表</p>
+<p>3、设置数据表字段，创建表</p>
+<p>PK（primary key）主键，唯一标识</p>
+<p>NN(not null)不能为空</p>
+<p>UQ(unique)值唯一</p>
+<p>AI(auto increment)值自动增长</p>
+<p>tinyint布尔值</p>
+<p>status表示状态，0表示正常，1表示被禁用了，</p>
+<p>4.插入数据</p>
+<p>点击创建的表右键然后点第一项Select Rows</p>
+<h3 id="mysql执行语句"><a href="#mysql执行语句" class="headerlink" title="mysql执行语句"></a>mysql执行语句</h3><p>– 插入列<br>– INSERT INTO my_db_01.users (username,password) values (‘tony stark’,’098123’)</p>
+<p>– 将id为4的用户密码更新为‘8888’<br>– UPDATE my_db_01.users set password&#x3D;’8888’ WHERE id&#x3D;4<br>– UPDATE my_db_01.users set password&#x3D;’admin123’,status&#x3D;1 WHERE id&#x3D;2</p>
+<p>– 删除表中数据，记得加where控制条件<br>– DELETE FROM my_db_01.users WHERE id&#x3D;4</p>
+<p>– 演示where子句的使用<br>– SELECT * FROM my_db_01.users WHERE status&#x3D;1<br>– SELECT * FROM my_db_01.users WHERE id&gt;&#x3D;2<br>– SELECT * FROM my_db_01.users WHERE username&lt;&gt;’ls’<br>– 使用and<br>– SELECT * FROM my_db_01.users WHERE username&lt;&gt;’ls’ AND id&lt;3<br>– 使用or<br>– SELECT * FROM my_db_01.users WHERE username&#x3D;’zs’ OR status&#x3D;1</p>
+<p>– 使用升序排列  加不加asc一样<br>– SELECT * FROM my_db_01.users order by status</p>
+<p>– desc是降序的方式默认是asc是升序<br>– SELECT * FROM my_db_01.users order by id desc<br>– 多范围排序<br>– SELECT * FROM my_db_01.users order by status desc,username asc</p>
+<p>– 使用count(<em>)统计表中符合条件的数据有几条<br>– SELECT count(</em>) FROM my_db_01.users WHERE status&#x3D;0 </p>
+<p>– 使用as关键字对列设置别名<br>– SELECT username as uname FROM my_db_01.users</p>
 
               
             </div>
