@@ -5,6 +5,56 @@
   
   <entry>
     <title></title>
+    <link href="/2022/06/21/React/"/>
+    <url>/2022/06/21/React/</url>
+    
+    <content type="html"><![CDATA[<h1 id="React"><a href="#React" class="headerlink" title="React"></a>React</h1><span id="more"></span><h2 id="React生命周期"><a href="#React生命周期" class="headerlink" title="React生命周期"></a>React生命周期</h2><p>生命周期就是从开始到逐渐消亡的这个过程；</p><p>生命周期就是这一过程中的各个阶段，而生命周期函数就可以并表示出但前所处于的阶段；</p><p>react的生命周期</p><p>Mounting挂载阶段 –生命周期函数componentDidMount</p><p>Updating更新阶段–生命周期函数componentDidUpdate</p><p>Unmounting卸载阶段–生命周期函数componentWillUnmount</p><p>React生命周期整个过程</p><p>（1）首先先创建组件，调用constructor（）构造器方法，</p><p>（2）然后调用render（）方法告诉react要显示的内容</p><p>（3）把render函数返回的挂载到Dom树上面，挂载成功就执行componentDidMount（）方法</p><p>如果页面发生更新</p><p>（4）重新执行render方法，然后执行componentDidUpdate方法</p><p>组件被卸载的时候</p><p>（5）执行componentWillUnmount（）函数</p><h2 id="React组件件的通信"><a href="#React组件件的通信" class="headerlink" title="React组件件的通信"></a>React组件件的通信</h2><h3 id="父子间通信"><a href="#父子间通信" class="headerlink" title="父子间通信"></a>父子间通信</h3><p>父传子</p><p>类组件传递通过props传递，传到子组件然后对this.props解构，就可以直接使用了 ，可以不用实现constructor()也可以直接使用（可以省略）</p><p>函数组件不存在this，直接传递给props保存在里面，可以直接解构使用</p><p>需要使用prop-types库对传过来的数据对类型进行验证是使用子组件.propTypes，设置默认值使用子组件.defaultProps</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">PropTypes</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;prop-types&quot;</span>;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2022/06/21/%E6%95%B0%E7%BB%84%E7%9A%84%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/"/>
+    <url>/2022/06/21/%E6%95%B0%E7%BB%84%E7%9A%84%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="数组的高阶函数"><a href="#数组的高阶函数" class="headerlink" title="数组的高阶函数"></a>数组的高阶函数</h1><span id="more"></span><h2 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> movies = [<span class="hljs-string">&quot;大话西游&quot;</span>, <span class="hljs-string">&quot;妖猫传&quot;</span>, <span class="hljs-string">&quot;斗罗大陆&quot;</span>, <span class="hljs-string">&quot;完美世界&quot;</span>];<br>        <span class="hljs-keyword">let</span> list = movies.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;<br>            <span class="hljs-keyword">return</span> item + <span class="hljs-string">&quot;000&quot;</span>;<br>        &#125;);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(list);<span class="hljs-comment">// [&#x27;大话西游000&#x27;, &#x27;妖猫传000&#x27;, &#x27;斗罗大陆000&#x27;, &#x27;完美世界000&#x27;]</span><br></code></pre></td></tr></table></figure><p>array.map((item,index,arr)&#x3D;&gt;{})</p><p>可以传3个参数，第一个参数表示循环的每项item，第二个参数表示下标，第三个参数表示当前循环的数组；</p><p>map高阶函数处理数组的映射，可以对每一项分别处理后然后return出来添加进一个新的数组中去</p><h2 id="filter函数"><a href="#filter函数" class="headerlink" title="filter函数"></a>filter函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">10</span>, <span class="hljs-number">98</span>, <span class="hljs-number">25</span>, <span class="hljs-number">100</span>, <span class="hljs-number">68</span>, <span class="hljs-number">15</span>, <span class="hljs-number">108</span>, <span class="hljs-number">56</span>, <span class="hljs-number">12</span>, <span class="hljs-number">222</span>];<br>       <span class="hljs-keyword">let</span> newNumbers = numbers.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">item, index, arr</span>) =&gt;</span> &#123;<br>           <span class="hljs-keyword">return</span> item &gt; <span class="hljs-number">50</span>;<br>       &#125;)<br>       <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newNumbers);<span class="hljs-comment">//[98, 100, 68, 108, 56, 222]</span><br></code></pre></td></tr></table></figure><p>array.filter()</p><p>同样可以传入3个参数，第一个参数表示循环的每项item，第二个参数表示下标，第三个参数表示当前循环的数组</p><p>filter函数可以作为函数数组的过滤器，对item中每项数据进行过滤，如果return的条件是true的话就会返回值添加到新的数组中去，如果返回的条件是false的话，就舍去。</p><p><strong>这两个高阶函数如果条件是一句话的时候，return和外面的大括号可以省略，但是可读性很差</strong></p><h2 id="reduce函数"><a href="#reduce函数" class="headerlink" title="reduce函数"></a>reduce函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> totalPrice=<span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span>.<span class="hljs-property">books</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">preValue,item</span>)=&gt;</span>&#123; <span class="hljs-keyword">return</span> preValue+item.<span class="hljs-property">price</span>*item.<span class="hljs-property">count</span>;&#125;,<span class="hljs-number">0</span>);<br>              <span class="hljs-keyword">return</span> totalPrice<br></code></pre></td></tr></table></figure><p>参数有两个，第一个参数回调函数（回调函数又有4个参数，第一个是preValue，就是上一次循环后的结果，第二个参数表示循环的每项item，第三个参数表示下标，第四个参数表示当前循环的数组），第二个参数是初始化值</p><p>可以做累加操作，对数据做累加操作。返回的是一个结果。也是一个高阶函数。</p><h2 id="slice函数"><a href="#slice函数" class="headerlink" title="slice函数"></a>slice函数</h2><p>数组的截取时候array.slice()</p><p>左闭右开，截取区间内的数据</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
     <link href="/2022/05/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/"/>
     <url>/2022/05/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/</url>
     
@@ -83,7 +133,7 @@
     <link href="/2022/04/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     <url>/2022/04/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
     
-    <content type="html"><![CDATA[<h1 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h1><span id="more"></span><h3 id="小程序API"><a href="#小程序API" class="headerlink" title="小程序API"></a>小程序API</h3><h3 id="1、事件监听API"><a href="#1、事件监听API" class="headerlink" title="1、事件监听API"></a>1、事件监听API</h3><h3 id="2、同步API"><a href="#2、同步API" class="headerlink" title="2、同步API"></a>2、同步API</h3><h3 id="3、异步API"><a href="#3、异步API" class="headerlink" title="3、异步API"></a>3、异步API</h3><p>wx.switchTab({url:})跳转到tab页面</p><p>wx.navigateTo({url:})跳转到非 tab页面</p><h3 id="小程序生命周期"><a href="#小程序生命周期" class="headerlink" title="小程序生命周期"></a>小程序生命周期</h3><h4 id="应用生命周期函数-：、"><a href="#应用生命周期函数-：、" class="headerlink" title="应用生命周期函数 ：、"></a>应用生命周期函数 ：、</h4><p>onLunch（）</p><p>onShow（）</p><p>onHide（）</p><h4 id="页面生命周期："><a href="#页面生命周期：" class="headerlink" title="页面生命周期："></a>页面生命周期：</h4><p>onLoad（）</p><p>onShow()</p><p>onReady()</p><p>onHide()</p><p>onUnload()</p><p>微信小程序中组件的生命周期：</p><p>created，</p><p>attached，</p><p>ready，</p><p>moved，</p><p>detached，</p><p>error</p><p><img src="/2022/04/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/image-20220501152855393.png" alt="image-20220501152855393"></p><p>组件中生命周期函数：</p><p>show，hide，resize </p><h3 id="vuex数据存储"><a href="#vuex数据存储" class="headerlink" title="vuex数据存储"></a>vuex数据存储</h3><p>npm install –save <a href="mailto:&#x6d;&#x6f;&#x62;&#120;&#x2d;&#109;&#105;&#x6e;&#x69;&#112;&#x72;&#x6f;&#x67;&#x72;&#97;&#x6d;&#64;&#x34;&#x2e;&#x31;&#x33;&#46;&#x32;">&#x6d;&#x6f;&#x62;&#120;&#x2d;&#109;&#105;&#x6e;&#x69;&#112;&#x72;&#x6f;&#x67;&#x72;&#97;&#x6d;&#64;&#x34;&#x2e;&#x31;&#x33;&#46;&#x32;</a> <a href="mailto:&#x6d;&#x6f;&#98;&#120;&#x2d;&#x6d;&#105;&#110;&#x69;&#x70;&#114;&#x6f;&#x67;&#x72;&#x61;&#x6d;&#x2d;&#98;&#x69;&#x6e;&#100;&#x69;&#x6e;&#103;&#x73;&#x40;&#49;&#x2e;&#50;&#x2e;&#49;">&#x6d;&#x6f;&#98;&#120;&#x2d;&#x6d;&#105;&#110;&#x69;&#x70;&#114;&#x6f;&#x67;&#x72;&#x61;&#x6d;&#x2d;&#98;&#x69;&#x6e;&#100;&#x69;&#x6e;&#103;&#x73;&#x40;&#49;&#x2e;&#50;&#x2e;&#49;</a></p><h3 id="学习小程序中出现的比较实用的方法"><a href="#学习小程序中出现的比较实用的方法" class="headerlink" title="学习小程序中出现的比较实用的方法"></a>学习小程序中出现的比较实用的方法</h3><p>1、 background-color:rgba(0,0,0,.5);和backdrop-filter:blur(5px)设置css毛玻璃特效</p><p>2、slice既可以对数组进行切割，也能对字符串进行切割</p><p>split()把字符串切割成数组</p><p>3、array.filter和array.map这两个方法的区别</p><p>filter是把符合条件的数据返回出来成一个新的数组，map是把计算的结果或者作出处理后的数据返回出来成为一个数组；</p><p>4、在for循环中in是遍历循环对象获取索引而of时候获取值进行遍历</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h1><span id="more"></span><h3 id="小程序API"><a href="#小程序API" class="headerlink" title="小程序API"></a>小程序API</h3><h3 id="1、事件监听API"><a href="#1、事件监听API" class="headerlink" title="1、事件监听API"></a>1、事件监听API</h3><h3 id="2、同步API"><a href="#2、同步API" class="headerlink" title="2、同步API"></a>2、同步API</h3><h3 id="3、异步API"><a href="#3、异步API" class="headerlink" title="3、异步API"></a>3、异步API</h3><p>wx.switchTab({url:})跳转到tab页面</p><p>wx.navigateTo({url:})跳转到非 tab页面</p><h3 id="小程序生命周期"><a href="#小程序生命周期" class="headerlink" title="小程序生命周期"></a>小程序生命周期</h3><h4 id="应用生命周期函数-：、"><a href="#应用生命周期函数-：、" class="headerlink" title="应用生命周期函数 ：、"></a>应用生命周期函数 ：、</h4><p>onLunch（）</p><p>onShow（）</p><p>onHide（）</p><h4 id="页面生命周期："><a href="#页面生命周期：" class="headerlink" title="页面生命周期："></a>页面生命周期：</h4><p>onLoad（）</p><p>onShow()</p><p>onReady()</p><p>onHide()</p><p>onUnload()</p><p>微信小程序中组件的生命周期：</p><p>created，</p><p>attached，</p><p>ready，</p><p>moved，</p><p>detached，</p><p>error</p><p><img src="/2022/04/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/image-20220501152855393.png" alt="image-20220501152855393"></p><p>组件中生命周期函数：</p><p>show，hide，resize </p><h3 id="vuex数据存储"><a href="#vuex数据存储" class="headerlink" title="vuex数据存储"></a>vuex数据存储</h3><p>npm install –save <a href="mailto:&#109;&#x6f;&#x62;&#120;&#45;&#x6d;&#x69;&#x6e;&#105;&#112;&#x72;&#x6f;&#x67;&#114;&#97;&#x6d;&#64;&#52;&#46;&#49;&#51;&#46;&#x32;">&#109;&#x6f;&#x62;&#120;&#45;&#x6d;&#x69;&#x6e;&#105;&#112;&#x72;&#x6f;&#x67;&#114;&#97;&#x6d;&#64;&#52;&#46;&#49;&#51;&#46;&#x32;</a> <a href="mailto:&#x6d;&#x6f;&#98;&#x78;&#45;&#x6d;&#x69;&#x6e;&#105;&#x70;&#x72;&#x6f;&#x67;&#114;&#97;&#109;&#45;&#x62;&#105;&#x6e;&#x64;&#x69;&#110;&#103;&#115;&#x40;&#x31;&#x2e;&#50;&#x2e;&#x31;">&#x6d;&#x6f;&#98;&#x78;&#45;&#x6d;&#x69;&#x6e;&#105;&#x70;&#x72;&#x6f;&#x67;&#114;&#97;&#109;&#45;&#x62;&#105;&#x6e;&#x64;&#x69;&#110;&#103;&#115;&#x40;&#x31;&#x2e;&#50;&#x2e;&#x31;</a></p><h3 id="学习小程序中出现的比较实用的方法"><a href="#学习小程序中出现的比较实用的方法" class="headerlink" title="学习小程序中出现的比较实用的方法"></a>学习小程序中出现的比较实用的方法</h3><p>1、 background-color:rgba(0,0,0,.5);和backdrop-filter:blur(5px)设置css毛玻璃特效</p><p>2、slice既可以对数组进行切割，也能对字符串进行切割</p><p>split()把字符串切割成数组</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> strInfo = <span class="hljs-string">&quot;liuxu&amp;success!&quot;</span>;<br>        <span class="hljs-keyword">const</span> newStrInfo = strInfo.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;&amp;&#x27;</span>);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newStrInfo);<span class="hljs-comment">// [&#x27;liuxu&#x27;, &#x27;success!&#x27;]</span><br></code></pre></td></tr></table></figure><p>3、array.filter和array.map这两个方法的区别</p><p>filter是把符合条件的数据返回出来成一个新的数组，map是把计算的结果或者作出处理后的数据返回出来成为一个数组；</p><p>4、在for循环中in是遍历循环对象获取索引而of时候获取值进行遍历</p>]]></content>
     
     
     <categories>
