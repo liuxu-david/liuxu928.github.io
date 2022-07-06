@@ -24,7 +24,7 @@
 <meta property="og:description" content="React">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-21T08:33:25.000Z">
-<meta property="article:modified_time" content="2022-06-26T13:13:25.908Z">
+<meta property="article:modified_time" content="2022-07-05T12:10:40.486Z">
 <meta property="article:author" content="刘旭">
 <meta property="article:tag" content="js">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          723 字
+          3k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          7 分钟
+          26 分钟
         
       </span>
     
@@ -285,6 +285,64 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">PropTypes</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;prop-types&quot;</span>;<br></code></pre></td></tr></table></figure>
 
 <h4 id="子传父"><a href="#子传父" class="headerlink" title="子传父"></a>子传父</h4><p>子传父也是通过props，跟父传子形式差不多，父组件有一个操作函数，然后父组件把这个事件通过props传递给子组件子组件调用就可以</p>
+<h3 id="跨组件通信"><a href="#跨组件通信" class="headerlink" title="跨组件通信"></a>跨组件通信</h3><h4 id="context"><a href="#context" class="headerlink" title="context"></a>context</h4><p>React.createContext</p>
+<p>首先使用React.createContext创建需要传递的内容，里面可以传个默认值</p>
+<p>Context.Provider</p>
+<p>然后使用Context.Provider组件包裹父组件，然后可以传递一个value值，这里的值就是需要传递的内容</p>
+<p>Class.contextType</p>
+<p>需要使用的类组件就可以使用Class.contextType&#x3D;(在React.createContext创建的变量名)</p>
+<p>然后就可以在这个类组件中使用传递过来的数据，通过解构this.context中的内容然后使用。</p>
+<p>Context.Consumer</p>
+<p>父组件传递给函数组件的时候，这个时候就可以在这个函数组件中使用Context.Consumer组件然后然后包裹一个箭头函数，然后就可以在函数组件中使用了，还有就是有多个context数据需要传递的时候也可以使用这个，使用嵌套就可以了 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs react">&lt;UserInfo.Consumer&gt;<br>       &#123;(value) =&gt; &#123;<br>         return (<br>           &lt;ThemeInfo.Consumer&gt;<br>             &#123;(theme) =&gt; &#123;<br>               return (<br>                 &lt;div&gt;<br>                   &lt;h2&gt;用户：&#123;value.name&#125;&lt;/h2&gt;<br>                   &lt;h2 style=&#123;&#123; color: value.theme &#125;&#125;&gt;主题：&#123;value.theme&#125;&lt;/h2&gt;<br>                   &lt;h2&gt;&#123;theme.color&#125;&lt;/h2&gt;<br>                 &lt;/div&gt;<br>               );<br>             &#125;&#125;<br>           &lt;/ThemeInfo.Consumer&gt;<br>         );<br>       &#125;&#125;<br>     &lt;/UserInfo.Consumer&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="全局事件传递"><a href="#全局事件传递" class="headerlink" title="全局事件传递"></a>全局事件传递</h3><p>1、安装events yarn add events</p>
+<p>2、导入import {EventEmitter} from “events”</p>
+<p>3、定义const eventBus&#x3D;new EventEmitter（）；</p>
+<p>4、先发射事件，eventBus.emit（)</p>
+<p>5、在接收在componentDidMount（）中监听addlistener（）</p>
+<p>6、在componentWillUnmount（）中取消监听removelistener（）</p>
+<h2 id="react实现插槽-效果"><a href="#react实现插槽-效果" class="headerlink" title="react实现插槽 效果"></a>react实现插槽 效果</h2><h3 id="传入一个元素"><a href="#传入一个元素" class="headerlink" title="传入一个元素"></a>传入一个元素</h3><p>这个时候父元素直接在引用的组件内部传入，然后子组件在rennder函数里面你可以拿到this.props.children拿到传过来的数据</p>
+<h3 id="传入多个元素"><a href="#传入多个元素" class="headerlink" title="传入多个元素"></a>传入多个元素</h3><p>直接在父元素引用组件使用单标签，然后直接命名传递，像父传子一样操作，然后在子组件this.props中直接通过对象的解构拿到数据。</p>
+<h2 id="setState"><a href="#setState" class="headerlink" title="setState"></a>setState</h2><h3 id="setState为什么是异步的？"><a href="#setState为什么是异步的？" class="headerlink" title="setState为什么是异步的？"></a>setState为什么是异步的？</h3><p>1、就是设置为同步的话，当数据发生改变的时候就会调用render函数，一个项目中可能存在多个setState，如果频繁调用就会频繁执行render函数进行页面的刷新，所以性能大大降低，使用异步react就可以获取多个setState的更新，然后批量进行更新。</p>
+<p>2、就是如果是同步的话，render函数执行会慢一点，这样state和props中的数据不一致就有可能出现问题。</p>
+<h3 id="一定是异步吗？"><a href="#一定是异步吗？" class="headerlink" title="一定是异步吗？"></a>一定是异步吗？</h3><p>不一定，</p>
+<p>1、把setstate放在定时器中</p>
+<p>2、使用原生DOM 事件中</p>
+<h2 id="fragment片段，跟小程序中的block一样"><a href="#fragment片段，跟小程序中的block一样" class="headerlink" title="fragment片段，跟小程序中的block一样"></a>fragment片段，跟小程序中的block一样</h2><h2 id="react中写样式"><a href="#react中写样式" class="headerlink" title="react中写样式"></a>react中写样式</h2><p>1、行内样式 伪类，伪元素不能实现</p>
+<p>2、普通css 样式重叠严重</p>
+<p>3、css module 比较麻烦，需要引入模块，使用style.标签</p>
+<p>4、css in js</p>
+<p>需要安装库，最常用的一个库就是 styled-components</p>
+<p>安装 yarn add styled-components</p>
+<h2 id="Ant-Design"><a href="#Ant-Design" class="headerlink" title="Ant Design"></a>Ant Design</h2><p>这是一个组件库,就像elementUI一样。</p>
+<p>安装yarn add antd或者 npm install antd</p>
+<p>引入全局样式import “antd&#x2F;dist&#x2F;antd.css”</p>
+<h2 id="craco"><a href="#craco" class="headerlink" title="craco"></a>craco</h2><p>安装</p>
+<p>yarn add @craco&#x2F;craco</p>
+<p>然后在package.json中更改配置</p>
+<p>在antdesign中高级配置中操作，先安装$ yarn add craco-less</p>
+<h2 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h2><p>yarn add axios</p>
+<p>axios（{</p>
+<p>url：””</p>
+<p>method:””,</p>
+<p>get：prams:{}或者post：data:{}</p>
+<p>）</p>
+<h3 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h3><p>axios.interceptors.request.use(config&#x3D;&gt;{</p>
+<p>1、拦截添加loading组件</p>
+<p>2、登录鉴权</p>
+<p>3、prams和data序列化</p>
+<p>return config；</p>
+<p>},err&#x3D;&gt;{})</p>
+<p>axios.interceptors.prsponse.use(res&#x3D;&gt;{</p>
+<p>1、服务器返回筛选结果</p>
+<p>return res.data</p>
+<p>},err&#x3D;&gt;{})</p>
+<h3 id="react-transition-group"><a href="#react-transition-group" class="headerlink" title="react-transition-group"></a>react-transition-group</h3><p>动画库，需要安装才能使用 </p>
+<p>CSSTransition {unmountOnExit&#x3D;{true}}</p>
+<p>-appear&#x2F;-appear-active&#x2F;-appear-done</p>
+<p>-enter&#x2F;-enter-active&#x2F;-enter-done</p>
+<p>-exit&#x2F;-exit-active&#x2F;-exit-done</p>
 
               
             </div>
