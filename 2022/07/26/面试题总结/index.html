@@ -16,17 +16,17 @@
   <meta name="author" content="刘旭">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Vue">
+    <meta name="description" content="面试题总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="千面小站">
-<meta property="og:url" content="http://example.com/2022/06/29/Vue/index.html">
+<meta property="og:url" content="http://example.com/2022/07/26/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="千面小站">
-<meta property="og:description" content="Vue">
+<meta property="og:description" content="面试题总结">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-06-29T08:33:25.000Z">
-<meta property="article:modified_time" content="2022-07-08T08:40:53.845Z">
+<meta property="article:published_time" content="2022-07-26T02:33:25.000Z">
+<meta property="article:modified_time" content="2022-08-04T10:15:32.358Z">
 <meta property="article:author" content="刘旭">
-<meta property="article:tag" content="vue">
+<meta property="article:tag" content="js">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -198,8 +198,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-06-29 16:33" pubdate>
-          2022年6月29日 下午
+        <time datetime="2022-07-26 10:33" pubdate>
+          2022年7月26日 上午
         </time>
       </span>
     
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          491 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          9 分钟
+          5 分钟
         
       </span>
     
@@ -263,29 +263,17 @@
             
             <div class="markdown-body">
               
-              <h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><span id="more"></span>
+              <h1 id="面试题总结"><a href="#面试题总结" class="headerlink" title="面试题总结"></a>面试题总结</h1><span id="more"></span>
 
-<h1 id="Vue2和vue3生命周期"><a href="#Vue2和vue3生命周期" class="headerlink" title="Vue2和vue3生命周期"></a>Vue2和vue3生命周期</h1><h2 id="在vue2中生命周期函数："><a href="#在vue2中生命周期函数：" class="headerlink" title="在vue2中生命周期函数："></a>在vue2中生命周期函数：</h2><p>beforeCreate（）</p>
-<p>Created（）</p>
-<p>brforeMount（）</p>
-<p>mounted（）</p>
-<p>brforeUpdate（）</p>
-<p>updated（）</p>
-<p>beforeDestory（）</p>
-<p>destoryed（）</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">beforeCreate():实例在内存中被创建出来，还没有初始化好<span class="hljs-keyword">data</span>和methods属性。<br><br>created():实例已经在内存中创建，已经初始化好<span class="hljs-keyword">data</span>和method，此时还没有开始编译模板。<br><br>beforeMount():已经完成了模板的编译，还没有挂载到页面中。<br><br>mounted()：将编译好的模板挂载到页面指定的容器中显示。<br><br>beforeUpdate():状态更新之前执行函数，此时<span class="hljs-keyword">data</span>中的状态值是最新的，但是界面上显示的数据还是旧的，因为还没有开始重新渲染DOM节点。<br><br>updated():此时<span class="hljs-keyword">data</span>中的状态值和界面上显示的数据都已经完成了跟新，界面已经被重新渲染好了！<br><br>beforeDestroy():实例被销毁之前。<br><br>destroyed():实例销毁后调用，Vue实例指示的所有东西都会解绑，所有的事件监听器都会被移除,所有的子实例也都会被销毁。组件已经被完全销毁，此时组建中所有<span class="hljs-keyword">data</span>、methods、以及过滤器，指令等，都已经不可用了。<br></code></pre></td></tr></table></figure>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>基本类型：Numeber，String，Boolean，undefined，null，symbol，bigint</p>
+<p>引用类型 Object（普通对象，Array，Date,正则，Math数学对象），function类型</p>
+<h2 id="map和foreach"><a href="#map和foreach" class="headerlink" title="map和foreach"></a>map和foreach</h2><p>foreach和map两者都可以对数组每一项进行遍历，map会对每一个item做操作然后返回一个新的数组，而foreach不会返回，只会更改原始数组的数据</p>
+<p>for（…in …）可以遍历得到对象的key值；</p>
+<h2 id="检查字符串"><a href="#检查字符串" class="headerlink" title="检查字符串"></a>检查字符串</h2><p>indexof（）检查字符串或者数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"> <span class="hljs-keyword">let</span> str=<span class="hljs-string">&quot;hello world&quot;</span>;<br>   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;d&quot;</span>));  <span class="hljs-comment">//10</span><br><span class="hljs-keyword">let</span> arr=[<span class="hljs-number">2</span>,<span class="hljs-number">45</span>,<span class="hljs-number">3</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">88</span>,<span class="hljs-number">10</span>];<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">indexOf</span>(<span class="hljs-number">2</span>));<span class="hljs-comment">//0</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="vue3中生命周期函数："><a href="#vue3中生命周期函数：" class="headerlink" title="vue3中生命周期函数："></a>vue3中生命周期函数：</h2><p>setup（）</p>
-<p>onBeforeMount（）</p>
-<p>onMounted（）</p>
-<p>onBeforeUpdate（）</p>
-<p>onUpdated（）</p>
-<p>onBeforeUnmount（）</p>
-<p>onUnmounted（）</p>
-<p>onActivated（）</p>
-<p>onDeactivated（）</p>
-<p>onErrorCaptured(）</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs text">setup() :开始创建组件之前，在beforeCreate和created之前执行。创建的是data和method<br>onBeforeMount() : 组件挂载到节点上之前执行的函数。<br>onMounted() : 组件挂载完成后执行的函数。<br>onBeforeUpdate(): 组件更新之前执行的函数。<br>onUpdated(): 组件更新完成之后执行的函数。<br>onBeforeUnmount(): 组件卸载之前执行的函数。<br>onUnmounted(): 组件卸载完成后执行的函数<br>onActivated(): 被包含在中的组件，会多出两个生命周期钩子函数。被激活时执行。<br>onDeactivated(): 比如从 A 组件，切换到 B 组件，A 组件消失时执行。<br>onErrorCaptured(): 当捕获一个来自子孙组件的异常时激活钩子函数。<br></code></pre></td></tr></table></figure>
+<h2 id="js中的变量提升"><a href="#js中的变量提升" class="headerlink" title="js中的变量提升"></a>js中的变量提升</h2><p>js是单线程语言，执行的时候是按照顺序来执行的，但不是逐行分析和执行的，而是一段一段的分析执行，在执行前，会检测所有变量和函数声明，把他们添加到内存中去，所以这些变量和函数 声明能在真正声明之前使用。</p>
+
               
             </div>
             <hr/>
@@ -302,7 +290,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/vue/" class="category-chain-item">vue</a>
+  <a href="/categories/js/" class="category-chain-item">js</a>
   
   
 
@@ -317,7 +305,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/vue/">#vue</a>
+        <a href="/tags/js/">#js</a>
       
     </div>
   
@@ -330,7 +318,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div></div>
-      <div>http://example.com/2022/06/29/Vue/</div>
+      <div>http://example.com/2022/07/26/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/</div>
     </div>
     <div class="license-meta">
       
@@ -342,7 +330,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年6月29日</div>
+          <div>2022年7月26日</div>
         </div>
       
       
@@ -372,17 +360,11 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/26/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" title="">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/06/21/React/" title="">
+                      <a href="/2022/06/29/Vue/" title="">
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>

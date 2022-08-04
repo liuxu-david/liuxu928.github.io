@@ -24,9 +24,9 @@
 <meta property="og:description" content="React">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-21T08:33:25.000Z">
-<meta property="article:modified_time" content="2022-07-15T08:15:53.306Z">
+<meta property="article:modified_time" content="2022-07-23T07:16:53.808Z">
 <meta property="article:author" content="刘旭">
-<meta property="article:tag" content="js">
+<meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k 字
+          7.3k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          32 分钟
+          61 分钟
         
       </span>
     
@@ -318,7 +318,10 @@
 <h2 id="Ant-Design"><a href="#Ant-Design" class="headerlink" title="Ant Design"></a>Ant Design</h2><p>这是一个组件库,就像elementUI一样。</p>
 <p>安装yarn add antd或者 npm install antd</p>
 <p>引入全局样式import “antd&#x2F;dist&#x2F;antd.css”</p>
-<h2 id="craco"><a href="#craco" class="headerlink" title="craco"></a>craco</h2><p>安装</p>
+<p>使用图标需要安装</p>
+<p>yarn add @ant-design&#x2F;icons</p>
+<h2 id="craco"><a href="#craco" class="headerlink" title="craco"></a>craco</h2><p>配置路径别名</p>
+<p>安装</p>
 <p>yarn add @craco&#x2F;craco</p>
 <p>然后在package.json中更改配置</p>
 <p>在antdesign中高级配置中操作，先安装$ yarn add craco-less</p>
@@ -349,13 +352,34 @@
 <p>数据状态管理容器，可以对数据进行控制和追踪，提供可预测的状态管理。</p>
 <p>store，action，把二者联系起来是reducer</p>
 <p>三大原则：单一数据源，state是可读的，用纯函数进行修改</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>1、安装@reduxjs&#x2F;toolkit库 和react-redux库yarn add @reduxjs&#x2F;toolkit  react-redux</p>
+<p>2、引入configureStore创建store，内传reducer</p>
+<p>3、导入Provider包裹<App>传入store，实现共享</App></p>
+<p>4、然后导入createSlice创件reducers</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> &#123; createSlice &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@reduxjs/toolkit&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; getTopBanners &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/services/recommend&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> recommendSlice = <span class="hljs-title function_">createSlice</span>(&#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;recommend&quot;</span>,<br>  <span class="hljs-attr">initialState</span>: &#123;<br>    <span class="hljs-title class_">TopBanners</span>: [],<br>  &#125;,<br>  <span class="hljs-attr">reducers</span>: &#123;<br>    <span class="hljs-comment">// 请求数据</span><br>    <span class="hljs-title function_">changeTopBannerAction</span>(<span class="hljs-params">state, res</span>) &#123;<br>      state.<span class="hljs-property">TopBanners</span> = res.<span class="hljs-property">payload</span>.<span class="hljs-property">banners</span>;<br>    &#125;,<br>  &#125;,<br>&#125;);<br><br><span class="hljs-comment">// 导出actions</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> &#123; changeTopBannerAction &#125; = recommendSlice.<span class="hljs-property">actions</span>;<br><br><span class="hljs-comment">// 异步请求数据（发送网络请求的action）</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">getTopBannerAction</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">dispatch</span>) =&gt;</span> &#123;<br>    <span class="hljs-title function_">getTopBanners</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;<br>      <span class="hljs-title function_">dispatch</span>(<span class="hljs-title function_">changeTopBannerAction</span>(res));<br>    &#125;);<br>  &#125;;<br>&#125;;<br><br><span class="hljs-comment">// 导出reducer</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> recommendSlice.<span class="hljs-property">reducer</span>;<br><br></code></pre></td></tr></table></figure>
+
+<p>5、通过useSelector和useDispath使用</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span>, &#123; memo, useEffect &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; useSelector, useDispatch, shallowEqual &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-redux&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; getTopBannerAction &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./store/recommend-slice&quot;</span>;<br><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">LXRecommend</span> = <span class="hljs-title function_">memo</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> &#123; <span class="hljs-title class_">TopBanners</span> &#125; = <span class="hljs-title function_">useSelector</span>(<span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> state.<span class="hljs-property">recommend</span>, shallowEqual);<br>  <span class="hljs-keyword">const</span> dispatch = <span class="hljs-title function_">useDispatch</span>();<br><br>  <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-title function_">dispatch</span>(<span class="hljs-title function_">getTopBannerAction</span>());<br>  &#125;, [dispatch]);<br><br>  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>LXRecommend :&#123;TopBanners.length&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;<br>&#125;);<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">LXRecommend</span>;<br><br></code></pre></td></tr></table></figure>
+
+<p>6、在使用 <code>createSlice()</code> 这个api创建切片时，我们传入的参数reducers属性中使用的方法可以直接修改state，因为<code>createSlice</code> 内部使用了一个名为 <a target="_blank" rel="noopener" href="https://immerjs.github.io/immer/">Immer</a> 的库，帮助我们将更新转换为不可变更新</p>
 <h3 id="react-redux库"><a href="#react-redux库" class="headerlink" title="react-redux库"></a>react-redux库</h3><p>先安装库</p>
 <h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3><p>以下两个都可以进行异步请求</p>
 <p>用到redux-thunk也得先安装 yarn add redux-thunk</p>
 <p>redux-saga先安装，更复杂一点</p>
+<p>在React组件中使用React-Redux的useSelector&#x2F;useDispatch钩子</p>
 <h3 id="dev-tools"><a href="#dev-tools" class="headerlink" title="dev-tools"></a>dev-tools</h3><p>第一步先在浏览器安装扩展程序，第二步去github上查看如何配置，然后进行配置</p>
 <h2 id="router"><a href="#router" class="headerlink" title="router"></a>router</h2><p>安装react-router   yarn add react-router-dom</p>
-<p>安装配置路由映射关系 yarn add react-router-config不使用了</p>
+<p>1、创建routes配置路由的相关关系</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Navigate</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>;<br><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">LXDiscover</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/pages/discover&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">LXFriend</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/pages/friend&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">LXMine</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/pages/mine&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">LXRecommend</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../pages/discover/children-pages/recommend&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">LXRanking</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../pages/discover/children-pages/ranking&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">LXSongs</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../pages/discover/children-pages/songs&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">LXDjradio</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../pages/discover/children-pages/djradio&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">LXArtist</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../pages/discover/children-pages/artist&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">LXAlbum</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../pages/discover/children-pages/album&quot;</span>;<br><br><span class="hljs-keyword">const</span> routes = [<br>  &#123;<br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/&quot;</span>,<br>    <span class="hljs-attr">element</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Navigate</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/discover&quot;</span> /&gt;</span></span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/discover&quot;</span>,<br>    <span class="hljs-attr">element</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">LXDiscover</span> /&gt;</span></span>,<br>    <span class="hljs-attr">children</span>: [<br>      &#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;&quot;</span>,<br>        <span class="hljs-attr">element</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Navigate</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;recommend&quot;</span> /&gt;</span></span>,<br>      &#125;,<br>      &#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;recommend&quot;</span>,<br>        <span class="hljs-attr">element</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">LXRecommend</span> /&gt;</span></span>,<br>      &#125;,<br>      &#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;ranking&quot;</span>,<br>        <span class="hljs-attr">element</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">LXRanking</span> /&gt;</span></span>,<br>      &#125;,<br>      &#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;songs&quot;</span>,<br>        <span class="hljs-attr">element</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">LXSongs</span> /&gt;</span></span>,<br>      &#125;,<br>      &#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;djradio&quot;</span>,<br>        <span class="hljs-attr">element</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">LXDjradio</span> /&gt;</span></span>,<br>      &#125;,<br>      &#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;artist&quot;</span>,<br>        <span class="hljs-attr">element</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">LXArtist</span> /&gt;</span></span>,<br>      &#125;,<br>      &#123;<br>        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;album&quot;</span>,<br>        <span class="hljs-attr">element</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">LXAlbum</span> /&gt;</span></span>,<br>      &#125;,<br>    ],<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/mine&quot;</span>,<br>    <span class="hljs-attr">element</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">LXMine</span> /&gt;</span></span>,<br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/friend&quot;</span>,<br>    <span class="hljs-attr">element</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">LXFriend</span> /&gt;</span></span>,<br>  &#125;,<br>];<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> routes;<br><br></code></pre></td></tr></table></figure>
+
+<p>2、需要在App外层包裹相应的实现路由标签，HashRouter或者BrowserRouter，分别是hash路由和history路由</p>
+<p>3、在app.js中配置映射代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 引入路由映射代码</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">RouterElement</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> element = <span class="hljs-title function_">useRoutes</span>(routes);<br>  <span class="hljs-keyword">return</span> element;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>然后在<HashRouter>中使用<RouterElement></RouterElement></HashRouter></p>
+<p>4、然后NavLink到相应的链接还有标题，就可以进行相应的跳转了</p>
+<p>5、子路由跳转路由要写全，在routes，配置中在父路由下配置children就可以，不用写全部路径，得并上父路由，然后NavLink实现相应的跳转就可以了</p>
+<p>6、子路由实现后还需要在外层添加   <Outlet>标签</Outlet></p>
 <h2 id="react-Hooks"><a href="#react-Hooks" class="headerlink" title="react Hooks"></a>react Hooks</h2><h3 id="常用hooks"><a href="#常用hooks" class="headerlink" title="常用hooks"></a>常用hooks</h3><p> useState</p>
 <p>useEffect</p>
 <p>useContext</p>
@@ -387,7 +411,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/js/" class="category-chain-item">js</a>
+  <a href="/categories/react/" class="category-chain-item">react</a>
   
   
 
@@ -402,7 +426,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/js/">#js</a>
+        <a href="/tags/react/">#react</a>
       
     </div>
   
