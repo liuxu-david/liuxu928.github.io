@@ -24,7 +24,7 @@
 <meta property="og:description" content="面试题">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-25T09:24:25.000Z">
-<meta property="article:modified_time" content="2022-10-26T13:14:07.350Z">
+<meta property="article:modified_time" content="2022-10-27T10:15:23.374Z">
 <meta property="article:author" content="刘旭">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.8k 字
+          5.8k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          41 分钟
+          49 分钟
         
       </span>
     
@@ -370,7 +370,35 @@
 <p>https还需要申请CA证书，一般是需要一定费用的。</p>
 <p>端口号：http默认的端口号是80，https默认的端口号是443</p>
 <h2 id="什么是虚拟DOM-？"><a href="#什么是虚拟DOM-？" class="headerlink" title="什么是虚拟DOM ？"></a>什么是虚拟DOM ？</h2><p>虚拟dom就是一个普通的js对象，它就是对真实DOM信息和结构的的描述。因为操作真实的DOM操作很慢，而且轻微的操作都可能引起页面的重新排版，非常消耗性能，所以出现了虚拟DOM。</p>
-<h2 id="项目优化？"><a href="#项目优化？" class="headerlink" title="项目优化？"></a>项目优化？</h2><h2 id="http状态码？"><a href="#http状态码？" class="headerlink" title="http状态码？"></a>http状态码？</h2><h2 id="什么是diff算法？"><a href="#什么是diff算法？" class="headerlink" title="什么是diff算法？"></a>什么是diff算法？</h2>
+<h2 id="项目优化？"><a href="#项目优化？" class="headerlink" title="项目优化？"></a>项目优化？</h2><p>1.图片的优化：减少图片的请求，使用雪碧图。</p>
+<p>还有就是图片可以使用webpack插件压缩</p>
+<p>图片还可以使用懒加载</p>
+<p>2，页面优化：路由懒加载，</p>
+<p>3，代码优化：v-if和v-show根据场景进行使用，v-for必须加上key，而且避免使用和v-if一起使用</p>
+<p>还有就是高频触发使用防抖和节流。</p>
+<p>4，第三方包的引入可以使用按需引入，比如element-plus可以使用按需引入。</p>
+<p>还有就是不常用的第三方包可以采用CDN加速，放在html文件进行引入。</p>
+<h2 id="http状态码？"><a href="#http状态码？" class="headerlink" title="http状态码？"></a>http状态码？</h2><p>100就是目前为止一切正常，客户端继续请求，如果已经完成了请求则忽略。</p>
+<p>101协议切换，表示正在切换协议</p>
+<p>200表明请求成功</p>
+<p>201是post请求的返回状态码，表示请求被成功处理，并且创建了新的资源</p>
+<p>202表示服务器已经收到请求，但是还没有处理请求</p>
+<p>203表示请求已经被响应，但是获得的负载经过了拥有转换功能的代理服务器的修改</p>
+<p>204表示请求成功，但是客户端客户不需要离开当前页面</p>
+<p>205表示通知客户端重置了文档视图</p>
+<p>300表示重定向，表示该请求拥有多种可能的响应</p>
+<p>400表示服务器无法理解该请求，语法无效</p>
+<p>401表示客户端出现错误，由于缺乏目标资源要求的身份凭证，发送的请求没有得到满足</p>
+<p>403表示客户端出现了错误，服务器能够有能力处理请求，但是客户端拒绝授权访问</p>
+<p>404表示服务器无法找到所请求的资源</p>
+<p>405表示服务器禁止使用当前的 http方法请求</p>
+<p>500表示所请求的服务器发生意外情况并阻止执行请求</p>
+<p>501请求的方法不被服务器支持</p>
+<p>503表示服务器尚未处于可以接收请求的状态。</p>
+<h2 id="什么是diff算法？"><a href="#什么是diff算法？" class="headerlink" title="什么是diff算法？"></a>什么是diff算法？</h2><h2 id="浏览器的渲染过程？"><a href="#浏览器的渲染过程？" class="headerlink" title="浏览器的渲染过程？"></a>浏览器的渲染过程？</h2><p>首先url输入到地址栏，浏览器会检查url输入是否合法，然后检查是否完整，如果不完整然后就会随机补上后缀，然后就是进行DNS解析，DNS解析出IP地址，然后找对IP地址对应的服务器，然后进行TCP连接，然后发起http&#x2F;https请求，完成TCP的三次握手，服务器会相应请求。</p>
+<p>通常是一个html的文件，然后浏览器进行解析渲染页面，处理HTML生成DOM树，css生成CSSOM树，然后二者结合生成render渲染树，然后再根据位置大小进行layout布局，然后在进行paint绘制，遇到script则会暂停渲染，优先执行js代码，然后在继续渲染。</p>
+<p>（因为js的执行和页面的渲染共用一个进程，js有可能进行一些dom操作，所以也一般会把js放到页面的底部 ）等js执行完毕后，继续进行渲染，最后渲染到页面了，然后http请求结束，断开TCP链接。</p>
+
               
             </div>
             <hr/>
