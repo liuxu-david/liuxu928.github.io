@@ -24,7 +24,7 @@
 <meta property="og:description" content="面试题">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-25T09:24:25.000Z">
-<meta property="article:modified_time" content="2022-10-28T10:21:30.786Z">
+<meta property="article:modified_time" content="2022-11-18T07:45:30.446Z">
 <meta property="article:author" content="刘旭">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.4k 字
+          9.5k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          62 分钟
+          79 分钟
         
       </span>
     
@@ -286,8 +286,10 @@
 <p>hash模式是通过浏览器的onhashchange来监听地址的变化然后进行页面的切换，而history则是使用popstate（）来监听url的改变，然后通过html5新出的pushState和replaceState两个API实现页面的切换，二者都不会向浏览器发送请求。</p>
 <p>在使用history模式的时候需要在后端配置路由重定向，因为如果进入某个路由然后重新刷新页面的时候，就会真的向服务器发起请求，然后如果不配置重定向的话就会出现404的问题，而hash模式不用配置。</p>
 <h3 id="什么是vuex？"><a href="#什么是vuex？" class="headerlink" title="什么是vuex？"></a>什么是vuex？</h3><p>是vue开发的状态管理模式，可以共享状态，很多时候我们需要在多个组件之间进行数据的共享，比如用户的登陆状态，用户的头像之类的，所以就需要状态管理模式来管理这些状态。</p>
-<h3 id="nextTick是什么？"><a href="#nextTick是什么？" class="headerlink" title="nextTick是什么？"></a>nextTick是什么？</h3><p>在数据发生改变使用这个方法，获取更新后的DOM</p>
-<p>因为vue在更新DOM的时候是异步更新的，数据发生改变后页面不会立马改变，而是监听到数据的变化后开启一个队列，把所有数据的变化放在同一个事件循环中去，当同一个watcher被多次触发，那么去除重复改变的数据很重要，所以nexttick就是用来获取更新后的DOM。</p>
+<h3 id="nextTick是什么？"><a href="#nextTick是什么？" class="headerlink" title="nextTick是什么？"></a>nextTick是什么？</h3><p>在下次DOM更新循环结束后执行延迟回调；</p>
+<p>他的本质其实就是js中的事件循环的一种应用。通过promise，settimeout，mutationObserve来模拟微任务和宏任务，从而实现vue框架中自己的回调。</p>
+<p>如果一个数据发生改变后执行某个操作，而这个操作随着数据的变化会引起DOM结构的变化，那这个操作就要放到nexttick的回调函数中去；</p>
+<p>因为vue在更新DOM的时候是异步更新的，数据发生改变后页面不会立马改变，而是监听到数据的变化后开启一个队列，把所有数据的变化放在同一个事件循环中去，当同一个watcher被多次触发，那么去除重复改变的数据很重要</p>
 <h3 id="v-for中key的作用？"><a href="#v-for中key的作用？" class="headerlink" title="v-for中key的作用？"></a>v-for中key的作用？</h3><p>key是虚拟节点的唯一标识，它可以是diff算法更快更准确的找出可复用的节点，然后进行页面视图的更新。</p>
 <p>一般情况 不会使用index当作key，因为在删除，增加，排序的时候就会出现一些问题</p>
 <h3 id="ref和reactive区别？"><a href="#ref和reactive区别？" class="headerlink" title="ref和reactive区别？"></a>ref和reactive区别？</h3><p>ref可以包裹任何类型，并把包裹的类型转成响应式，</p>
@@ -298,7 +300,7 @@
 <p>watch是当依赖的数据发生改变的时候执行回调函数；</p>
 <p>还有就是watch可以监听到数据改变前后的值</p>
 <p>watcheffect是默认第一次就会执行一次，还有就是watcheffect会自动收集依赖，当依赖发生变化的时候会重新执行自身，还有就是不饿能获取变化前后的值。</p>
-<h3 id="computed："><a href="#computed：" class="headerlink" title="computed："></a>computed：</h3><p>computed和watcheffect有些相似，也是当数据发生改变的时候，重新计算，进行更新，但是computed是没有值改变的时候不会调用，但是watcheffect会默认调用一次，还有就是computed更注重计算出来的结果，所以得有返回值，而watcheffect更注重过程，注重的是回调函数的函数体，所以不用写返回值。</p>
+<h3 id="watch和computed的区别"><a href="#watch和computed的区别" class="headerlink" title="watch和computed的区别"></a>watch和computed的区别</h3><h3 id="computed："><a href="#computed：" class="headerlink" title="computed："></a>computed：</h3><p>computed和watcheffect有些相似，也是当数据发生改变的时候，重新计算，进行更新，但是computed是没有值改变的时候不会调用，但是watcheffect会默认调用一次，还有就是computed更注重计算出来的结果，所以得有返回值，而watcheffect更注重过程，注重的是回调函数的函数体，所以不用写返回值。</p>
 <h3 id="route和router区别？"><a href="#route和router区别？" class="headerlink" title="route和router区别？"></a>route和router区别？</h3><p>route是路由信息的对象，在vue3中通过useRoute来获取，包括路由信息参数。</p>
 <p>router是路由实例对象，可以通过usreRouter来获取，包括路由的跳转方法等。</p>
 <h3 id="组件间传值的方法"><a href="#组件间传值的方法" class="headerlink" title="组件间传值的方法"></a>组件间传值的方法</h3><p>父传子：通过props进行传递</p>
@@ -338,11 +340,15 @@
 <p>箭头函数没有原型，箭头函数不能当成构造函数使用</p>
 <p>箭头函数不能arguments</p>
 <p>还有就是箭头函数中参数的名称不能重复，会报错。</p>
+<h3 id="for-of和for-in的区别"><a href="#for-of和for-in的区别" class="headerlink" title="for..of和for..in的区别"></a>for..of和for..in的区别</h3><p>1。循环数组：区别for in和for of都可以遍历数组，for in输出的是数组的下标，for of输出的是数组的值</p>
+<p>2.循环对象：for in可以遍历对象，for of不可以遍历对象，只能遍历带有iterator接口的    </p>
+<p>for in适合遍历对象，for of适合遍历数组，</p>
+<p>for in遍历对象的属性，数组的下标  for of遍历数组的值</p>
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>String-Number-Boolean</p>
 <p>undefined-null</p>
 <p>object</p>
 <p>symbal，bigInt</p>
-<h2 id="原型和原型链是什么？"><a href="#原型和原型链是什么？" class="headerlink" title="原型和原型链是什么？"></a>原型和原型链是什么？</h2><p>每个实例对象有一个__proto__属性，是实例对象的隐式原型，每个函数创建的时候都有一个prototype属性，是函数的显示原型，她默认指向一个Object对象。构造函数的显示原型等于实例对象的隐式原型。</p>
+<h2 id><a href="#" class="headerlink" title></a></h2><h2 id="原型和原型链是什么？"><a href="#原型和原型链是什么？" class="headerlink" title="原型和原型链是什么？"></a>原型和原型链是什么？</h2><p>每个实例对象有一个__proto__属性，是实例对象的隐式原型，每个函数创建的时候都有一个prototype属性，是函数的显示原型，她默认指向一个Object对象。构造函数的显示原型等于实例对象的隐式原型。</p>
 <p>当要访问一个对象的属性或者方法的时候，现在自身上寻找，如果找到直接使用，如果没找到就去原型中寻找，如果还没找到就到原型的原型对象上找，直到找到object空对象的原型，object空对象的原型就是原型链的尽头，如果还没找到就返回undefined，这就是对原型链的理解。</p>
 <h2 id="什么是事件循环？"><a href="#什么是事件循环？" class="headerlink" title="什么是事件循环？"></a>什么是事件循环？</h2><p>浏览器在渲染主线程的时候会进入无限循环，循环每次都会判断时间队列中是否存在任务，如果存在任务，就直接取出第一个执行，然后进入下一次循环，如果没有任务，渲染主进程就会进入休眠的状态，其他任务也可以不断的向消息队列进行添加，添加到消息队列的末尾 ，如果主进程处于休眠状态，那么就会唤醒主进程，还有一些异步事件，比如定时器，网络请求，当主进程执行到这些异步任务的时候，会将他们交给计时线程，计时线程结束后会重新交给消息对列。这就是事件循环。</p>
 <h2 id="url输入到地址栏后发生了什么？"><a href="#url输入到地址栏后发生了什么？" class="headerlink" title="url输入到地址栏后发生了什么？"></a>url输入到地址栏后发生了什么？</h2><p>首先url输入到地址栏，浏览器会检查url输入是否合法，然后检查是否完整，如果不完整然后就会随机补上后缀，然后就是进行DNS解析，DNS解析出IP地址，然后找对IP地址对应的服务器，然后进行TCP连接，然后发起http&#x2F;https请求，完成TCP的三次握手，服务器会相应请求，通常是一个html的文件，然后浏览器进行解析渲染页面，处理HTML生成DOM树，css生成CSSOM树，然后二者结合生成render渲染树，然后再根据位置大小进行layout布局，然后在进行paint绘制，然后就渲染到页面了，然后http请求结束，断开TCP链接。</p>
@@ -351,6 +357,9 @@
 <p>回流一定会引起重绘，重绘不一定会引起回流。</p>
 <h2 id="怎样减少首页白屏的时间"><a href="#怎样减少首页白屏的时间" class="headerlink" title="怎样减少首页白屏的时间?"></a>怎样减少首页白屏的时间?</h2><p>图片使用懒加载，图片较多的时候使用雪碧图。</p>
 <p>把第三方包放入到index.html文件中，并引入CDN加速。</p>
+<p>实现DNS预解析，提前获取IP地址，缩短响应的时间，rel&#x3D;”dns-prefetch”</p>
+<p>也可以使用tcp连接优化：通过rel&#x3D;“preconnect”提前执行一些操作；</p>
+<p>压缩代码，减少资源的大小</p>
 <p>路由使用懒加载</p>
 <p>还有就是第三方包可以按需引入</p>
 <p>还有就是代码方面v-if和v-show使用的场景选择</p>
@@ -366,7 +375,6 @@
 <h2 id="什么是纯函数？"><a href="#什么是纯函数？" class="headerlink" title="什么是纯函数？"></a>什么是纯函数？</h2><p>确定的输入就会有确定的输出，外部环境的任何变化都不会影响函数内部产生的结果，而且不会产生副作用，这就是纯函数。</p>
 <h2 id="什么是函数的柯里化？有什么作用？"><a href="#什么是函数的柯里化？有什么作用？" class="headerlink" title="什么是函数的柯里化？有什么作用？"></a>什么是函数的柯里化？有什么作用？</h2><p>函数的柯里化就是将传入多个参数的函数转化成传入单个参数的函数并且返回一个函数用于接收剩下的函数，每一层函数都接收一个参数并进行处理。</p>
 <p>作用：职责明确，每个函数只传入一个参数做处理，职责明确，还有就是可以拿到每一层函数的返回值作为一个新的函数，可以复用传入的参数。</p>
-<h2 id="什么是虚拟DOM-？"><a href="#什么是虚拟DOM-？" class="headerlink" title="什么是虚拟DOM ？"></a>什么是虚拟DOM ？</h2><p>虚拟dom就是一个普通的js对象，它就是对真实DOM信息和结构的的描述。因为操作真实的DOM操作很慢，而且轻微的操作都可能引起页面的重新排版，非常消耗性能，所以出现了虚拟DOM。</p>
 <h2 id="项目优化？"><a href="#项目优化？" class="headerlink" title="项目优化？"></a>项目优化？</h2><p>1.图片的优化：减少图片的请求，使用雪碧图。</p>
 <p>还有就是图片可以使用webpack插件压缩</p>
 <p>图片还可以使用懒加载</p>
@@ -378,7 +386,34 @@
 <h2 id="浏览器的渲染过程？"><a href="#浏览器的渲染过程？" class="headerlink" title="浏览器的渲染过程？"></a>浏览器的渲染过程？</h2><p>首先url输入到地址栏，浏览器会检查url输入是否合法，然后检查是否完整，如果不完整然后就会随机补上后缀，然后就是进行DNS解析，DNS解析出IP地址，然后找对IP地址对应的服务器，然后进行TCP连接，然后发起http&#x2F;https请求，完成TCP的三次握手，服务器会相应请求。</p>
 <p>通常是一个html的文件，然后浏览器进行解析渲染页面，处理HTML生成DOM树，css生成CSSOM树，然后二者结合生成render渲染树，然后再根据位置大小进行layout布局，然后在进行paint绘制，遇到script则会暂停渲染，优先执行js代码，然后在继续渲染。</p>
 <p>（因为js的执行和页面的渲染共用一个进程，js有可能进行一些dom操作，所以也一般会把js放到页面的底部 ）等js执行完毕后，继续进行渲染，最后渲染到页面了，然后http请求结束，断开TCP链接。</p>
-<h2 id="什么是diff算法？"><a href="#什么是diff算法？" class="headerlink" title="什么是diff算法？"></a>什么是diff算法？</h2><h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="http和https的区别？"><a href="#http和https的区别？" class="headerlink" title="http和https的区别？"></a>http和https的区别？</h2><p>http是超文本传输协议，传输信息的时候是明文传输，而https使用ssl加密的方式传输数据，https比http协议安全</p>
+<h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><p>事件循环就是以浏览器为宿主环境实现事件调度，因为浏览器需要处理很多事件，比如脚本的执行，用户的操作，渲染和网络请求等，事件循环就是为了调度这些任务而生的，通过事件循环，浏览器可以使用任务队列管理任务，这样可以让异步事件非阻塞的执行。</p>
+<h3 id="为什么需要事件循环"><a href="#为什么需要事件循环" class="headerlink" title="为什么需要事件循环"></a>为什么需要事件循环</h3><p>由于javaScript是单线程的，而且js的主线程和渲染线程是互斥的，如果异步操作阻塞了js的执行，就会引发浏览器假死，事件循环为浏览器引入了任务队列，任务队列来调度这些任务，就不会造成阻塞了。浏览器事件循环在处理到异步的时候不会等待返回结果，而是将这个任务挂起，当异步返回结果的时，把它放入到任务队列中，放入任务队列也不会立刻执行，而是等待执行栈把所有任务都执行完后，主线程处于空闲的状态，主线程就会  先查看是否有微任务，如果没有，就去任务队列中取事件，并把对应的回调加入执行栈中，如果有，就先去执行微任务，当微任务队列为空的时候，再去查找任务队列中是否有任务，如果有就取出排在第一位的事件，将这个事件放到执行栈中，进行执行，就这样循环操作。</p>
+<h3 id="宏任务和微任务"><a href="#宏任务和微任务" class="headerlink" title="宏任务和微任务"></a>宏任务和微任务</h3><p>异步任务又分为宏任务和微任务</p>
+<p>宏任务主要包括：script总体代码，定时器，ui交互事件</p>
+<p>微任务主要包括promise，微任务不属于任务队列。</p>
+<h2 id="什么是虚拟DOM-？"><a href="#什么是虚拟DOM-？" class="headerlink" title="什么是虚拟DOM ？"></a>什么是虚拟DOM ？</h2><p>现代的网站大多具有复杂的布局，大量的节点和 交互操作等特征，这就引起了直接操作DOM不当带来的影响性能的问题不容忽视；所以就出现了虚拟DOM，虚拟dom本质上就是一个普通的js对象，它就是对真实DOM信息和结构的的描述。</p>
+<h3 id="为什么要有虚拟Dom？"><a href="#为什么要有虚拟Dom？" class="headerlink" title="为什么要有虚拟Dom？"></a>为什么要有虚拟Dom？</h3><p>因为操作真实的DOM操作很慢，而且轻微的操作都可能引起页面的重新排版，非常消耗性能，所以出现了虚拟DOM，虚拟DOM通过预先操作，找出新旧虚拟DOM之间的差异，然后在重新渲染，来提升操作真实DOM的性能和效率。</p>
+<h2 id="什么是diff算法？"><a href="#什么是diff算法？" class="headerlink" title="什么是diff算法？"></a>什么是diff算法？</h2><h2 id="vue和react区别"><a href="#vue和react区别" class="headerlink" title="vue和react区别"></a>vue和react区别</h2><p>二者都采用数据驱动视图的思想，以虚拟DOM 为基础，以组件化的方式组织应用。</p>
+<p>开发的体验不同：</p>
+<p>vue降低了前端的门槛，学习曲线比较平缓，而且时 国人开发，文档友好；</p>
+<p>react需要对jsx有一定的了解，上手较vue困难；</p>
+<p>社区生态的差异：</p>
+<p>vue偏向于使用vue全家桶的集成解决方案，官方提供了开箱即用的vueRouter，vuex，不过现在官网已经推荐使用pinia；</p>
+<p>而react没有固定的组合模板，根据个人自行选择社区中比较成熟的组件来构建应用。</p>
+<p>核心概念的差异：</p>
+<p>在数据的响应式中，vue时推模型，当数据发生改变的时候视图自动更新；</p>
+<p>而react中则使用拉模型，就是当数据发生改变的时候，需要手动调用setstate()来更新页面</p>
+<h2 id="js中的异步编程"><a href="#js中的异步编程" class="headerlink" title="js中的异步编程"></a>js中的异步编程</h2><h2 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h2><p>const url &#x3D; new URL(“..&#x2F;..&#x2F;assets&#x2F;logo.png”, import.meta.url).href;</p>
+<h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><p>animation动画属性</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 引用动画 */</span><br>           <span class="hljs-comment">/* animation-name: move; */</span><br>           <span class="hljs-comment">/*动画的时间 */</span><br>           <span class="hljs-comment">/* animation-duration: 2s; */</span><br>           <span class="hljs-comment">/* 运行速度曲线 */</span><br>           <span class="hljs-comment">/* animation-timing-function: ease-in-out; */</span><br>           <span class="hljs-comment">/* 何时开始 */</span><br>           <span class="hljs-comment">/* animation-delay: 1s; */</span><br>           <span class="hljs-comment">/* 动画循环次数，1表示一次，infinite表示无限次 */</span><br>           <span class="hljs-comment">/* animation-iteration-count: infinite; */</span><br>           <span class="hljs-comment">/* 表示会不会逆回来，alternate表示逆回来，normal表示普通 */</span><br>           <span class="hljs-comment">/* animation-direction: alternate; */</span><br>           <span class="hljs-comment">/* 这是停在结束位置，回到初始位置是backwards */</span><br>           <span class="hljs-comment">/* animation-fill-mode: forwards; */</span><br>           <span class="hljs-comment">/* 下面是简写 */</span><br>           <span class="hljs-comment">/* animation: name duration timing-function delay iteration-count direction fill-mode; */</span><br></code></pre></td></tr></table></figure>
+
+<p>transform</p>
+<p>translate移动的距离，向X轴向Y轴</p>
+<p>scale放大倍数</p>
+<p>rotate旋转度数可以是rotateX,rotateY,rotateZ</p>
+<p><a target="_blank" rel="noopener" href="https://m.runoob.com/cssref/css3-pr-transform-origin.html">transform-origin</a>改变被转换元素的位置</p>
+<p>transform-style子元素位于哪个空间</p>
+<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="http和https的区别？"><a href="#http和https的区别？" class="headerlink" title="http和https的区别？"></a>http和https的区别？</h2><p>http是超文本传输协议，传输信息的时候是明文传输，而https使用ssl加密的方式传输数据，https比http协议安全</p>
 <p>https还需要申请CA证书，一般是需要一定费用的。</p>
 <p>端口号：http默认的端口号是80，https默认的端口号是443</p>
 <h2 id="HTTP1-0-2-0-3-0之间的区别？"><a href="#HTTP1-0-2-0-3-0之间的区别？" class="headerlink" title="HTTP1.0 2.0 3.0之间的区别？"></a>HTTP1.0 2.0 3.0之间的区别？</h2><p><strong>http1.0</strong>是无状态，无连接的；而且是短连接的，每次发送都需要重新建立TCP连接，即三次握手非常消耗性，而且还不会记录用户的cookie和以前的请求，还有就是不能断点传递，而且不能只传输对象的一部分，要求传递整个对象。</p>
