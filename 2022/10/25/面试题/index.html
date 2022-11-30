@@ -24,7 +24,7 @@
 <meta property="og:description" content="面试题">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-25T09:24:25.000Z">
-<meta property="article:modified_time" content="2022-11-18T07:45:30.446Z">
+<meta property="article:modified_time" content="2022-11-30T03:33:03.525Z">
 <meta property="article:author" content="刘旭">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.5k 字
+          11k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          79 分钟
+          94 分钟
         
       </span>
     
@@ -301,6 +301,8 @@
 <p>还有就是watch可以监听到数据改变前后的值</p>
 <p>watcheffect是默认第一次就会执行一次，还有就是watcheffect会自动收集依赖，当依赖发生变化的时候会重新执行自身，还有就是不饿能获取变化前后的值。</p>
 <h3 id="watch和computed的区别"><a href="#watch和computed的区别" class="headerlink" title="watch和computed的区别"></a>watch和computed的区别</h3><h3 id="computed："><a href="#computed：" class="headerlink" title="computed："></a>computed：</h3><p>computed和watcheffect有些相似，也是当数据发生改变的时候，重新计算，进行更新，但是computed是没有值改变的时候不会调用，但是watcheffect会默认调用一次，还有就是computed更注重计算出来的结果，所以得有返回值，而watcheffect更注重过程，注重的是回调函数的函数体，所以不用写返回值。</p>
+<h3 id="computed和methods区别"><a href="#computed和methods区别" class="headerlink" title="computed和methods区别"></a>computed和methods区别</h3><p>比如来说，data中定义了一个数组，然后可以通过计算属性来判断这个数组中是否有元素，也就是看这个数组的length是否大于0，如果大于0返回true，反正返回false，同样把这个判断放在methods中也可以进行判断，但是计算属性基于他依赖的响应式是有缓存的，比如这个数组如果没有发生变化，那么计算属性中的这个属性不管怎样访问，他都会立即返回先前的结果，而不用重新执行getter函数，但是在methods中的方法访问一次，就执行一次。</p>
+<p>还有就是在计算属性的getter中不能产生副作用，不要做异步请求或者更改dom的操作，而且计算属性返回的值应该被视为可读的，并且永远不应该更改。</p>
 <h3 id="route和router区别？"><a href="#route和router区别？" class="headerlink" title="route和router区别？"></a>route和router区别？</h3><p>route是路由信息的对象，在vue3中通过useRoute来获取，包括路由信息参数。</p>
 <p>router是路由实例对象，可以通过usreRouter来获取，包括路由的跳转方法等。</p>
 <h3 id="组件间传值的方法"><a href="#组件间传值的方法" class="headerlink" title="组件间传值的方法"></a>组件间传值的方法</h3><p>父传子：通过props进行传递</p>
@@ -335,6 +337,7 @@
 <p>变量提升：let和const没有变量提升，var有变量提升</p>
 <p>重复定义：let和const在同一作用域下不能重复定义，var可以重复定义</p>
 <p>更改值：let和var值可以更改，const赋值后不能更改，而且在定义的时候要赋值</p>
+<h3 id="set和map"><a href="#set和map" class="headerlink" title="set和map"></a>set和map</h3><p>set是存储值的，是值的集合，它可以存储任何类型的值，它类似于数组，但是它保存的所有成员的值是唯一的，没有重复的值，所以它可以进行数组的去重，而且可以通过size获取成员个数，而数组的话需要获取个数则需要手动获取，map的话是保存键值对的，它是键值和value值都可以为任何值。它可以通过get方法传入key获取值，但是set不行因为set保存的就是值，还有就是map中可以使用keys和values来遍历返回键值和value值，而set的话只能是使用两个方法得到的结果是相同的。还有添加成员的方法不同，set的话使用add方法，而map的使用set（key，value）方法。</p>
 <h3 id="什么是变量提升？"><a href="#什么是变量提升？" class="headerlink" title="什么是变量提升？"></a>什么是变量提升？</h3><p>js是个单线程的语言，这执行之前会先进行解析，检测到变量或者函数的时候会自动提到作用域的前面，而且函数的提升大于变量的提升，还有就是在函数中的变量也会提到函数作用域之前，先把他们添加到内存中去，这些变量和函数声明就是真正声明之前使用。</p>
 <h3 id="箭头函数和普通函数有什么区别？"><a href="#箭头函数和普通函数有什么区别？" class="headerlink" title="箭头函数和普通函数有什么区别？"></a>箭头函数和普通函数有什么区别？</h3><p>this的指向不同，箭头函数没有自己的this，它内部的this就是上层作用域的this，而且它的this指向不能改变。</p>
 <p>箭头函数没有原型，箭头函数不能当成构造函数使用</p>
@@ -347,23 +350,17 @@
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>String-Number-Boolean</p>
 <p>undefined-null</p>
 <p>object</p>
-<p>symbal，bigInt</p>
-<h2 id><a href="#" class="headerlink" title></a></h2><h2 id="原型和原型链是什么？"><a href="#原型和原型链是什么？" class="headerlink" title="原型和原型链是什么？"></a>原型和原型链是什么？</h2><p>每个实例对象有一个__proto__属性，是实例对象的隐式原型，每个函数创建的时候都有一个prototype属性，是函数的显示原型，她默认指向一个Object对象。构造函数的显示原型等于实例对象的隐式原型。</p>
+<p>symbol，bigInt</p>
+<h2 id="原型和原型链是什么？"><a href="#原型和原型链是什么？" class="headerlink" title="原型和原型链是什么？"></a>原型和原型链是什么？</h2><p>每个实例对象有一个__proto__属性，是实例对象的隐式原型，每个函数创建的时候都有一个prototype属性，是函数的显示原型，她默认指向一个Object对象。构造函数的显示原型等于实例对象的隐式原型。</p>
 <p>当要访问一个对象的属性或者方法的时候，现在自身上寻找，如果找到直接使用，如果没找到就去原型中寻找，如果还没找到就到原型的原型对象上找，直到找到object空对象的原型，object空对象的原型就是原型链的尽头，如果还没找到就返回undefined，这就是对原型链的理解。</p>
-<h2 id="什么是事件循环？"><a href="#什么是事件循环？" class="headerlink" title="什么是事件循环？"></a>什么是事件循环？</h2><p>浏览器在渲染主线程的时候会进入无限循环，循环每次都会判断时间队列中是否存在任务，如果存在任务，就直接取出第一个执行，然后进入下一次循环，如果没有任务，渲染主进程就会进入休眠的状态，其他任务也可以不断的向消息队列进行添加，添加到消息队列的末尾 ，如果主进程处于休眠状态，那么就会唤醒主进程，还有一些异步事件，比如定时器，网络请求，当主进程执行到这些异步任务的时候，会将他们交给计时线程，计时线程结束后会重新交给消息对列。这就是事件循环。</p>
 <h2 id="url输入到地址栏后发生了什么？"><a href="#url输入到地址栏后发生了什么？" class="headerlink" title="url输入到地址栏后发生了什么？"></a>url输入到地址栏后发生了什么？</h2><p>首先url输入到地址栏，浏览器会检查url输入是否合法，然后检查是否完整，如果不完整然后就会随机补上后缀，然后就是进行DNS解析，DNS解析出IP地址，然后找对IP地址对应的服务器，然后进行TCP连接，然后发起http&#x2F;https请求，完成TCP的三次握手，服务器会相应请求，通常是一个html的文件，然后浏览器进行解析渲染页面，处理HTML生成DOM树，css生成CSSOM树，然后二者结合生成render渲染树，然后再根据位置大小进行layout布局，然后在进行paint绘制，然后就渲染到页面了，然后http请求结束，断开TCP链接。</p>
 <h2 id="回流和重绘是什么"><a href="#回流和重绘是什么" class="headerlink" title="回流和重绘是什么"></a>回流和重绘是什么</h2><p>回流主要是在layout布局阶段，元素的大小位置发生变化，重新计算进行布局，这个变化就是回流。</p>
 <p>重绘主要发生在paint绘制阶段，元素的样式发生了变化，这个变化就是重绘</p>
 <p>回流一定会引起重绘，重绘不一定会引起回流。</p>
-<h2 id="怎样减少首页白屏的时间"><a href="#怎样减少首页白屏的时间" class="headerlink" title="怎样减少首页白屏的时间?"></a>怎样减少首页白屏的时间?</h2><p>图片使用懒加载，图片较多的时候使用雪碧图。</p>
-<p>把第三方包放入到index.html文件中，并引入CDN加速。</p>
+<h2 id="怎样减少首页白屏的时间"><a href="#怎样减少首页白屏的时间" class="headerlink" title="怎样减少首页白屏的时间?"></a>怎样减少首页白屏的时间?</h2><p>把第三方包放入到index.html文件中，并引入CDN加速。</p>
 <p>实现DNS预解析，提前获取IP地址，缩短响应的时间，rel&#x3D;”dns-prefetch”</p>
 <p>也可以使用tcp连接优化：通过rel&#x3D;“preconnect”提前执行一些操作；</p>
-<p>压缩代码，减少资源的大小</p>
-<p>路由使用懒加载</p>
-<p>还有就是第三方包可以按需引入</p>
 <p>还有就是代码方面v-if和v-show使用的场景选择</p>
-<p>还有就是webpack对图片进行压缩</p>
 <h2 id="解决跨域的方法？"><a href="#解决跨域的方法？" class="headerlink" title="解决跨域的方法？"></a>解决跨域的方法？</h2><p>jsonp的方式</p>
 <p>后端通过cors解决方案</p>
 <p>nginx反向代理的方式</p>
@@ -383,17 +380,33 @@
 <p>还有就是高频触发使用防抖和节流。</p>
 <p>4，第三方包的引入可以使用按需引入，比如element-plus可以使用按需引入。</p>
 <p>还有就是不常用的第三方包可以采用CDN加速，放在html文件进行引入。</p>
+<p>压缩代码，减少资源的大小</p>
+<p>路由使用懒加载</p>
+<p>还有就是第三方包可以按需引入</p>
+<p>还有就是webpack对图片进行压缩</p>
 <h2 id="浏览器的渲染过程？"><a href="#浏览器的渲染过程？" class="headerlink" title="浏览器的渲染过程？"></a>浏览器的渲染过程？</h2><p>首先url输入到地址栏，浏览器会检查url输入是否合法，然后检查是否完整，如果不完整然后就会随机补上后缀，然后就是进行DNS解析，DNS解析出IP地址，然后找对IP地址对应的服务器，然后进行TCP连接，然后发起http&#x2F;https请求，完成TCP的三次握手，服务器会相应请求。</p>
 <p>通常是一个html的文件，然后浏览器进行解析渲染页面，处理HTML生成DOM树，css生成CSSOM树，然后二者结合生成render渲染树，然后再根据位置大小进行layout布局，然后在进行paint绘制，遇到script则会暂停渲染，优先执行js代码，然后在继续渲染。</p>
 <p>（因为js的执行和页面的渲染共用一个进程，js有可能进行一些dom操作，所以也一般会把js放到页面的底部 ）等js执行完毕后，继续进行渲染，最后渲染到页面了，然后http请求结束，断开TCP链接。</p>
-<h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><p>事件循环就是以浏览器为宿主环境实现事件调度，因为浏览器需要处理很多事件，比如脚本的执行，用户的操作，渲染和网络请求等，事件循环就是为了调度这些任务而生的，通过事件循环，浏览器可以使用任务队列管理任务，这样可以让异步事件非阻塞的执行。</p>
+<h2 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h2><h3 id="什么是深拷贝什么是浅拷贝？"><a href="#什么是深拷贝什么是浅拷贝？" class="headerlink" title="什么是深拷贝什么是浅拷贝？"></a>什么是深拷贝什么是浅拷贝？</h3><p>浅拷贝拷贝的就是地址，让目标对象指针和源对象指向同一片内存，</p>
+<p>而深拷贝就是在内存中重新开辟一个空间，两个对象互不影响，拷贝后的对象值一样，但是内存地址不一样</p>
+<h3 id="怎样实现浅拷贝和深拷贝？"><a href="#怎样实现浅拷贝和深拷贝？" class="headerlink" title="怎样实现浅拷贝和深拷贝？"></a>怎样实现浅拷贝和深拷贝？</h3><p>实现浅拷贝：</p>
+<p>直接赋值也是浅拷贝</p>
+<p>object.assign，array.concat</p>
+<p>对象扩展符</p>
+<p>通过forin循环对象，依次进行赋值也是浅拷贝</p>
+<p>深拷贝：</p>
+<p>通过递归的方式</p>
+<p>json.parse</p>
+<p>也可以使用第三方函数库lodash的_.cloneDeep</p>
+<h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><h3 id="什么是事件循环？"><a href="#什么是事件循环？" class="headerlink" title="什么是事件循环？"></a>什么是事件循环？</h3><p>浏览器在渲染主线程的时候会进入无限循环，循环每次都会判断时间队列中是否存在任务，如果存在任务，就直接取出第一个执行，然后进入下一次循环，如果没有任务，渲染主进程就会进入休眠的状态，其他任务也可以不断的向消息队列进行添加，添加到消息队列的末尾 ，如果主进程处于休眠状态，那么就会唤醒主进程，还有一些异步事件，比如定时器，网络请求，当主进程执行到这些异步任务的时候，会将他们交给计时线程，计时线程结束后会重新交给消息对列。这就是事件循环。</p>
+<p>事件循环就是以浏览器为宿主环境实现事件调度，因为浏览器需要处理很多事件，比如脚本的执行，用户的操作，渲染和网络请求等，事件循环就是为了调度这些任务而生的，通过事件循环，浏览器可以使用任务队列管理任务，这样可以让异步事件非阻塞的执行。</p>
 <h3 id="为什么需要事件循环"><a href="#为什么需要事件循环" class="headerlink" title="为什么需要事件循环"></a>为什么需要事件循环</h3><p>由于javaScript是单线程的，而且js的主线程和渲染线程是互斥的，如果异步操作阻塞了js的执行，就会引发浏览器假死，事件循环为浏览器引入了任务队列，任务队列来调度这些任务，就不会造成阻塞了。浏览器事件循环在处理到异步的时候不会等待返回结果，而是将这个任务挂起，当异步返回结果的时，把它放入到任务队列中，放入任务队列也不会立刻执行，而是等待执行栈把所有任务都执行完后，主线程处于空闲的状态，主线程就会  先查看是否有微任务，如果没有，就去任务队列中取事件，并把对应的回调加入执行栈中，如果有，就先去执行微任务，当微任务队列为空的时候，再去查找任务队列中是否有任务，如果有就取出排在第一位的事件，将这个事件放到执行栈中，进行执行，就这样循环操作。</p>
 <h3 id="宏任务和微任务"><a href="#宏任务和微任务" class="headerlink" title="宏任务和微任务"></a>宏任务和微任务</h3><p>异步任务又分为宏任务和微任务</p>
 <p>宏任务主要包括：script总体代码，定时器，ui交互事件</p>
 <p>微任务主要包括promise，微任务不属于任务队列。</p>
 <h2 id="什么是虚拟DOM-？"><a href="#什么是虚拟DOM-？" class="headerlink" title="什么是虚拟DOM ？"></a>什么是虚拟DOM ？</h2><p>现代的网站大多具有复杂的布局，大量的节点和 交互操作等特征，这就引起了直接操作DOM不当带来的影响性能的问题不容忽视；所以就出现了虚拟DOM，虚拟dom本质上就是一个普通的js对象，它就是对真实DOM信息和结构的的描述。</p>
 <h3 id="为什么要有虚拟Dom？"><a href="#为什么要有虚拟Dom？" class="headerlink" title="为什么要有虚拟Dom？"></a>为什么要有虚拟Dom？</h3><p>因为操作真实的DOM操作很慢，而且轻微的操作都可能引起页面的重新排版，非常消耗性能，所以出现了虚拟DOM，虚拟DOM通过预先操作，找出新旧虚拟DOM之间的差异，然后在重新渲染，来提升操作真实DOM的性能和效率。</p>
-<h2 id="什么是diff算法？"><a href="#什么是diff算法？" class="headerlink" title="什么是diff算法？"></a>什么是diff算法？</h2><h2 id="vue和react区别"><a href="#vue和react区别" class="headerlink" title="vue和react区别"></a>vue和react区别</h2><p>二者都采用数据驱动视图的思想，以虚拟DOM 为基础，以组件化的方式组织应用。</p>
+<h2 id="vue和react区别"><a href="#vue和react区别" class="headerlink" title="vue和react区别"></a>vue和react区别</h2><p>二者都采用数据驱动视图的思想，以虚拟DOM 为基础，以组件化的方式组织应用。</p>
 <p>开发的体验不同：</p>
 <p>vue降低了前端的门槛，学习曲线比较平缓，而且时 国人开发，文档友好；</p>
 <p>react需要对jsx有一定的了解，上手较vue困难；</p>
@@ -403,7 +416,15 @@
 <p>核心概念的差异：</p>
 <p>在数据的响应式中，vue时推模型，当数据发生改变的时候视图自动更新；</p>
 <p>而react中则使用拉模型，就是当数据发生改变的时候，需要手动调用setstate()来更新页面</p>
-<h2 id="js中的异步编程"><a href="#js中的异步编程" class="headerlink" title="js中的异步编程"></a>js中的异步编程</h2><h2 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h2><p>const url &#x3D; new URL(“..&#x2F;..&#x2F;assets&#x2F;logo.png”, import.meta.url).href;</p>
+<h2 id="new一个对象实现原理"><a href="#new一个对象实现原理" class="headerlink" title="new一个对象实现原理"></a>new一个对象实现原理</h2><p>首先创建一个新的对象；</p>
+<p>然后将构造函数的prototype显式原型赋值给新的对象的__proto__隐式原型</p>
+<p>然后将构造函数的this指向新对象，绑定this，然后在调用构造函数，这一步也就是给新对象加方法</p>
+<p>返回一个新的对象。</p>
+<h2 id="bind，call，apply"><a href="#bind，call，apply" class="headerlink" title="bind，call，apply"></a>bind，call，apply</h2><p>他们三者的作用都是相同的，都是动态的绑定this，动态修改当前函数内部环境对象this的指向。</p>
+<p>执行方式不同：call和apply是改变后页面加载之后就立即执行，是同步代码，bind是异步代码，改变之后不会立即执行，而是返回一个新的函数</p>
+<p>修改this的性质不同：call，apply只是临时的修改一次，也就是call’和apply方法的那一次，当再次调用原函数的时候，它还是指向原来的指向，bind是永久修改函数this的指向，但是它修改的不是原来的函数，而是返回一个修改后的函数。所以使用bind绑定后就修改不了了。</p>
+<p>传参数不同，call和bind传参是一个一个逐一传入，不能使用剩余参数的方式传参，apply可以使用数组的方式传入，是要是数组方式就可以使用剩余参数的方式传入。</p>
+<h2 id="js中的异步编程"><a href="#js中的异步编程" class="headerlink" title="js中的异步编程"></a>js中的异步编程</h2><h2 id="什么是diff算法？"><a href="#什么是diff算法？" class="headerlink" title="什么是diff算法？"></a>什么是diff算法？</h2><h2 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h2><p>const url &#x3D; new URL(“..&#x2F;..&#x2F;assets&#x2F;logo.png”, import.meta.url).href;</p>
 <h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><p>animation动画属性</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 引用动画 */</span><br>           <span class="hljs-comment">/* animation-name: move; */</span><br>           <span class="hljs-comment">/*动画的时间 */</span><br>           <span class="hljs-comment">/* animation-duration: 2s; */</span><br>           <span class="hljs-comment">/* 运行速度曲线 */</span><br>           <span class="hljs-comment">/* animation-timing-function: ease-in-out; */</span><br>           <span class="hljs-comment">/* 何时开始 */</span><br>           <span class="hljs-comment">/* animation-delay: 1s; */</span><br>           <span class="hljs-comment">/* 动画循环次数，1表示一次，infinite表示无限次 */</span><br>           <span class="hljs-comment">/* animation-iteration-count: infinite; */</span><br>           <span class="hljs-comment">/* 表示会不会逆回来，alternate表示逆回来，normal表示普通 */</span><br>           <span class="hljs-comment">/* animation-direction: alternate; */</span><br>           <span class="hljs-comment">/* 这是停在结束位置，回到初始位置是backwards */</span><br>           <span class="hljs-comment">/* animation-fill-mode: forwards; */</span><br>           <span class="hljs-comment">/* 下面是简写 */</span><br>           <span class="hljs-comment">/* animation: name duration timing-function delay iteration-count direction fill-mode; */</span><br></code></pre></td></tr></table></figure>
 
@@ -413,6 +434,10 @@
 <p>rotate旋转度数可以是rotateX,rotateY,rotateZ</p>
 <p><a target="_blank" rel="noopener" href="https://m.runoob.com/cssref/css3-pr-transform-origin.html">transform-origin</a>改变被转换元素的位置</p>
 <p>transform-style子元素位于哪个空间</p>
+<h2 id="垂直水平居中"><a href="#垂直水平居中" class="headerlink" title="垂直水平居中"></a>垂直水平居中</h2><p>使用flex布局</p>
+<p>使用gard布局</p>
+<p>使用定位的方法：通过子绝父相结合负margin实现，通过子绝父相结合margin：auto实现，通过子绝父相结合transform实现，通过子绝父相结合css3计算属性calc使用</p>
+<h2 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h2><p>传统局部方式，一个容器包裹三个盒子，给外面容器一个padding值，然后里面三个盒子全部进行float布局，然后一个盒子设置100%宽度，然后让下面两个盒子通过position：relative，然后设置负margin值，然后把下面两个盒子移动到上面空白地方。</p>
 <h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="http和https的区别？"><a href="#http和https的区别？" class="headerlink" title="http和https的区别？"></a>http和https的区别？</h2><p>http是超文本传输协议，传输信息的时候是明文传输，而https使用ssl加密的方式传输数据，https比http协议安全</p>
 <p>https还需要申请CA证书，一般是需要一定费用的。</p>
 <p>端口号：http默认的端口号是80，https默认的端口号是443</p>
@@ -455,7 +480,9 @@
 <p>3，数据的有效期也不同，cookie只在设置的cookie过期前有效，即使是浏览器或者是窗口关闭，也是在设置的过期前有效</p>
 <p>sessionStorage：仅在当前浏览器窗口关闭之前有效；localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据，除非自己把localStorage删掉才会过期</p>
 <p>4，作用域不同：，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localstorage在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的 </p>
-
+<h2 id="协商缓存和强缓冲"><a href="#协商缓存和强缓冲" class="headerlink" title="协商缓存和强缓冲"></a>协商缓存和强缓冲</h2><p>强缓存的意思就是不向服务器发起请求，也是本地强制缓存，浏览器想要获取特定数据的时候，首先先检查本地缓存中是否存在该数据，如果窜在直接从本地获取，如果不存在就向服务器索要该数据</p>
+<p>协商缓存就是浏览器第一次请求数据时，服务器会将缓存标识与数据一起返回给客户端，客户端将二者备份至缓存数据库中，再次请求数据的时候，客户端会将备份的缓存标识发送给服务器，服务器根据缓存标识进行判断，判断成功后，返回304状态码，通知客服端比较成功，可以使用缓存数据</p>
+<h2 id="三次握手和四次挥手"><a href="#三次握手和四次挥手" class="headerlink" title="三次握手和四次挥手"></a>三次握手和四次挥手</h2>
               
             </div>
             <hr/>
