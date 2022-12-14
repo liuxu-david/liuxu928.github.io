@@ -23,11 +23,13 @@
 <meta property="og:site_name" content="千面小站">
 <meta property="og:description" content="面试题">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/10/25/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221214125857796.png">
 <meta property="article:published_time" content="2022-10-25T09:24:25.000Z">
-<meta property="article:modified_time" content="2022-11-30T03:33:03.525Z">
+<meta property="article:modified_time" content="2022-12-14T04:59:32.371Z">
 <meta property="article:author" content="刘旭">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/10/25/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221214125857796.png">
   
   
   <title>千面小站</title>
@@ -210,7 +212,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          11k 字
+          14k 字
         
       </span>
     
@@ -221,7 +223,7 @@
         
         
         
-          94 分钟
+          114 分钟
         
       </span>
     
@@ -325,11 +327,11 @@
 <p>缺点：闭包中创建的变量会始终存在内存中，垃圾回收机制不会将这些变量销毁，对内存的消耗很大，造成内存的泄露</p>
 <h3 id="什么情况会造成内存的泄露？"><a href="#什么情况会造成内存的泄露？" class="headerlink" title="什么情况会造成内存的泄露？"></a>什么情况会造成内存的泄露？</h3><p>1.意外声明的全局变量</p>
 <p>2.没有清除的定时器</p>
-<p>3.没有手动接触的监听事件</p>
+<p>3.没有手动解除的监听事件</p>
 <p>4.闭包</p>
 <h2 id="Es6之后新增了哪些属性？"><a href="#Es6之后新增了哪些属性？" class="headerlink" title="Es6之后新增了哪些属性？"></a>Es6之后新增了哪些属性？</h2><p>let，const，</p>
 <p>箭头函数，</p>
-<p>结构，</p>
+<p>解构</p>
 <p>使用class定义类</p>
 <p>set，map、</p>
 <p>新增数据类型symbal，bigInt</p>
@@ -357,10 +359,6 @@
 <h2 id="回流和重绘是什么"><a href="#回流和重绘是什么" class="headerlink" title="回流和重绘是什么"></a>回流和重绘是什么</h2><p>回流主要是在layout布局阶段，元素的大小位置发生变化，重新计算进行布局，这个变化就是回流。</p>
 <p>重绘主要发生在paint绘制阶段，元素的样式发生了变化，这个变化就是重绘</p>
 <p>回流一定会引起重绘，重绘不一定会引起回流。</p>
-<h2 id="怎样减少首页白屏的时间"><a href="#怎样减少首页白屏的时间" class="headerlink" title="怎样减少首页白屏的时间?"></a>怎样减少首页白屏的时间?</h2><p>把第三方包放入到index.html文件中，并引入CDN加速。</p>
-<p>实现DNS预解析，提前获取IP地址，缩短响应的时间，rel&#x3D;”dns-prefetch”</p>
-<p>也可以使用tcp连接优化：通过rel&#x3D;“preconnect”提前执行一些操作；</p>
-<p>还有就是代码方面v-if和v-show使用的场景选择</p>
 <h2 id="解决跨域的方法？"><a href="#解决跨域的方法？" class="headerlink" title="解决跨域的方法？"></a>解决跨域的方法？</h2><p>jsonp的方式</p>
 <p>后端通过cors解决方案</p>
 <p>nginx反向代理的方式</p>
@@ -398,12 +396,12 @@
 <p>通过递归的方式</p>
 <p>json.parse</p>
 <p>也可以使用第三方函数库lodash的_.cloneDeep</p>
-<h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><h3 id="什么是事件循环？"><a href="#什么是事件循环？" class="headerlink" title="什么是事件循环？"></a>什么是事件循环？</h3><p>浏览器在渲染主线程的时候会进入无限循环，循环每次都会判断时间队列中是否存在任务，如果存在任务，就直接取出第一个执行，然后进入下一次循环，如果没有任务，渲染主进程就会进入休眠的状态，其他任务也可以不断的向消息队列进行添加，添加到消息队列的末尾 ，如果主进程处于休眠状态，那么就会唤醒主进程，还有一些异步事件，比如定时器，网络请求，当主进程执行到这些异步任务的时候，会将他们交给计时线程，计时线程结束后会重新交给消息对列。这就是事件循环。</p>
-<p>事件循环就是以浏览器为宿主环境实现事件调度，因为浏览器需要处理很多事件，比如脚本的执行，用户的操作，渲染和网络请求等，事件循环就是为了调度这些任务而生的，通过事件循环，浏览器可以使用任务队列管理任务，这样可以让异步事件非阻塞的执行。</p>
-<h3 id="为什么需要事件循环"><a href="#为什么需要事件循环" class="headerlink" title="为什么需要事件循环"></a>为什么需要事件循环</h3><p>由于javaScript是单线程的，而且js的主线程和渲染线程是互斥的，如果异步操作阻塞了js的执行，就会引发浏览器假死，事件循环为浏览器引入了任务队列，任务队列来调度这些任务，就不会造成阻塞了。浏览器事件循环在处理到异步的时候不会等待返回结果，而是将这个任务挂起，当异步返回结果的时，把它放入到任务队列中，放入任务队列也不会立刻执行，而是等待执行栈把所有任务都执行完后，主线程处于空闲的状态，主线程就会  先查看是否有微任务，如果没有，就去任务队列中取事件，并把对应的回调加入执行栈中，如果有，就先去执行微任务，当微任务队列为空的时候，再去查找任务队列中是否有任务，如果有就取出排在第一位的事件，将这个事件放到执行栈中，进行执行，就这样循环操作。</p>
+<h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><h3 id="什么是事件循环？"><a href="#什么是事件循环？" class="headerlink" title="什么是事件循环？"></a>什么是事件循环？</h3><p>浏览器在执行js的时候，主线程会不断执行代码，遇到同步任务直接执行，遇到异步任务，比如定时器，网络请求，用户交互操作，这类的请求就会被浏览器加到宏任务队列中，遇到promise的执行回调会被加到微任务队列中，主线程会开启一个无限循环，不断地查看任务队列中是否有任务存在，如果有任务，先执行微任务，在执行宏任务，每次执行下一次的宏任务之前都会先把微任务队列清空。</p>
+<h3 id="为什么需要事件循环"><a href="#为什么需要事件循环" class="headerlink" title="为什么需要事件循环"></a>为什么需要事件循环</h3><p>事件循环就是以浏览器为宿主环境实现事件调度，因为浏览器需要处理很多事件，比如脚本的执行，用户的操作，渲染和网络请求等，事件循环就是为了调度这些任务而生的，通过事件循环，浏览器可以使用任务队列管理任务，这样可以让异步事件非阻塞的执行。</p>
+<p>由于javaScript是单线程的，而且js的主线程和渲染线程是互斥的，如果异步操作阻塞了js的执行，就会引发浏览器假死，事件循环为浏览器引入了任务队列，任务队列来调度这些任务，就不会造成阻塞了。浏览器事件循环在处理到异步的时候不会等待返回结果，而是将这个任务挂起，当异步返回结果的时，把它放入到任务队列中，放入任务队列也不会立刻执行，而是等待执行栈把所有任务都执行完后，主线程处于空闲的状态，主线程就会  先查看是否有微任务，如果没有，就去任务队列中取事件，并把对应的回调加入执行栈中，如果有，就先去执行微任务，当微任务队列为空的时候，再去查找任务队列中是否有任务，如果有就取出排在第一位的事件，将这个事件放到执行栈中，进行执行，就这样循环操作。</p>
 <h3 id="宏任务和微任务"><a href="#宏任务和微任务" class="headerlink" title="宏任务和微任务"></a>宏任务和微任务</h3><p>异步任务又分为宏任务和微任务</p>
 <p>宏任务主要包括：script总体代码，定时器，ui交互事件</p>
-<p>微任务主要包括promise，微任务不属于任务队列。</p>
+<p>微任务主要包括promise。</p>
 <h2 id="什么是虚拟DOM-？"><a href="#什么是虚拟DOM-？" class="headerlink" title="什么是虚拟DOM ？"></a>什么是虚拟DOM ？</h2><p>现代的网站大多具有复杂的布局，大量的节点和 交互操作等特征，这就引起了直接操作DOM不当带来的影响性能的问题不容忽视；所以就出现了虚拟DOM，虚拟dom本质上就是一个普通的js对象，它就是对真实DOM信息和结构的的描述。</p>
 <h3 id="为什么要有虚拟Dom？"><a href="#为什么要有虚拟Dom？" class="headerlink" title="为什么要有虚拟Dom？"></a>为什么要有虚拟Dom？</h3><p>因为操作真实的DOM操作很慢，而且轻微的操作都可能引起页面的重新排版，非常消耗性能，所以出现了虚拟DOM，虚拟DOM通过预先操作，找出新旧虚拟DOM之间的差异，然后在重新渲染，来提升操作真实DOM的性能和效率。</p>
 <h2 id="vue和react区别"><a href="#vue和react区别" class="headerlink" title="vue和react区别"></a>vue和react区别</h2><p>二者都采用数据驱动视图的思想，以虚拟DOM 为基础，以组件化的方式组织应用。</p>
@@ -416,6 +414,10 @@
 <p>核心概念的差异：</p>
 <p>在数据的响应式中，vue时推模型，当数据发生改变的时候视图自动更新；</p>
 <p>而react中则使用拉模型，就是当数据发生改变的时候，需要手动调用setstate()来更新页面</p>
+<h2 id="怎样减少首页白屏的时间"><a href="#怎样减少首页白屏的时间" class="headerlink" title="怎样减少首页白屏的时间?"></a>怎样减少首页白屏的时间?</h2><p>把第三方包放入到index.html文件中，并引入CDN加速。</p>
+<p>实现DNS预解析，提前获取IP地址，缩短响应的时间，rel&#x3D;”dns-prefetch”</p>
+<p>也可以使用tcp连接优化：通过rel&#x3D;“preconnect”提前执行一些操作；</p>
+<p>还有就是代码方面v-if和v-show使用的场景选择</p>
 <h2 id="new一个对象实现原理"><a href="#new一个对象实现原理" class="headerlink" title="new一个对象实现原理"></a>new一个对象实现原理</h2><p>首先创建一个新的对象；</p>
 <p>然后将构造函数的prototype显式原型赋值给新的对象的__proto__隐式原型</p>
 <p>然后将构造函数的this指向新对象，绑定this，然后在调用构造函数，这一步也就是给新对象加方法</p>
@@ -423,13 +425,31 @@
 <h2 id="bind，call，apply"><a href="#bind，call，apply" class="headerlink" title="bind，call，apply"></a>bind，call，apply</h2><p>他们三者的作用都是相同的，都是动态的绑定this，动态修改当前函数内部环境对象this的指向。</p>
 <p>执行方式不同：call和apply是改变后页面加载之后就立即执行，是同步代码，bind是异步代码，改变之后不会立即执行，而是返回一个新的函数</p>
 <p>修改this的性质不同：call，apply只是临时的修改一次，也就是call’和apply方法的那一次，当再次调用原函数的时候，它还是指向原来的指向，bind是永久修改函数this的指向，但是它修改的不是原来的函数，而是返回一个修改后的函数。所以使用bind绑定后就修改不了了。</p>
-<p>传参数不同，call和bind传参是一个一个逐一传入，不能使用剩余参数的方式传参，apply可以使用数组的方式传入，是要是数组方式就可以使用剩余参数的方式传入。</p>
-<h2 id="js中的异步编程"><a href="#js中的异步编程" class="headerlink" title="js中的异步编程"></a>js中的异步编程</h2><h2 id="什么是diff算法？"><a href="#什么是diff算法？" class="headerlink" title="什么是diff算法？"></a>什么是diff算法？</h2><h2 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h2><p>const url &#x3D; new URL(“..&#x2F;..&#x2F;assets&#x2F;logo.png”, import.meta.url).href;</p>
-<h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><p>animation动画属性</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 引用动画 */</span><br>           <span class="hljs-comment">/* animation-name: move; */</span><br>           <span class="hljs-comment">/*动画的时间 */</span><br>           <span class="hljs-comment">/* animation-duration: 2s; */</span><br>           <span class="hljs-comment">/* 运行速度曲线 */</span><br>           <span class="hljs-comment">/* animation-timing-function: ease-in-out; */</span><br>           <span class="hljs-comment">/* 何时开始 */</span><br>           <span class="hljs-comment">/* animation-delay: 1s; */</span><br>           <span class="hljs-comment">/* 动画循环次数，1表示一次，infinite表示无限次 */</span><br>           <span class="hljs-comment">/* animation-iteration-count: infinite; */</span><br>           <span class="hljs-comment">/* 表示会不会逆回来，alternate表示逆回来，normal表示普通 */</span><br>           <span class="hljs-comment">/* animation-direction: alternate; */</span><br>           <span class="hljs-comment">/* 这是停在结束位置，回到初始位置是backwards */</span><br>           <span class="hljs-comment">/* animation-fill-mode: forwards; */</span><br>           <span class="hljs-comment">/* 下面是简写 */</span><br>           <span class="hljs-comment">/* animation: name duration timing-function delay iteration-count direction fill-mode; */</span><br></code></pre></td></tr></table></figure>
+<p>传参数不同，apply时数组，call是参数列表，二者都是一次性传参，而bind可以分多次传入</p>
+<h2 id="js中的异步编程"><a href="#js中的异步编程" class="headerlink" title="js中的异步编程"></a>js中的异步编程</h2><h3 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h3><h4 id="promise解决的问题"><a href="#promise解决的问题" class="headerlink" title="promise解决的问题"></a>promise解决的问题</h4><p>promise就是解决了回调地狱的问题，为了拿到异步的结果，有时候需要层层回调，代码的可读性极差，但是使用promise就解决了这个问题。</p>
+<p>而且还解决了异步处理代码的问题，在公司有的人设计异步处理函数，但是调用者和设计者有可能不是一个人，虽然随着发展呢，社区已经形成的固定的设计方法，但是也不能保证设计者在处理异步函数的时候就按照社区固定的来，所以调用者在使用的时候还得看一下异步设计函数，所以很不方便，而promise也解决了这个问题。</p>
+<h4 id="promise有三个状态"><a href="#promise有三个状态" class="headerlink" title="promise有三个状态"></a>promise有三个状态</h4><p>pending状态等待状态</p>
+<p>fulfilled状态异步处理成功就会变成这个状态</p>
+<p>rejected状态异步处理失败就会变成这个状态</p>
+<p>而且promise成功后状态就不能改变了，如果成功了你后面在执行失败也是无效的，因为状态已经确定了</p>
+<p>还有常用的方法，then（）方法用来接收成功的结果，catch方法用来接收失败的结果，还有finally就是不管成功还是失败都会执行这个方法里面的回调函数。</p>
+<h4 id="promise的类方法"><a href="#promise的类方法" class="headerlink" title="promise的类方法"></a>promise的类方法</h4><p>Promise.resolve方法在确定成功的时候可以直接使用，不用new Promise在执行成功的回调</p>
+<p>Promise.reject方法在要抛出错误的时候直接使用</p>
+<p>Promise.all方法可以传入多个promise，会返回一个新的promise来包裹多个promise，等多个promise全部是成功的状态的时候，就把新的promise状态变为fulfilled，并且返回一个数组，存放着多个promise的结果，如果有一个是失败的话，就把新的promise状态也变成rejected，变成失败的状态</p>
+<p>Promise.allSettled是es11新出的方法，会等包裹的promise执行完返回状态和结果，失败同样不会直接把新的promise状态变成失败</p>
+<p>Promise.race方法是会返回最快执行的一个promise的结果，不管成功失败</p>
+<p>promise.any方法是会返回一个最先执行的成功的promise</p>
+<h3 id="async和await"><a href="#async和await" class="headerlink" title="async和await"></a>async和await</h3><p>其实就是生成器和yield和promise的语法糖。</p>
+<h2 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h2><p>生成器就是一个特殊的迭代器</p>
+<h3 id="什么是迭代器？"><a href="#什么是迭代器？" class="headerlink" title="什么是迭代器？"></a>什么是迭代器？</h3><p>迭代器就是一个特殊的对象，对象里面有个next方法，每次调用都返回一个对象，对象里面有key和value，当key为false时证明迭代结束。</p>
+<h3 id="什么时可迭代对象？"><a href="#什么时可迭代对象？" class="headerlink" title="什么时可迭代对象？"></a>什么时可迭代对象？</h3><p>可迭代对象，可迭代对象必须实现@@iterator 方法。可以通过Symbol.iterator 访问该属性</p>
+<h3 id="生成器？"><a href="#生成器？" class="headerlink" title="生成器？"></a>生成器？</h3><p>生成器是一个特殊的迭代器；</p>
+<p>生成器的形式是一个函数，函数名称前面加一个星号 <code>*</code> 表示它是一个生成器。</p>
+<p>函数体内部使用<code>yield</code>表达式，定义不同的内部状态。</p>
+<h2 id="什么是diff算法？"><a href="#什么是diff算法？" class="headerlink" title="什么是diff算法？"></a>什么是diff算法？</h2><p>const url &#x3D; new URL(“..&#x2F;..&#x2F;assets&#x2F;logo.png”, import.meta.url).href;</p>
+<h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><h2 id="animation动画属性"><a href="#animation动画属性" class="headerlink" title="animation动画属性"></a>animation动画属性</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 引用动画 */</span><br>           <span class="hljs-comment">/* animation-name: move; */</span><br>           <span class="hljs-comment">/*动画的时间 */</span><br>           <span class="hljs-comment">/* animation-duration: 2s; */</span><br>           <span class="hljs-comment">/* 运行速度曲线 */</span><br>           <span class="hljs-comment">/* animation-timing-function: ease-in-out; */</span><br>           <span class="hljs-comment">/* 何时开始 */</span><br>           <span class="hljs-comment">/* animation-delay: 1s; */</span><br>           <span class="hljs-comment">/* 动画循环次数，1表示一次，infinite表示无限次 */</span><br>           <span class="hljs-comment">/* animation-iteration-count: infinite; */</span><br>           <span class="hljs-comment">/* 表示会不会逆回来，alternate表示逆回来，normal表示普通 */</span><br>           <span class="hljs-comment">/* animation-direction: alternate; */</span><br>           <span class="hljs-comment">/* 这是停在结束位置，回到初始位置是backwards */</span><br>           <span class="hljs-comment">/* animation-fill-mode: forwards; */</span><br>           <span class="hljs-comment">/* 下面是简写 */</span><br>           <span class="hljs-comment">/* animation: name duration timing-function delay iteration-count direction fill-mode; */</span><br></code></pre></td></tr></table></figure>
 
-<p>transform</p>
-<p>translate移动的距离，向X轴向Y轴</p>
+<h2 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h2><p>translate移动的距离，向X轴向Y轴</p>
 <p>scale放大倍数</p>
 <p>rotate旋转度数可以是rotateX,rotateY,rotateZ</p>
 <p><a target="_blank" rel="noopener" href="https://m.runoob.com/cssref/css3-pr-transform-origin.html">transform-origin</a>改变被转换元素的位置</p>
@@ -438,6 +458,9 @@
 <p>使用gard布局</p>
 <p>使用定位的方法：通过子绝父相结合负margin实现，通过子绝父相结合margin：auto实现，通过子绝父相结合transform实现，通过子绝父相结合css3计算属性calc使用</p>
 <h2 id="圣杯布局"><a href="#圣杯布局" class="headerlink" title="圣杯布局"></a>圣杯布局</h2><p>传统局部方式，一个容器包裹三个盒子，给外面容器一个padding值，然后里面三个盒子全部进行float布局，然后一个盒子设置100%宽度，然后让下面两个盒子通过position：relative，然后设置负margin值，然后把下面两个盒子移动到上面空白地方。</p>
+<h2 id="import和link的区别"><a href="#import和link的区别" class="headerlink" title="@import和link的区别"></a>@import和link的区别</h2><p>@important是css提供的语法规则，可以引用样式表，link是html提供的标签，不仅可以引入样式表还都可以定义rel连接属性</p>
+<p>加载顺序不同，link是直接同步加载，而@import是页面加载完毕以后在加载对应的css</p>
+<p>兼容性不同，link没有兼容性，@import在低版本浏览器不适用</p>
 <h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="http和https的区别？"><a href="#http和https的区别？" class="headerlink" title="http和https的区别？"></a>http和https的区别？</h2><p>http是超文本传输协议，传输信息的时候是明文传输，而https使用ssl加密的方式传输数据，https比http协议安全</p>
 <p>https还需要申请CA证书，一般是需要一定费用的。</p>
 <p>端口号：http默认的端口号是80，https默认的端口号是443</p>
@@ -480,8 +503,30 @@
 <p>3，数据的有效期也不同，cookie只在设置的cookie过期前有效，即使是浏览器或者是窗口关闭，也是在设置的过期前有效</p>
 <p>sessionStorage：仅在当前浏览器窗口关闭之前有效；localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据，除非自己把localStorage删掉才会过期</p>
 <p>4，作用域不同：，sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localstorage在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的 </p>
-<h2 id="协商缓存和强缓冲"><a href="#协商缓存和强缓冲" class="headerlink" title="协商缓存和强缓冲"></a>协商缓存和强缓冲</h2><p>强缓存的意思就是不向服务器发起请求，也是本地强制缓存，浏览器想要获取特定数据的时候，首先先检查本地缓存中是否存在该数据，如果窜在直接从本地获取，如果不存在就向服务器索要该数据</p>
+<h2 id="GET请求和post请求区别"><a href="#GET请求和post请求区别" class="headerlink" title="GET请求和post请求区别"></a>GET请求和post请求区别</h2><p>1，get请求一般是请求数据，当然也可以提交，但是常见的还是获取数据，post一般做请求数据</p>
+<p>2，get请求参数会放到url中直接暴露出去，安全性较差，而且长度也是有限制的，post请求参数放在body中，没有长度限制。</p>
+<p>3，get请求会被缓存，post请求不会被缓存</p>
+<p>4，get请求刷新浏览器或者回退没有影响，post请求回退会重新提交数据请求</p>
+<p>5，get请求会保存在浏览器历史记录中，但是post不会</p>
+<h2 id="协商缓存和强缓冲"><a href="#协商缓存和强缓冲" class="headerlink" title="协商缓存和强缓冲"></a>协商缓存和强缓冲</h2><p>强缓存的意思就是不向服务器发起请求，也是本地强制缓存，浏览器想要获取特定资源的时候，首先先检查本地缓存中是否存在该数据，如果存在在直接从本地获取，如果不存在就向服务器索要该数据</p>
 <p>协商缓存就是浏览器第一次请求数据时，服务器会将缓存标识与数据一起返回给客户端，客户端将二者备份至缓存数据库中，再次请求数据的时候，客户端会将备份的缓存标识发送给服务器，服务器根据缓存标识进行判断，判断成功后，返回304状态码，通知客服端比较成功，可以使用缓存数据</p>
+<h3 id="协商缓存和强缓存的详解"><a href="#协商缓存和强缓存的详解" class="headerlink" title="协商缓存和强缓存的详解"></a>协商缓存和强缓存的详解</h3><p>当浏览器想要请求资源的时候，会根据http的header判断是否命中强缓存，查看cache-Control字段，看是否命中缓存，</p>
+<p>​    如果命中返回200状态码，直接使用自己缓存资源，不会向服务器发送请求。</p>
+<p>​    如果没有命中的话，会向服务器发送请求，通过服务器来验证http携带的header看是否命中了协商缓存</p>
+<pre><code class="hljs">         如果命中 ，返回状态码304，不会返回资源，告诉浏览器可以使用缓存
+</code></pre>
+<p>​             如何没有命中的话，就会返回200，返回资源。</p>
+<h4 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h4><p>强缓存还可以根据expries来判断请求结果的缓存到期时间，如果cache-Control和它一起存在的时候，catche-Control优先级高于expires。</p>
+<h4 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h4><p>last-Modified，浏览器在第一次跟服务器请求资源的时候，服务器返回资源的同时，会在Response 的header中返回last-Modified，返回最后修改的时间，然后在第二次请求的时候会在Requese的header中加上一个字段(If-Modified-Since)，值就时last-Modified的值，然后发送到服务器，与服务器文件的last-Modified进行比对</p>
+<p>​        如果命中，则返回304状态码，不返回新的资源，浏览器使用本地缓存，<strong>不更新last-Modified</strong></p>
+<p>​        如果没有命中，返回状态码，请求新的资源，更新last-Modified</p>
+<p>Etag，浏览器在第一次跟服务器请求资源的时候，服务器返回资源的同时，会在Response 的header中返回Etag，作为当前资源的唯一标识，然后在第二次请求的时候会在Requese的header中加上一个字段（If-None-Match），值就是上次请求资源的Etag，然后发送到服务器，与服务器文件的Etag进行比对</p>
+<p>​        如果命中，则返回304状态码，不返回新的资源，浏览器使用本地缓存，<strong>更新Etag</strong></p>
+<p>​        如果没有命中，返回状态码，请求新的资源，更新last-Modified</p>
+<p>二者一同使用的话服务器优先验证Etag。既然有了Etag，为什么还要last-Modified？</p>
+<p>一是服务器可以更精准的判断文件最后修改的时间，还有就是文件内容没修改，文件时间修改了，不希望认为这个文件修改了，所以last-modified还是很有作用的。</p>
+<h4 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h4><p>http缓存分为强缓存和协商缓存。</p>
+<p><img src="/2022/10/25/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221214125857796.png" srcset="/img/loading.gif" lazyload alt="image-20221214125857796"></p>
 <h2 id="三次握手和四次挥手"><a href="#三次握手和四次挥手" class="headerlink" title="三次握手和四次挥手"></a>三次握手和四次挥手</h2>
               
             </div>
