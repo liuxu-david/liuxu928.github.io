@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/10/25/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221214125857796.png">
 <meta property="article:published_time" content="2022-10-25T09:24:25.000Z">
-<meta property="article:modified_time" content="2022-12-14T04:59:32.371Z">
+<meta property="article:modified_time" content="2023-02-04T14:07:30.948Z">
 <meta property="article:author" content="刘旭">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary_large_image">
@@ -223,7 +223,7 @@
         
         
         
-          114 分钟
+          118 分钟
         
       </span>
     
@@ -267,7 +267,7 @@
               
               <h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><span id="more"></span>
 
-<h2 id="vue2和vue3的区别？"><a href="#vue2和vue3的区别？" class="headerlink" title="vue2和vue3的区别？"></a>vue2和vue3的区别？</h2><p>（1）API区别</p>
+<h1 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h1><h2 id="vue2和vue3的区别？"><a href="#vue2和vue3的区别？" class="headerlink" title="vue2和vue3的区别？"></a>vue2和vue3的区别？</h2><p>（1）API区别</p>
 <p>vue2中使用的时optionAPI（选项式API）而vue3中使用的时composition API(组合式API)</p>
 <p>（2）生命周期不同</p>
 <p>vue2中生命周期：beforeCreate，created，beforeMount,mounted,beforeUpdate,updated,beforeDestroy,distroyed</p>
@@ -276,38 +276,42 @@
 <p>vue2中使用的时数据劫持结合发布者-订阅者模式，用object.definePropert()实现的</p>
 <p>vue3中使用了es6后的proxy对数据进行代理，</p>
 <p>object.definePropert()只能对对象的某个属性进行监听，不能对全对象进行监听，而且数组的新增，删除也监听不到，还需要对数组进行特异性操作，，而vue3使用proxy可以对整个对象进行数据的操作，也完美支持对数组的监听。</p>
-<h3 id="vue的架构模式？"><a href="#vue的架构模式？" class="headerlink" title="vue的架构模式？"></a>vue的架构模式？</h3><p>不是标准的MVVM，但是官网说的是借鉴mvvm的架构模式。mvvm就是model（数据），view（视图），viewModel是数据和视图之间的桥梁，跟mvp的架构模式差不多，但是唯一的区别就是viewModel通过双向绑定的形式，来充当数据和视图之间的桥梁。</p>
-<h3 id="谈谈mvc架构模式？"><a href="#谈谈mvc架构模式？" class="headerlink" title="谈谈mvc架构模式？"></a>谈谈mvc架构模式？</h3><p>model（数据）view（视图）controller（控制器）</p>
+<h2 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h2><h3 id="什么是虚拟DOM-？"><a href="#什么是虚拟DOM-？" class="headerlink" title="什么是虚拟DOM ？"></a>什么是虚拟DOM ？</h3><p>虚拟dom本质上就是一个普通的js对象，它就是对真实DOM信息和结构的的描述，总的说就是一种对真实Dom的抽象。</p>
+<h3 id="为什么会出现虚拟DOM？"><a href="#为什么会出现虚拟DOM？" class="headerlink" title="为什么会出现虚拟DOM？"></a>为什么会出现虚拟DOM？</h3><p>因为当我们操作DOM的时候，会造成页面的频繁回流或者重绘，这样就会造成性能影响，然后这个时候虚拟DOM就出现了。</p>
+<h3 id="diff算法的产生？"><a href="#diff算法的产生？" class="headerlink" title="diff算法的产生？"></a>diff算法的产生？</h3><p>虚拟Dom的出现就是当DOM节点发生改变的时候，对比两个虚拟DOM的差异，然后对应到真实Dom上进行打补丁，这个时候diff算法就爬上用场了，diff算法就是以最小的代价找到差异，然后去更新真实的DOM。 </p>
+<h3 id="vue中的diff算法的详解"><a href="#vue中的diff算法的详解" class="headerlink" title="vue中的diff算法的详解"></a>vue中的diff算法的详解</h3><p>采用的是同层比较，判断是否是同一个元素，如果不是直接暴力替换，如果是的话就比属性，属性比对完以后比对儿子，比对儿子也有四种情况，第一种老的有儿子，新的没有儿子，直接删掉老的儿子，第二种新的有儿子，老的没有儿子，递归添加创建，第三种就是文本的情况，第四种是都有children的情况，深度递归，通过双指针，然后进行头头比较，尾尾比较，头尾比较，尾头比较，然后在对比查找 。vue3做了优化，采用最长递增子序列</p>
+<h2 id="vue的架构模式？"><a href="#vue的架构模式？" class="headerlink" title="vue的架构模式？"></a>vue的架构模式？</h2><p>MVVM架构模式。mvvm就是model（数据），view（视图），viewModel是数据和视图之间的桥梁，当数据发生改变的时候，veiw Mode中Data bindings监听到model层数据的变化，通过数据绑定的方式来更新视图（view层），当 视图（view层）层发生改变的时候，view Model中Dom listerners会监听到视图的变化然后来更新数据，从而才实现了数据的双向绑定，所以说viewModel是视图和数据之间中重要的桥梁。 跟mvp的架构模式差不多，但是唯一的区别就是viewModel通过双向绑定的形式，来充当数据和视图之间的桥梁。</p>
+<h2 id="谈谈mvc架构模式？"><a href="#谈谈mvc架构模式？" class="headerlink" title="谈谈mvc架构模式？"></a>谈谈mvc架构模式？</h2><p>model（数据）view（视图）controller（控制器）</p>
 <p>数据的改变会引起视图的改变，然后视图的改变通过控制器然后对部分代码进行改变。</p>
-<h3 id="说说对SPA单页面应用的理解？"><a href="#说说对SPA单页面应用的理解？" class="headerlink" title="说说对SPA单页面应用的理解？"></a>说说对SPA单页面应用的理解？</h3><p>单页面应用就是页面在第一次渲染的时候就加载相应的HTML，CSS，js，一旦页面加载完成不会因为用户的操作造成页面的重新加载或跳转，取而代之路由的切换来实现html内容的变化，，ui与用户的交流</p>
+<h2 id="说说对SPA单页面应用的理解？"><a href="#说说对SPA单页面应用的理解？" class="headerlink" title="说说对SPA单页面应用的理解？"></a>说说对SPA单页面应用的理解？</h2><p>单页面应用就是页面在第一次渲染的时候就加载相应的HTML，CSS，js，一旦页面加载完成不会因为用户的操作造成页面的重新加载或跳转，取而代之路由的切换来实现html内容的变化，，ui与用户的交流</p>
 <p>利弊：</p>
 <p>用户体验好，避免不必要的跳转，对服务器压力比较小，前后端分离，架构清晰。</p>
 <p>第一次渲染的时候加载东西比较多，比较耗时，还有就是需要前进后退路由管理，还有就是seo难度比较大 。</p>
-<h3 id="vue-router路由跳转模式？"><a href="#vue-router路由跳转模式？" class="headerlink" title="vue-router路由跳转模式？"></a>vue-router路由跳转模式？</h3><p>跳转模式有两种，一种是hash模式，另一种是history模式</p>
+<h2 id="vue-router路由跳转模式？"><a href="#vue-router路由跳转模式？" class="headerlink" title="vue-router路由跳转模式？"></a>vue-router路由跳转模式？</h2><p>跳转模式有两种，一种是hash模式，另一种是history模式</p>
 <p>二者的差异：history相比较hash模式更加优雅，hash模式的地址栏带的有#</p>
 <p>hash模式是通过浏览器的onhashchange来监听地址的变化然后进行页面的切换，而history则是使用popstate（）来监听url的改变，然后通过html5新出的pushState和replaceState两个API实现页面的切换，二者都不会向浏览器发送请求。</p>
 <p>在使用history模式的时候需要在后端配置路由重定向，因为如果进入某个路由然后重新刷新页面的时候，就会真的向服务器发起请求，然后如果不配置重定向的话就会出现404的问题，而hash模式不用配置。</p>
-<h3 id="什么是vuex？"><a href="#什么是vuex？" class="headerlink" title="什么是vuex？"></a>什么是vuex？</h3><p>是vue开发的状态管理模式，可以共享状态，很多时候我们需要在多个组件之间进行数据的共享，比如用户的登陆状态，用户的头像之类的，所以就需要状态管理模式来管理这些状态。</p>
-<h3 id="nextTick是什么？"><a href="#nextTick是什么？" class="headerlink" title="nextTick是什么？"></a>nextTick是什么？</h3><p>在下次DOM更新循环结束后执行延迟回调；</p>
-<p>他的本质其实就是js中的事件循环的一种应用。通过promise，settimeout，mutationObserve来模拟微任务和宏任务，从而实现vue框架中自己的回调。</p>
+<h2 id="什么是vuex？"><a href="#什么是vuex？" class="headerlink" title="什么是vuex？"></a>什么是vuex？</h2><p>是vue开发的状态管理模式，可以共享状态，很多时候我们需要在多个组件之间进行数据的共享，比如用户的登陆状态，用户的头像之类的，所以就需要状态管理模式来管理这些状态。</p>
+<h2 id="nextTick是什么？"><a href="#nextTick是什么？" class="headerlink" title="nextTick是什么？"></a>nextTick是什么？</h2><p>在下次DOM更新循环结束后执行延迟回调；</p>
+<p>他的本质其实就是js中的事件循环的一种应用。通过promise，settimeout，mutationObserve来模拟js中的微任务和宏任务，从而实现vue框架中自己的异步回调队列。</p>
 <p>如果一个数据发生改变后执行某个操作，而这个操作随着数据的变化会引起DOM结构的变化，那这个操作就要放到nexttick的回调函数中去；</p>
 <p>因为vue在更新DOM的时候是异步更新的，数据发生改变后页面不会立马改变，而是监听到数据的变化后开启一个队列，把所有数据的变化放在同一个事件循环中去，当同一个watcher被多次触发，那么去除重复改变的数据很重要</p>
-<h3 id="v-for中key的作用？"><a href="#v-for中key的作用？" class="headerlink" title="v-for中key的作用？"></a>v-for中key的作用？</h3><p>key是虚拟节点的唯一标识，它可以是diff算法更快更准确的找出可复用的节点，然后进行页面视图的更新。</p>
+<h2 id="v-for中key的作用？"><a href="#v-for中key的作用？" class="headerlink" title="v-for中key的作用？"></a>v-for中key的作用？</h2><p>key是虚拟节点的唯一标识，它可以是diff算法更快更准确的找出可复用的节点，然后进行页面视图的更新。</p>
 <p>一般情况 不会使用index当作key，因为在删除，增加，排序的时候就会出现一些问题</p>
-<h3 id="ref和reactive区别？"><a href="#ref和reactive区别？" class="headerlink" title="ref和reactive区别？"></a>ref和reactive区别？</h3><p>ref可以包裹任何类型，并把包裹的类型转成响应式，</p>
+<h2 id="ref和reactive区别？"><a href="#ref和reactive区别？" class="headerlink" title="ref和reactive区别？"></a>ref和reactive区别？</h2><p>ref可以包裹任何类型，并把包裹的类型转成响应式，</p>
 <p>reactive只能包裹复杂数据类型，也可以把包裹的数据转成响应式；</p>
 <p>所以ref的更能更全，更适用于任何环境，所以在开发的时候尽量选择ref；</p>
-<h3 id="watch和watheffect区别？"><a href="#watch和watheffect区别？" class="headerlink" title="watch和watheffect区别？"></a>watch和watheffect区别？</h3><p>watch可以监听单个数据源 也可以监听多个数据源，监听多个数据源的时候第一个参数可以是数组；</p>
+<h2 id="watch和watheffect区别？"><a href="#watch和watheffect区别？" class="headerlink" title="watch和watheffect区别？"></a>watch和watheffect区别？</h2><p>watch可以监听单个数据源 也可以监听多个数据源，监听多个数据源的时候第一个参数可以是数组；</p>
 <p>还有就是watch是懒执行的，它默认第一次不会执行，除非把第三个参数immediate设置为true</p>
 <p>watch是当依赖的数据发生改变的时候执行回调函数；</p>
 <p>还有就是watch可以监听到数据改变前后的值</p>
 <p>watcheffect是默认第一次就会执行一次，还有就是watcheffect会自动收集依赖，当依赖发生变化的时候会重新执行自身，还有就是不饿能获取变化前后的值。</p>
-<h3 id="watch和computed的区别"><a href="#watch和computed的区别" class="headerlink" title="watch和computed的区别"></a>watch和computed的区别</h3><h3 id="computed："><a href="#computed：" class="headerlink" title="computed："></a>computed：</h3><p>computed和watcheffect有些相似，也是当数据发生改变的时候，重新计算，进行更新，但是computed是没有值改变的时候不会调用，但是watcheffect会默认调用一次，还有就是computed更注重计算出来的结果，所以得有返回值，而watcheffect更注重过程，注重的是回调函数的函数体，所以不用写返回值。</p>
+<h2 id="watch和computed的区别"><a href="#watch和computed的区别" class="headerlink" title="watch和computed的区别"></a>watch和computed的区别</h2><h3 id="computed："><a href="#computed：" class="headerlink" title="computed："></a>computed：</h3><p>computed和watcheffect有些相似，也是当数据发生改变的时候，重新计算，进行更新，但是computed是没有值改变的时候不会调用，但是watcheffect会默认调用一次，还有就是computed更注重计算出来的结果，所以得有返回值，而watcheffect更注重过程，注重的是回调函数的函数体，所以不用写返回值。</p>
 <h3 id="computed和methods区别"><a href="#computed和methods区别" class="headerlink" title="computed和methods区别"></a>computed和methods区别</h3><p>比如来说，data中定义了一个数组，然后可以通过计算属性来判断这个数组中是否有元素，也就是看这个数组的length是否大于0，如果大于0返回true，反正返回false，同样把这个判断放在methods中也可以进行判断，但是计算属性基于他依赖的响应式是有缓存的，比如这个数组如果没有发生变化，那么计算属性中的这个属性不管怎样访问，他都会立即返回先前的结果，而不用重新执行getter函数，但是在methods中的方法访问一次，就执行一次。</p>
 <p>还有就是在计算属性的getter中不能产生副作用，不要做异步请求或者更改dom的操作，而且计算属性返回的值应该被视为可读的，并且永远不应该更改。</p>
 <h3 id="route和router区别？"><a href="#route和router区别？" class="headerlink" title="route和router区别？"></a>route和router区别？</h3><p>route是路由信息的对象，在vue3中通过useRoute来获取，包括路由信息参数。</p>
 <p>router是路由实例对象，可以通过usreRouter来获取，包括路由的跳转方法等。</p>
-<h3 id="组件间传值的方法"><a href="#组件间传值的方法" class="headerlink" title="组件间传值的方法"></a>组件间传值的方法</h3><p>父传子：通过props进行传递</p>
+<h2 id="组件间传值的方法"><a href="#组件间传值的方法" class="headerlink" title="组件间传值的方法"></a>组件间传值的方法</h2><p>父传子：通过props进行传递</p>
 <p>子传父：通过$emit</p>
 <p>eventbus事件总线的方法</p>
 <p>父子间：v-model</p>
@@ -316,7 +320,7 @@
 <p>$children和$parent和$root</p>
 <p>provide和inject</p>
 <p>vuex</p>
-<h2 id="什么是闭包？"><a href="#什么是闭包？" class="headerlink" title="什么是闭包？"></a>什么是闭包？</h2><p>一个普通函数可以访问外部环境的自由变量，那么这个函数和外部的环境就形成了闭包。</p>
+<h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1><h2 id="什么是闭包？"><a href="#什么是闭包？" class="headerlink" title="什么是闭包？"></a>什么是闭包？</h2><p>一个普通函数可以访问外部环境的自由变量，那么这个函数和外部的环境就形成了闭包。</p>
 <p>从狭义上说，一个普通函数调用了外部函数的自由变量，那就形成了闭包。</p>
 <p>闭包的应用场景：防抖和节流，立即执行函数。</p>
 <h3 id="什么是防抖和节流？"><a href="#什么是防抖和节流？" class="headerlink" title="什么是防抖和节流？"></a>什么是防抖和节流？</h3><p>防抖：就是函数的频繁执行转化为函数的最后一次才去执行，</p>
@@ -402,7 +406,6 @@
 <h3 id="宏任务和微任务"><a href="#宏任务和微任务" class="headerlink" title="宏任务和微任务"></a>宏任务和微任务</h3><p>异步任务又分为宏任务和微任务</p>
 <p>宏任务主要包括：script总体代码，定时器，ui交互事件</p>
 <p>微任务主要包括promise。</p>
-<h2 id="什么是虚拟DOM-？"><a href="#什么是虚拟DOM-？" class="headerlink" title="什么是虚拟DOM ？"></a>什么是虚拟DOM ？</h2><p>现代的网站大多具有复杂的布局，大量的节点和 交互操作等特征，这就引起了直接操作DOM不当带来的影响性能的问题不容忽视；所以就出现了虚拟DOM，虚拟dom本质上就是一个普通的js对象，它就是对真实DOM信息和结构的的描述。</p>
 <h3 id="为什么要有虚拟Dom？"><a href="#为什么要有虚拟Dom？" class="headerlink" title="为什么要有虚拟Dom？"></a>为什么要有虚拟Dom？</h3><p>因为操作真实的DOM操作很慢，而且轻微的操作都可能引起页面的重新排版，非常消耗性能，所以出现了虚拟DOM，虚拟DOM通过预先操作，找出新旧虚拟DOM之间的差异，然后在重新渲染，来提升操作真实DOM的性能和效率。</p>
 <h2 id="vue和react区别"><a href="#vue和react区别" class="headerlink" title="vue和react区别"></a>vue和react区别</h2><p>二者都采用数据驱动视图的思想，以虚拟DOM 为基础，以组件化的方式组织应用。</p>
 <p>开发的体验不同：</p>
@@ -423,9 +426,9 @@
 <p>然后将构造函数的this指向新对象，绑定this，然后在调用构造函数，这一步也就是给新对象加方法</p>
 <p>返回一个新的对象。</p>
 <h2 id="bind，call，apply"><a href="#bind，call，apply" class="headerlink" title="bind，call，apply"></a>bind，call，apply</h2><p>他们三者的作用都是相同的，都是动态的绑定this，动态修改当前函数内部环境对象this的指向。</p>
-<p>执行方式不同：call和apply是改变后页面加载之后就立即执行，是同步代码，bind是异步代码，改变之后不会立即执行，而是返回一个新的函数</p>
+<p>执行方式不同：call和apply是改变后页面加载之后方法就立即执行，是同步代码，bind是异步代码，改变之后不会立即执行，而是返回一个新的函数。</p>
 <p>修改this的性质不同：call，apply只是临时的修改一次，也就是call’和apply方法的那一次，当再次调用原函数的时候，它还是指向原来的指向，bind是永久修改函数this的指向，但是它修改的不是原来的函数，而是返回一个修改后的函数。所以使用bind绑定后就修改不了了。</p>
-<p>传参数不同，apply时数组，call是参数列表，二者都是一次性传参，而bind可以分多次传入</p>
+<p>传参数不同，apply时数组，call是参数列表，bind可以依次传参。</p>
 <h2 id="js中的异步编程"><a href="#js中的异步编程" class="headerlink" title="js中的异步编程"></a>js中的异步编程</h2><h3 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h3><h4 id="promise解决的问题"><a href="#promise解决的问题" class="headerlink" title="promise解决的问题"></a>promise解决的问题</h4><p>promise就是解决了回调地狱的问题，为了拿到异步的结果，有时候需要层层回调，代码的可读性极差，但是使用promise就解决了这个问题。</p>
 <p>而且还解决了异步处理代码的问题，在公司有的人设计异步处理函数，但是调用者和设计者有可能不是一个人，虽然随着发展呢，社区已经形成的固定的设计方法，但是也不能保证设计者在处理异步函数的时候就按照社区固定的来，所以调用者在使用的时候还得看一下异步设计函数，所以很不方便，而promise也解决了这个问题。</p>
 <h4 id="promise有三个状态"><a href="#promise有三个状态" class="headerlink" title="promise有三个状态"></a>promise有三个状态</h4><p>pending状态等待状态</p>
@@ -446,8 +449,8 @@
 <h3 id="生成器？"><a href="#生成器？" class="headerlink" title="生成器？"></a>生成器？</h3><p>生成器是一个特殊的迭代器；</p>
 <p>生成器的形式是一个函数，函数名称前面加一个星号 <code>*</code> 表示它是一个生成器。</p>
 <p>函数体内部使用<code>yield</code>表达式，定义不同的内部状态。</p>
-<h2 id="什么是diff算法？"><a href="#什么是diff算法？" class="headerlink" title="什么是diff算法？"></a>什么是diff算法？</h2><p>const url &#x3D; new URL(“..&#x2F;..&#x2F;assets&#x2F;logo.png”, import.meta.url).href;</p>
-<h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><h2 id="animation动画属性"><a href="#animation动画属性" class="headerlink" title="animation动画属性"></a>animation动画属性</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 引用动画 */</span><br>           <span class="hljs-comment">/* animation-name: move; */</span><br>           <span class="hljs-comment">/*动画的时间 */</span><br>           <span class="hljs-comment">/* animation-duration: 2s; */</span><br>           <span class="hljs-comment">/* 运行速度曲线 */</span><br>           <span class="hljs-comment">/* animation-timing-function: ease-in-out; */</span><br>           <span class="hljs-comment">/* 何时开始 */</span><br>           <span class="hljs-comment">/* animation-delay: 1s; */</span><br>           <span class="hljs-comment">/* 动画循环次数，1表示一次，infinite表示无限次 */</span><br>           <span class="hljs-comment">/* animation-iteration-count: infinite; */</span><br>           <span class="hljs-comment">/* 表示会不会逆回来，alternate表示逆回来，normal表示普通 */</span><br>           <span class="hljs-comment">/* animation-direction: alternate; */</span><br>           <span class="hljs-comment">/* 这是停在结束位置，回到初始位置是backwards */</span><br>           <span class="hljs-comment">/* animation-fill-mode: forwards; */</span><br>           <span class="hljs-comment">/* 下面是简写 */</span><br>           <span class="hljs-comment">/* animation: name duration timing-function delay iteration-count direction fill-mode; */</span><br></code></pre></td></tr></table></figure>
+<h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><p>const url &#x3D; new URL(“..&#x2F;..&#x2F;assets&#x2F;logo.png”, import.meta.url).href;</p>
+<h2 id="animation动画属性"><a href="#animation动画属性" class="headerlink" title="animation动画属性"></a>animation动画属性</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 引用动画 */</span><br>           <span class="hljs-comment">/* animation-name: move; */</span><br>           <span class="hljs-comment">/*动画的时间 */</span><br>           <span class="hljs-comment">/* animation-duration: 2s; */</span><br>           <span class="hljs-comment">/* 运行速度曲线 */</span><br>           <span class="hljs-comment">/* animation-timing-function: ease-in-out; */</span><br>           <span class="hljs-comment">/* 何时开始 */</span><br>           <span class="hljs-comment">/* animation-delay: 1s; */</span><br>           <span class="hljs-comment">/* 动画循环次数，1表示一次，infinite表示无限次 */</span><br>           <span class="hljs-comment">/* animation-iteration-count: infinite; */</span><br>           <span class="hljs-comment">/* 表示会不会逆回来，alternate表示逆回来，normal表示普通 */</span><br>           <span class="hljs-comment">/* animation-direction: alternate; */</span><br>           <span class="hljs-comment">/* 这是停在结束位置，回到初始位置是backwards */</span><br>           <span class="hljs-comment">/* animation-fill-mode: forwards; */</span><br>           <span class="hljs-comment">/* 下面是简写 */</span><br>           <span class="hljs-comment">/* animation: name duration timing-function delay iteration-count direction fill-mode; */</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h2><p>translate移动的距离，向X轴向Y轴</p>
 <p>scale放大倍数</p>
