@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/10/25/%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221214125857796.png">
 <meta property="article:published_time" content="2022-10-25T09:24:25.000Z">
-<meta property="article:modified_time" content="2023-02-05T03:45:06.398Z">
+<meta property="article:modified_time" content="2023-02-05T12:52:19.968Z">
 <meta property="article:author" content="刘旭">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary_large_image">
@@ -223,7 +223,7 @@
         
         
         
-          134 分钟
+          138 分钟
         
       </span>
     
@@ -297,7 +297,7 @@
 <p>利弊：</p>
 <p>用户体验好，避免不必要的跳转，对服务器压力比较小，前后端分离，架构清晰。</p>
 <p>第一次渲染的时候加载东西比较多，比较耗时，还有就是需要前进后退路由管理，还有就是seo难度比较大 。</p>
-<h2 id="vue-router路由跳转模式？"><a href="#vue-router路由跳转模式？" class="headerlink" title="vue-router路由跳转模式？"></a>vue-router路由跳转模式？</h2><p>跳转模式有两种，一种是hash模式，另一种是history模式</p>
+<h2 id="vue-router路由模式？"><a href="#vue-router路由模式？" class="headerlink" title="vue-router路由模式？"></a>vue-router路由模式？</h2><p>路由模式有两种，一种是hash模式，另一种是history模式</p>
 <p>二者的差异：history相比较hash模式更加优雅，hash模式的地址栏带的有#</p>
 <p>hash模式是通过浏览器的onhashchange来监听地址的变化然后进行页面的切换，而history则是使用popstate（）来监听url的改变，然后通过html5新出的pushState和replaceState两个API实现页面的切换，二者都不会向浏览器发送请求。</p>
 <p>在使用history模式的时候需要在后端配置路由重定向，因为如果进入某个路由然后重新刷新页面的时候，就会真的向服务器发起请求，然后如果不配置重定向的话就会出现404的问题，而hash模式不用配置。</p>
@@ -319,8 +319,8 @@
 <h2 id="watch和computed的区别"><a href="#watch和computed的区别" class="headerlink" title="watch和computed的区别"></a>watch和computed的区别</h2><h3 id="computed："><a href="#computed：" class="headerlink" title="computed："></a>computed：</h3><p>computed和watcheffect有些相似，也是当数据发生改变的时候，重新计算，进行更新，但是computed是没有值改变的时候不会调用，但是watcheffect会默认调用一次，还有就是computed更注重计算出来的结果，所以得有返回值，而watcheffect更注重过程，注重的是回调函数的函数体，所以不用写返回值。</p>
 <h3 id="computed和methods区别"><a href="#computed和methods区别" class="headerlink" title="computed和methods区别"></a>computed和methods区别</h3><p>比如来说，data中定义了一个数组，然后可以通过计算属性来判断这个数组中是否有元素，也就是看这个数组的length是否大于0，如果大于0返回true，反正返回false，同样把这个判断放在methods中也可以进行判断，但是计算属性基于他依赖的响应式是有缓存的，比如这个数组如果没有发生变化，那么计算属性中的这个属性不管怎样访问，他都会立即返回先前的结果，而不用重新执行getter函数，但是在methods中的方法访问一次，就执行一次。</p>
 <p>还有就是在计算属性的getter中不能产生副作用，不要做异步请求或者更改dom的操作，而且计算属性返回的值应该被视为可读的，并且永远不应该更改。</p>
-<h3 id="route和router区别？"><a href="#route和router区别？" class="headerlink" title="route和router区别？"></a>route和router区别？</h3><p>route是路由信息的对象，在vue3中通过useRoute来获取，包括路由信息参数。</p>
-<p>router是路由实例对象，可以通过usreRouter来获取，包括路由的跳转方法等。</p>
+<h3 id="route和router区别？"><a href="#route和router区别？" class="headerlink" title="route和router区别？"></a>route和router区别？</h3><p>router是全局对象，包含了所有的的路由，里面也包含了很多的属性和对象，比如history对象。</p>
+<p>route是局部对象，是当前正在跳转的路由，可以获取当前路由的名字等。</p>
 <h2 id="组件间传值的方法"><a href="#组件间传值的方法" class="headerlink" title="组件间传值的方法"></a>组件间传值的方法</h2><p>父传子：通过props进行传递</p>
 <p>子传父：通过$emit</p>
 <p>eventbus事件总线的方法</p>
@@ -349,7 +349,7 @@
 <p>提高http请求速度：把第三方包放入到index.html文件中，并引入CDN加速，实现DNS预解析，提前获取IP地址，缩短响应的时间，rel&#x3D;”dns-prefetch”，还有就是使用http2.0。</p>
 <h2 id="CDN原理"><a href="#CDN原理" class="headerlink" title="CDN原理"></a>CDN原理</h2><h3 id="CDN是什么？"><a href="#CDN是什么？" class="headerlink" title="CDN是什么？"></a>CDN是什么？</h3><p>CDN就是内容分发网络，通过部署在各地的服务器，使用户能够就近获得所需要的内容。</p>
 <h3 id="CDN的作用"><a href="#CDN的作用" class="headerlink" title="CDN的作用"></a>CDN的作用</h3><p>降低网络阻塞，提高用户的访问速度。</p>
-<h3 id="CDN的技术原理"><a href="#CDN的技术原理" class="headerlink" title="CDN的技术原理"></a>CDN的技术原理</h3><p>用户在访问网站的时候，先进行DNS解析，本地的DNS服务器将解析请求转发至网站的DNS服务器，CDN网络中的GLB系统对域名进行智能解析，将响应速度最快的节点IP返回给用户，用户得到ip后，像CDN节点发起访问请求，CDN节点将回到源站获得用户请求的数据并发给用户，同时CDN节点根据缓存策略对该数据进行缓存;当有其他用户再次访问同样内容时，CDN节点直接将数据返回给客户，完成请求过程。</p>
+<h3 id="CDN的技术原理"><a href="#CDN的技术原理" class="headerlink" title="CDN的技术原理"></a>CDN的技术原理</h3><p>用户在访问网站的时候，先进行DNS解析，本地的DNS服务器将解析请求转发至网站的DNS服务器，CDN网络中的GLB系统对域名进行智能解析，将响应速度最快的节点IP返回给用户，用户得到ip后，向CDN节点发起访问请求，CDN节点将回到源站获得用户请求的数据并发给用户，同时CDN节点根据缓存策略对该数据进行缓存;当有其他用户再次访问同样内容时，CDN节点直接将数据返回给客户，完成请求过程。</p>
 <h2 id="vite"><a href="#vite" class="headerlink" title="vite"></a>vite</h2><h3 id="vite为什么在开发阶段比webpack快？"><a href="#vite为什么在开发阶段比webpack快？" class="headerlink" title="vite为什么在开发阶段比webpack快？"></a>vite为什么在开发阶段比webpack快？</h3><p>webpack是先打包再启动开发服务器，vite是直接启动开发服务器，然后按需编译依赖文件。</p>
 <h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>基本数据：number，string，boolean，null，undefined，symbol，bigint</p>
 <p>引用数据类型：object，array，function</p>
@@ -483,8 +483,41 @@
 <h3 id="生成器？"><a href="#生成器？" class="headerlink" title="生成器？"></a>生成器？</h3><p>生成器是一个特殊的迭代器；</p>
 <p>生成器的形式是一个函数，函数名称前面加一个星号 <code>*</code> 表示它是一个生成器。</p>
 <p>函数体内部使用<code>yield</code>表达式，定义不同的内部状态。</p>
-<h2 id="数组常用方法"><a href="#数组常用方法" class="headerlink" title="数组常用方法"></a>数组常用方法</h2><h3 id="数组实现扁平化"><a href="#数组实现扁平化" class="headerlink" title="数组实现扁平化"></a>数组实现扁平化</h3><h2 id="字符串常用方法"><a href="#字符串常用方法" class="headerlink" title="字符串常用方法"></a>字符串常用方法</h2><h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><p>const url &#x3D; new URL(“..&#x2F;..&#x2F;assets&#x2F;logo.png”, import.meta.url).href;</p>
+<h2 id="数组常用方法"><a href="#数组常用方法" class="headerlink" title="数组常用方法"></a>数组常用方法</h2><p>push方法向后追加元素</p>
+<p>pop方法删除当前数组最后一个元素</p>
+<p>shift删除当前数组第一个元素</p>
+<p>unshift删除当前数组最前面添加元素</p>
+<p>splice删除或替换或添加元素，改变元素组</p>
+<p>slice截取数组，不会改变原数组。</p>
+<p>filter</p>
+<p>map</p>
+<p>indexof</p>
+<p>sort</p>
+<p>reverse</p>
+<p>some</p>
+<p>every</p>
+<p>find</p>
+<h3 id="数组实现扁平化"><a href="#数组实现扁平化" class="headerlink" title="数组实现扁平化"></a>数组实现扁平化</h3><p>使用递归进行扁平化。</p>
+<p>使用arr.toString方法，然后在使用split方法转成数组。</p>
+<h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><p>双重for循环去重和splice</p>
+<p>通过sort先排序在去重</p>
+<p>通过indexOf去重     </p>
+<p>es6新出的可以使用Set来实现去重，</p>
+<h2 id="字符串常用方法"><a href="#字符串常用方法" class="headerlink" title="字符串常用方法"></a>字符串常用方法</h2><p>concat()</p>
+<p>indexOf()</p>
+<p>includes()</p>
+<p>replace()</p>
+<p>split()</p>
+<p>toUpperCase()</p>
+<p>toLowerCase()</p>
+<h2 id="数组与字符串之间互转"><a href="#数组与字符串之间互转" class="headerlink" title="数组与字符串之间互转"></a>数组与字符串之间互转</h2><p>数组转字符串方法：arr.join(),arr.toString()</p>
+<p>字符串转数组方法：str.split(),Array.from(str),扩展运算符</p>
+<h1 id="css"><a href="#css" class="headerlink" title="css"></a>css</h1><p>const url &#x3D; new URL(“..&#x2F;..&#x2F;assets&#x2F;logo.png”, import.meta.url).href;</p>
 <h2 id="css权重"><a href="#css权重" class="headerlink" title="css权重"></a>css权重</h2><p>！important权重最高&gt;行内样式&gt;ID选择器&gt;class选择器&gt;标签选择器&gt;通用选择器</p>
+<h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><p>块级格式化上下文，具有独立的空间，不会影响到外界</p>
+<h3 id="产生条件"><a href="#产生条件" class="headerlink" title="产生条件"></a>产生条件</h3><p>float不为none的时候</p>
+<p>display为flex和inline-block和block</p>
+<p>position为fixed和absolute</p>
 <h2 id="css实现三栏布局"><a href="#css实现三栏布局" class="headerlink" title="css实现三栏布局"></a>css实现三栏布局</h2><h2 id="animation动画属性"><a href="#animation动画属性" class="headerlink" title="animation动画属性"></a>animation动画属性</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* 引用动画 */</span><br>           <span class="hljs-comment">/* animation-name: move; */</span><br>           <span class="hljs-comment">/*动画的时间 */</span><br>           <span class="hljs-comment">/* animation-duration: 2s; */</span><br>           <span class="hljs-comment">/* 运行速度曲线 */</span><br>           <span class="hljs-comment">/* animation-timing-function: ease-in-out; */</span><br>           <span class="hljs-comment">/* 何时开始 */</span><br>           <span class="hljs-comment">/* animation-delay: 1s; */</span><br>           <span class="hljs-comment">/* 动画循环次数，1表示一次，infinite表示无限次 */</span><br>           <span class="hljs-comment">/* animation-iteration-count: infinite; */</span><br>           <span class="hljs-comment">/* 表示会不会逆回来，alternate表示逆回来，normal表示普通 */</span><br>           <span class="hljs-comment">/* animation-direction: alternate; */</span><br>           <span class="hljs-comment">/* 这是停在结束位置，回到初始位置是backwards */</span><br>           <span class="hljs-comment">/* animation-fill-mode: forwards; */</span><br>           <span class="hljs-comment">/* 下面是简写 */</span><br>           <span class="hljs-comment">/* animation: name duration timing-function delay iteration-count direction fill-mode; */</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h2><p>translate移动的距离，向X轴向Y轴</p>
