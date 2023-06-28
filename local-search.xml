@@ -5,6 +5,19 @@
   
   <entry>
     <title></title>
+    <link href="/2023/02/24/Meteor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <url>/2023/02/24/Meteor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Meteor学习笔记"><a href="#Meteor学习笔记" class="headerlink" title="Meteor学习笔记"></a>Meteor学习笔记</h1><hr><h2 id="学前准备"><a href="#学前准备" class="headerlink" title="学前准备"></a>学前准备</h2><p>因为meteor对node环境有要求，所以需要切换node的版本号，才可以安装meteor框架；</p><h3 id="卸载node"><a href="#卸载node" class="headerlink" title="卸载node"></a>卸载node</h3><p>下载切换node版本的工具，然后进nvm（node version management）官网，下载nvm-setup,安装就可以实现node版本的管理了；</p><h3 id="常用的指令"><a href="#常用的指令" class="headerlink" title="常用的指令"></a>常用的指令</h3><p>nvm list available查看可以安装的版本</p><p>nvm list 查看已经安装好的版本</p><p>nvm use 版本号 切换版本</p><h2 id="邂逅Meteor"><a href="#邂逅Meteor" class="headerlink" title="邂逅Meteor"></a>邂逅Meteor</h2><h3 id="安装meteor"><a href="#安装meteor" class="headerlink" title="安装meteor"></a>安装meteor</h3><p> npm install meteor -g</p><h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p>提示要我全局安装，然后全局进行安装解决了问题。</p><p><img src="/2023/02/24/Meteor%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20230227102955901.png" alt="image-20230227102955901"></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
     <link href="/2022/10/25/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     <url>/2022/10/25/%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
     
