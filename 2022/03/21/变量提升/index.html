@@ -18,19 +18,19 @@
   
     <meta name="description" content="变量提升">
 <meta property="og:type" content="article">
-<meta property="og:title" content="David">
+<meta property="og:title" content="变量提升">
 <meta property="og:url" content="http://example.com/2022/03/21/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/index.html">
 <meta property="og:site_name" content="David">
 <meta property="og:description" content="变量提升">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-21T03:33:25.000Z">
-<meta property="article:modified_time" content="2022-03-20T07:31:10.187Z">
+<meta property="article:modified_time" content="2023-06-29T12:58:59.698Z">
 <meta property="article:author" content="David">
 <meta property="article:tag" content="js">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>David</title>
+  <title>变量提升 - David</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="变量提升"></span>
           
         </div>
 
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          630 字
+          631 字
         
       </span>
     
@@ -259,7 +259,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">变量提升</h1>
             
             <div class="markdown-body">
               
@@ -268,10 +268,11 @@
 <p>变量提升：就是在变量还没定义之前就能访问的到</p>
 <p>函数提升：就是在函数定义之前就可以调用执行这个函数</p>
 <p>递归调用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;gb:&quot;</span> + i);<br>       <span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>;<br>       <span class="hljs-title function_">foo</span>(<span class="hljs-number">1</span>);<br><br>       <span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params">i</span>) &#123;<br>           <span class="hljs-keyword">if</span> (i == <span class="hljs-number">4</span>) &#123;<br>               <span class="hljs-keyword">return</span><br>           &#125;<br>           <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;fb:&#x27;</span> + i);<br>           <span class="hljs-title function_">foo</span>(i + <span class="hljs-number">1</span>);<br>           <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;fe:&#x27;</span> + i);<br>       &#125;<br>       <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;ge:&#x27;</span> + i);<br>       <span class="hljs-comment">// 输出一次为</span><br>       <span class="hljs-comment">// gb: undefined</span><br>       <span class="hljs-comment">// fb: 1</span><br>       <span class="hljs-comment">// fb: 2</span><br>       <span class="hljs-comment">// fb: 3</span><br>       <span class="hljs-comment">// fe: 3</span><br>       <span class="hljs-comment">// fe: 2</span><br>       <span class="hljs-comment">// fe: 1</span><br>       <span class="hljs-comment">// ge: 1</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;gb:&quot;</span> + i);<br><span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>;<br><span class="hljs-title function_">foo</span>(<span class="hljs-number">1</span>);<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params">i</span>) &#123;<br>  <span class="hljs-keyword">if</span> (i == <span class="hljs-number">4</span>) &#123;<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;fb:&quot;</span> + i);<br>  <span class="hljs-title function_">foo</span>(i + <span class="hljs-number">1</span>);<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;fe:&quot;</span> + i);<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;ge:&quot;</span> + i);<br><span class="hljs-comment">// 输出一次为</span><br><span class="hljs-comment">// gb: undefined</span><br><span class="hljs-comment">// fb: 1</span><br><span class="hljs-comment">// fb: 2</span><br><span class="hljs-comment">// fb: 3</span><br><span class="hljs-comment">// fe: 3</span><br><span class="hljs-comment">// fe: 2</span><br><span class="hljs-comment">// fe: 1</span><br><span class="hljs-comment">// ge: 1</span><br></code></pre></td></tr></table></figure>
 
 <p>变量提升面试题</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js"><br>   <span class="hljs-keyword">let</span> a = <span class="hljs-number">3</span>;<br><br>        <span class="hljs-keyword">function</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params"></span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br>            <span class="hljs-keyword">var</span> a = <span class="hljs-number">4</span>;<br>        &#125;<br>        <span class="hljs-title function_">fn</span>()<span class="hljs-comment">//undefined</span><br><span class="hljs-comment">// 面试1</span><br>        <span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>) &#123;&#125;<br>        <span class="hljs-keyword">var</span> a;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> a);<br>        <span class="hljs-comment">// 面试2</span><br>        <span class="hljs-keyword">if</span> (!(b <span class="hljs-keyword">in</span> <span class="hljs-variable language_">window</span>)) &#123;<br>            <span class="hljs-keyword">var</span> b = <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(b);<br>        <span class="hljs-comment">// 面试3</span><br>        <span class="hljs-keyword">var</span> c = <span class="hljs-number">1</span>;<br><br>        <span class="hljs-keyword">function</span> <span class="hljs-title function_">c</span>(<span class="hljs-params">c</span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(c);<br>        &#125;<br>        <span class="hljs-title function_">c</span>(<span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a = <span class="hljs-number">3</span>;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br>  <span class="hljs-keyword">var</span> a = <span class="hljs-number">4</span>;<br>&#125;<br><span class="hljs-title function_">fn</span>(); <span class="hljs-comment">//undefined</span><br><span class="hljs-comment">// 面试1</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">a</span>(<span class="hljs-params"></span>) &#123;&#125;<br><span class="hljs-keyword">var</span> a;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> a);<br><span class="hljs-comment">// 面试2</span><br><span class="hljs-keyword">if</span> (!(b <span class="hljs-keyword">in</span> <span class="hljs-variable language_">window</span>)) &#123;<br>  <span class="hljs-keyword">var</span> b = <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(b);<br><span class="hljs-comment">// 面试3</span><br><span class="hljs-keyword">var</span> c = <span class="hljs-number">1</span>;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">c</span>(<span class="hljs-params">c</span>) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(c);<br>&#125;<br><span class="hljs-title function_">c</span>(<span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
+
               
             </div>
             <hr/>
@@ -315,7 +316,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
+      <div>变量提升</div>
       <div>http://example.com/2022/03/21/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</div>
     </div>
     <div class="license-meta">
@@ -358,9 +359,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/23/Flex%E5%B8%83%E5%B1%80/" title="">
+                      <a href="/2022/03/23/Flex%E5%B8%83%E5%B1%80/" title="Flex学习笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
+                        <span class="hidden-mobile">Flex学习笔记</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -368,8 +369,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/21/%E9%97%AD%E5%8C%85/" title="">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2022/03/21/%E9%97%AD%E5%8C%85/" title="闭包">
+                        <span class="hidden-mobile">闭包</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

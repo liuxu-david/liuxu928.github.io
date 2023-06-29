@@ -18,19 +18,19 @@
   
     <meta name="description" content="数组的高阶函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="David">
+<meta property="og:title" content="数组的高阶函数">
 <meta property="og:url" content="http://example.com/2022/06/21/%E6%95%B0%E7%BB%84%E7%9A%84%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="David">
 <meta property="og:description" content="数组的高阶函数">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-21T08:33:25.000Z">
-<meta property="article:modified_time" content="2022-06-22T14:02:05.743Z">
+<meta property="article:modified_time" content="2023-06-29T13:00:24.581Z">
 <meta property="article:author" content="David">
 <meta property="article:tag" content="js">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>David</title>
+  <title>数组的高阶函数 - David</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="数组的高阶函数"></span>
           
         </div>
 
@@ -259,28 +259,28 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">数组的高阶函数</h1>
             
             <div class="markdown-body">
               
               <h1 id="数组的高阶函数"><a href="#数组的高阶函数" class="headerlink" title="数组的高阶函数"></a>数组的高阶函数</h1><span id="more"></span>
 
-<h2 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> movies = [<span class="hljs-string">&quot;大话西游&quot;</span>, <span class="hljs-string">&quot;妖猫传&quot;</span>, <span class="hljs-string">&quot;斗罗大陆&quot;</span>, <span class="hljs-string">&quot;完美世界&quot;</span>];<br>        <span class="hljs-keyword">let</span> list = movies.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;<br>            <span class="hljs-keyword">return</span> item + <span class="hljs-string">&quot;000&quot;</span>;<br>        &#125;);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(list);<span class="hljs-comment">// [&#x27;大话西游000&#x27;, &#x27;妖猫传000&#x27;, &#x27;斗罗大陆000&#x27;, &#x27;完美世界000&#x27;]</span><br></code></pre></td></tr></table></figure>
+<h2 id="map-函数"><a href="#map-函数" class="headerlink" title="map 函数"></a>map 函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> movies = [<span class="hljs-string">&quot;大话西游&quot;</span>, <span class="hljs-string">&quot;妖猫传&quot;</span>, <span class="hljs-string">&quot;斗罗大陆&quot;</span>, <span class="hljs-string">&quot;完美世界&quot;</span>];<br><span class="hljs-keyword">let</span> list = movies.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> item + <span class="hljs-string">&quot;000&quot;</span>;<br>&#125;);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(list); <span class="hljs-comment">// [&#x27;大话西游000&#x27;, &#x27;妖猫传000&#x27;, &#x27;斗罗大陆000&#x27;, &#x27;完美世界000&#x27;]</span><br></code></pre></td></tr></table></figure>
 
 <p>array.map((item,index,arr)&#x3D;&gt;{})</p>
-<p>可以传3个参数，第一个参数表示循环的每项item，第二个参数表示下标，第三个参数表示当前循环的数组；</p>
-<p>map高阶函数处理数组的映射，可以对每一项分别处理后然后return出来添加进一个新的数组中去</p>
-<h2 id="filter函数"><a href="#filter函数" class="headerlink" title="filter函数"></a>filter函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">10</span>, <span class="hljs-number">98</span>, <span class="hljs-number">25</span>, <span class="hljs-number">100</span>, <span class="hljs-number">68</span>, <span class="hljs-number">15</span>, <span class="hljs-number">108</span>, <span class="hljs-number">56</span>, <span class="hljs-number">12</span>, <span class="hljs-number">222</span>];<br>       <span class="hljs-keyword">let</span> newNumbers = numbers.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">item, index, arr</span>) =&gt;</span> &#123;<br>           <span class="hljs-keyword">return</span> item &gt; <span class="hljs-number">50</span>;<br>       &#125;)<br>       <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newNumbers);<span class="hljs-comment">//[98, 100, 68, 108, 56, 222]</span><br></code></pre></td></tr></table></figure>
+<p>可以传 3 个参数，第一个参数表示循环的每项 item，第二个参数表示下标，第三个参数表示当前循环的数组；</p>
+<p>map 高阶函数处理数组的映射，可以对每一项分别处理后然后 return 出来添加进一个新的数组中去</p>
+<h2 id="filter-函数"><a href="#filter-函数" class="headerlink" title="filter 函数"></a>filter 函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">10</span>, <span class="hljs-number">98</span>, <span class="hljs-number">25</span>, <span class="hljs-number">100</span>, <span class="hljs-number">68</span>, <span class="hljs-number">15</span>, <span class="hljs-number">108</span>, <span class="hljs-number">56</span>, <span class="hljs-number">12</span>, <span class="hljs-number">222</span>];<br><span class="hljs-keyword">let</span> newNumbers = numbers.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">item, index, arr</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> item &gt; <span class="hljs-number">50</span>;<br>&#125;);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newNumbers); <span class="hljs-comment">//[98, 100, 68, 108, 56, 222]</span><br></code></pre></td></tr></table></figure>
 
 <p>array.filter()</p>
-<p>同样可以传入3个参数，第一个参数表示循环的每项item，第二个参数表示下标，第三个参数表示当前循环的数组</p>
-<p>filter函数可以作为函数数组的过滤器，对item中每项数据进行过滤，如果return的条件是true的话就会返回值添加到新的数组中去，如果返回的条件是false的话，就舍去。</p>
-<p><strong>这两个高阶函数如果条件是一句话的时候，return和外面的大括号可以省略，但是可读性很差</strong></p>
-<h2 id="reduce函数"><a href="#reduce函数" class="headerlink" title="reduce函数"></a>reduce函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> totalPrice=<span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span>.<span class="hljs-property">books</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">preValue,item</span>)=&gt;</span>&#123; <span class="hljs-keyword">return</span> preValue+item.<span class="hljs-property">price</span>*item.<span class="hljs-property">count</span>;&#125;,<span class="hljs-number">0</span>);<br>              <span class="hljs-keyword">return</span> totalPrice<br></code></pre></td></tr></table></figure>
+<p>同样可以传入 3 个参数，第一个参数表示循环的每项 item，第二个参数表示下标，第三个参数表示当前循环的数组</p>
+<p>filter 函数可以作为函数数组的过滤器，对 item 中每项数据进行过滤，如果 return 的条件是 true 的话就会返回值添加到新的数组中去，如果返回的条件是 false 的话，就舍去。</p>
+<p><strong>这两个高阶函数如果条件是一句话的时候，return 和外面的大括号可以省略，但是可读性很差</strong></p>
+<h2 id="reduce-函数"><a href="#reduce-函数" class="headerlink" title="reduce 函数"></a>reduce 函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> totalPrice = <span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span>.<span class="hljs-property">books</span>.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">preValue, item</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> preValue + item.<span class="hljs-property">price</span> * item.<span class="hljs-property">count</span>;<br>&#125;, <span class="hljs-number">0</span>);<br><span class="hljs-keyword">return</span> totalPrice;<br></code></pre></td></tr></table></figure>
 
-<p>参数有两个，第一个参数回调函数（回调函数又有4个参数，第一个是preValue，就是上一次循环后的结果，第二个参数表示循环的每项item，第三个参数表示下标，第四个参数表示当前循环的数组），第二个参数是初始化值</p>
+<p>参数有两个，第一个参数回调函数（回调函数又有 4 个参数，第一个是 preValue，就是上一次循环后的结果，第二个参数表示循环的每项 item，第三个参数表示下标，第四个参数表示当前循环的数组），第二个参数是初始化值</p>
 <p>可以做累加操作，对数据做累加操作。返回的是一个结果。也是一个高阶函数。</p>
-<h2 id="slice函数"><a href="#slice函数" class="headerlink" title="slice函数"></a>slice函数</h2><p>数组的截取时候array.slice()</p>
+<h2 id="slice-函数"><a href="#slice-函数" class="headerlink" title="slice 函数"></a>slice 函数</h2><p>数组的截取时候 array.slice()</p>
 <p>左闭右开，截取区间内的数据</p>
 
               
@@ -326,7 +326,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
+      <div>数组的高阶函数</div>
       <div>http://example.com/2022/06/21/%E6%95%B0%E7%BB%84%E7%9A%84%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/</div>
     </div>
     <div class="license-meta">
@@ -369,9 +369,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/06/21/React/" title="">
+                      <a href="/2022/06/21/React/" title="React学习笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
+                        <span class="hidden-mobile">React学习笔记</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -379,8 +379,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/" title="">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2022/05/17/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/" title="MySQL数据库">
+                        <span class="hidden-mobile">MySQL数据库</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

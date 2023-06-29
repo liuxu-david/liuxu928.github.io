@@ -18,21 +18,21 @@
   
     <meta name="description" content="微信小程序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="David">
+<meta property="og:title" content="微信小程序学习笔记">
 <meta property="og:url" content="http://example.com/2022/04/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/index.html">
 <meta property="og:site_name" content="David">
 <meta property="og:description" content="微信小程序">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/04/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/image-20220501152855393.png">
 <meta property="article:published_time" content="2022-04-25T03:33:25.000Z">
-<meta property="article:modified_time" content="2022-06-21T08:28:53.854Z">
+<meta property="article:modified_time" content="2023-06-29T13:00:43.268Z">
 <meta property="article:author" content="David">
 <meta property="article:tag" content="项目">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/04/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/image-20220501152855393.png">
   
   
-  <title>David</title>
+  <title>微信小程序学习笔记 - David</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -189,7 +189,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="微信小程序学习笔记"></span>
           
         </div>
 
@@ -261,14 +261,14 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">微信小程序学习笔记</h1>
             
             <div class="markdown-body">
               
               <h1 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h1><span id="more"></span>
 
-<h3 id="小程序API"><a href="#小程序API" class="headerlink" title="小程序API"></a>小程序API</h3><h3 id="1、事件监听API"><a href="#1、事件监听API" class="headerlink" title="1、事件监听API"></a>1、事件监听API</h3><h3 id="2、同步API"><a href="#2、同步API" class="headerlink" title="2、同步API"></a>2、同步API</h3><h3 id="3、异步API"><a href="#3、异步API" class="headerlink" title="3、异步API"></a>3、异步API</h3><p>wx.switchTab({url:})跳转到tab页面</p>
-<p>wx.navigateTo({url:})跳转到非 tab页面</p>
+<h3 id="小程序-API"><a href="#小程序-API" class="headerlink" title="小程序 API"></a>小程序 API</h3><h3 id="1、事件监听-API"><a href="#1、事件监听-API" class="headerlink" title="1、事件监听 API"></a>1、事件监听 API</h3><h3 id="2、同步-API"><a href="#2、同步-API" class="headerlink" title="2、同步 API"></a>2、同步 API</h3><h3 id="3、异步-API"><a href="#3、异步-API" class="headerlink" title="3、异步 API"></a>3、异步 API</h3><p>wx.switchTab({url:})跳转到 tab 页面</p>
+<p>wx.navigateTo({url:})跳转到非 tab 页面</p>
 <h3 id="小程序生命周期"><a href="#小程序生命周期" class="headerlink" title="小程序生命周期"></a>小程序生命周期</h3><h4 id="应用生命周期函数-：、"><a href="#应用生命周期函数-：、" class="headerlink" title="应用生命周期函数 ：、"></a>应用生命周期函数 ：、</h4><p>onLunch（）</p>
 <p>onShow（）</p>
 <p>onHide（）</p>
@@ -286,18 +286,16 @@
 <p>error</p>
 <p><img src="/2022/04/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/image-20220501152855393.png" srcset="/img/loading.gif" lazyload alt="image-20220501152855393"></p>
 <p>组件中生命周期函数：</p>
-<p>show，hide，resize </p>
-<h3 id="vuex数据存储"><a href="#vuex数据存储" class="headerlink" title="vuex数据存储"></a>vuex数据存储</h3><p>npm install –save <a href="mailto:&#109;&#x6f;&#x62;&#120;&#45;&#x6d;&#x69;&#x6e;&#105;&#112;&#x72;&#x6f;&#x67;&#114;&#97;&#x6d;&#64;&#52;&#46;&#49;&#51;&#46;&#x32;">&#109;&#x6f;&#x62;&#120;&#45;&#x6d;&#x69;&#x6e;&#105;&#112;&#x72;&#x6f;&#x67;&#114;&#97;&#x6d;&#64;&#52;&#46;&#49;&#51;&#46;&#x32;</a> <a href="mailto:&#x6d;&#x6f;&#98;&#x78;&#45;&#x6d;&#x69;&#x6e;&#105;&#x70;&#x72;&#x6f;&#x67;&#114;&#97;&#109;&#45;&#x62;&#105;&#x6e;&#x64;&#x69;&#110;&#103;&#115;&#x40;&#x31;&#x2e;&#50;&#x2e;&#x31;">&#x6d;&#x6f;&#98;&#x78;&#45;&#x6d;&#x69;&#x6e;&#105;&#x70;&#x72;&#x6f;&#x67;&#114;&#97;&#109;&#45;&#x62;&#105;&#x6e;&#x64;&#x69;&#110;&#103;&#115;&#x40;&#x31;&#x2e;&#50;&#x2e;&#x31;</a></p>
-<h3 id="学习小程序中出现的比较实用的方法"><a href="#学习小程序中出现的比较实用的方法" class="headerlink" title="学习小程序中出现的比较实用的方法"></a>学习小程序中出现的比较实用的方法</h3><p>1、 background-color:rgba(0,0,0,.5);和backdrop-filter:blur(5px)设置css毛玻璃特效</p>
-<p>2、slice既可以对数组进行切割，也能对字符串进行切割</p>
+<p>show，hide，resize</p>
+<h3 id="vuex-数据存储"><a href="#vuex-数据存储" class="headerlink" title="vuex 数据存储"></a>vuex 数据存储</h3><p>npm install –save <a href="mailto:&#109;&#111;&#x62;&#120;&#45;&#x6d;&#x69;&#110;&#105;&#112;&#x72;&#x6f;&#x67;&#x72;&#x61;&#x6d;&#64;&#52;&#46;&#x31;&#51;&#x2e;&#x32;">&#109;&#111;&#x62;&#120;&#45;&#x6d;&#x69;&#110;&#105;&#112;&#x72;&#x6f;&#x67;&#x72;&#x61;&#x6d;&#64;&#52;&#46;&#x31;&#51;&#x2e;&#x32;</a> <a href="mailto:&#x6d;&#x6f;&#x62;&#120;&#45;&#109;&#x69;&#x6e;&#105;&#x70;&#114;&#111;&#x67;&#x72;&#x61;&#x6d;&#x2d;&#x62;&#x69;&#x6e;&#100;&#105;&#x6e;&#103;&#x73;&#x40;&#49;&#46;&#50;&#46;&#x31;">&#x6d;&#x6f;&#x62;&#120;&#45;&#109;&#x69;&#x6e;&#105;&#x70;&#114;&#111;&#x67;&#x72;&#x61;&#x6d;&#x2d;&#x62;&#x69;&#x6e;&#100;&#105;&#x6e;&#103;&#x73;&#x40;&#49;&#46;&#50;&#46;&#x31;</a></p>
+<h3 id="学习小程序中出现的比较实用的方法"><a href="#学习小程序中出现的比较实用的方法" class="headerlink" title="学习小程序中出现的比较实用的方法"></a>学习小程序中出现的比较实用的方法</h3><p>1、 background-color:rgba(0,0,0,.5);和 backdrop-filter:blur(5px)设置 css 毛玻璃特效</p>
+<p>2、slice 既可以对数组进行切割，也能对字符串进行切割</p>
 <p>split()把字符串切割成数组</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> strInfo = <span class="hljs-string">&quot;liuxu&amp;success!&quot;</span>;<br>        <span class="hljs-keyword">const</span> newStrInfo = strInfo.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;&amp;&#x27;</span>);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newStrInfo);<span class="hljs-comment">// [&#x27;liuxu&#x27;, &#x27;success!&#x27;]</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> strInfo = <span class="hljs-string">&quot;liuxu&amp;success!&quot;</span>;<br><span class="hljs-keyword">const</span> newStrInfo = strInfo.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;&amp;&quot;</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newStrInfo); <span class="hljs-comment">// [&#x27;liuxu&#x27;, &#x27;success!&#x27;]</span><br></code></pre></td></tr></table></figure>
 
-
-
-<p>3、array.filter和array.map这两个方法的区别</p>
-<p>filter是把符合条件的数据返回出来成一个新的数组，map是把计算的结果或者作出处理后的数据返回出来成为一个数组；</p>
-<p>4、在for循环中in是遍历循环对象获取索引而of时候获取值进行遍历</p>
+<p>3、array.filter 和 array.map 这两个方法的区别</p>
+<p>filter 是把符合条件的数据返回出来成一个新的数组，map 是把计算的结果或者作出处理后的数据返回出来成为一个数组；</p>
+<p>4、在 for 循环中 in 是遍历循环对象获取索引而 of 时候获取值进行遍历</p>
 
               
             </div>
@@ -342,7 +340,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
+      <div>微信小程序学习笔记</div>
       <div>http://example.com/2022/04/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</div>
     </div>
     <div class="license-meta">
@@ -385,9 +383,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/04/25/Webpack/" title="">
+                      <a href="/2022/04/25/Webpack/" title="webpack学习笔记">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
+                        <span class="hidden-mobile">webpack学习笔记</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -395,8 +393,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/04/03/json/" title="">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2022/04/03/json/" title="json方法">
+                        <span class="hidden-mobile">json方法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
